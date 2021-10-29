@@ -5,10 +5,6 @@ import theme from '../components/layouts/theme'
 import { AnimatePresence } from 'framer-motion'
 import { AppProps } from "next/app";
 
-type website = {
-
-}
-
 
 function Website ({Component, router, pageProps} : AppProps) {
   return (

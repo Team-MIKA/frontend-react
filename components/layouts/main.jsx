@@ -7,7 +7,7 @@ const Main = ({ children, router }) => {
     return (
         <Box as="main" pb={8}>
             <Head>
-                <title>Buisness asssitant</title>
+                <title>Business assistant</title>
             </Head>
 
             <NavBar path={router.asPath} />
