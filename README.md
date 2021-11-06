@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Team-MIKA/frontend-react/main/public/logo.svg">
+</p>
+
+--------------------------------------------------------------------
+[![Netlify Status](https://api.netlify.com/api/v1/badges/686481d6-5878-4771-b0f5-e824b2616041/deploy-status)](https://app.netlify.com/sites/business-assistant/deploys)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
