@@ -47,7 +47,7 @@ class TextNavItem extends NavBarItem {
 const Navbar = () => {
     const Items: NavBarItem[] = [
         new TextNavItem("/", "Home"),
-        new TextNavItem("/settings", "Settngs"),
+        new TextNavItem("/settings", "Settings"),
         new TextNavItem("/api/hello", "Api hello"),
         new TextNavItem("/api", "Api"),
     ];
