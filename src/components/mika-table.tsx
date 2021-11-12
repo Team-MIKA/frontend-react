@@ -8,39 +8,39 @@ import logger from "@helpers/logger";
 
 const MikaTable = ({columns, data, title}) => {
 
-    const toast = useToast()
+    const toast = useToast();
 
     const [itemState, setItemState] = useState(itemStore.initialState);
     
     useEffect(() => {
-        const subscription = itemStore.subscribe(setItemState)
+        const subscription = itemStore.subscribe(setItemState);
         logger.log("Initial Itemstate:", itemState);
         return () => subscription.unsubscribe();
     }, []); // [] avoids useEffect to be run on every render of component.
 
     const onRowClick = (event) => {
-        logger.log("Row Clicked: ", event)
+        logger.log("Row Clicked: ", event);
         itemState.item.id == event.original.id ? unSelect() : select(event.original.id);
     }
 
     const unSelect = () => {
-        logger.log("UnSelecting...")
+        logger.log("UnSelecting...");
         itemStore.clearItem();
         addUnselectToast();
     }
 
     const select = (itemId) => {
-        logger.log("Selecting ID: ", itemId)
+        logger.log("Selecting ID: ", itemId);
         itemStore.setItem({id: itemId});
         addSelectToast();
     }
 
     const addSelectToast = () =>  {
-        toast({description: "Item Selected", position: 'top-right', duration: 2000, isClosable: true, status: 'success'})
+        toast({description: "Item Selected", position: 'top-right', duration: 2000, isClosable: true, status: 'success'});
     }
 
     const addUnselectToast = () =>  {
-        toast({description: "Item Unselected", position: 'top-right', duration: 2000, isClosable: true, status: 'warning'})
+        toast({description: "Item Unselected", position: 'top-right', duration: 2000, isClosable: true, status: 'warning'});
     }
 
 
@@ -50,7 +50,7 @@ const MikaTable = ({columns, data, title}) => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data })
+  } = useTable({ columns, data });
 
      return (
          <Box  border="2px solid gray" borderRadius="md">
