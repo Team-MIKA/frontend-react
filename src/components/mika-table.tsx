@@ -4,6 +4,7 @@ import { useTable } from "react-table"
 
 import React, {useState, useEffect} from "react"
 import itemStore from "@store/item";
+import logger from "@helpers/logger";
 
 const MikaTable = ({columns, data, title}) => {
 
@@ -13,24 +14,23 @@ const MikaTable = ({columns, data, title}) => {
     
     useEffect(() => {
         const subscription = itemStore.subscribe(setItemState)
-        console.log("Initial Itemstate:", itemState);
+        logger.log("Initial Itemstate:", itemState);
         return () => subscription.unsubscribe();
       }, []); // [] avoids useEffect to be run on every render of component.
 
     const onRowClick = (event) => {
-        console.log("Row Clicked: ", event);
-
+        logger.log("Row Clicked: ", event)
         itemState.item.id == event.original.id ? unSelect() : select(event.original.id);
     }
 
     const unSelect = () => {
-        console.log("UnSelecting...")
+        logger.log("UnSelecting...")
         itemStore.clearItem();
         addUnselectToast();
     }
 
     const select = (itemId) => {
-        console.log("Selecting: ", itemId)
+        logger.log("Selecting ID: ", itemId)
         itemStore.setItem({id: itemId});
         addSelectToast();
     }

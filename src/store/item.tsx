@@ -1,3 +1,4 @@
+import logger from '@helpers/logger';
 import React from 'react';
 import { Subject } from 'rxjs'
 
@@ -32,7 +33,7 @@ const itemStore = {
           item: {...state.item, id: newItem.id} // We don't want to "merge" our previous item into our new item. Thus ...state.item is removed
          };
          subject.next(state);
-         console.log(state);
+         logger.log(state);
       },
 
       clearItem: () => {
@@ -41,7 +42,7 @@ const itemStore = {
               item: {...state.item, id: ''},
           }
           subject.next(state);
-          console.log(state);
+          logger.log(state);
       },
 
     initialState,
