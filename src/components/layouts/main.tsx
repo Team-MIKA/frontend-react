@@ -1,9 +1,10 @@
 import { Box, Container } from "@chakra-ui/react";
+import { NextPage } from "next";
 import Head from "next/head";
 import Footer from "./footer";
 import NavBar from "./navbar";
 
-const Main = ({ children, router }) => {
+const Main: NextPage = ({ children }) => {
     return (
         <Box as="main" pb={8}>
             <Head>
