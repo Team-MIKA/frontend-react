@@ -2,7 +2,7 @@ import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/r
 import { useToast } from "@chakra-ui/react"
 import { useTable } from "react-table"
 
-import React, {useState, useRef, useEffect} from "react"
+import React, {useState, useEffect} from "react"
 import itemStore from "@store/item";
 
 const MikaTable = ({columns, data, title}) => {
