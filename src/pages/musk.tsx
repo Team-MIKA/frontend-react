@@ -7,23 +7,17 @@ const Musk: NextPage = () => {
 
     const data = React.useMemo(
         () => [
-          { index: "1", title: "Order1" },
-          { index: "2", title: "Order2" },
-          { index: "3", title: "Order3" },
+          { id: "1234", title: "Batman" },
+          { id: "5678", title: "Superman" },
+          { id: "9101", title: "The Joker" },
         ],
         [],
       )
     
       const columns = React.useMemo(
         () => [
-          {
-             Header: "Index",
-            accessor: "index",
-          },
-          {
-            Header: "Title",
-            accessor: "title",
-          },
+          { Header: "Id", accessor: "id" },
+          { Header: "Title", accessor: "title" },
         ],
         [],
       )
