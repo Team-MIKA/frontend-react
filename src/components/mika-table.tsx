@@ -16,7 +16,7 @@ const MikaTable = ({columns, data, title}) => {
         const subscription = itemStore.subscribe(setItemState)
         logger.log("Initial Itemstate:", itemState);
         return () => subscription.unsubscribe();
-      }, []); // [] avoids useEffect to be run on every render of component.
+    }, []); // [] avoids useEffect to be run on every render of component.
 
     const onRowClick = (event) => {
         logger.log("Row Clicked: ", event)
