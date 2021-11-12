@@ -3,26 +3,29 @@ import { Button, ButtonGroup, useColorModeValue, useDisclosure } from "@chakra-u
 import TimerModal from "@components/time-smart/timer-modal";
 
 function RegistrationButtons({ buttons }) {
-    const [buttonText] = useState("");
+    const [buttonText, setButtonText] = useState("");
     let buttonColors = useColorModeValue("pink", "teal");
     const finalRef = React.useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
     let startTime = new Date();
-    const opening = () => {
+
+    const opening = (buttonText) => {
         onOpen();
+        setButtonText(buttonText);
         startTime = new Date();
     };
-    function closing() {
+
+    const closing = () => {
         onClose();
         let stopTime = new Date();
         console.log(Math.floor((stopTime.getTime() - startTime.getTime()) / 1000));
-    }
+    };
 
     return (
         <>
             <ButtonGroup variant="solid" spacing="6">
                 {buttons.map((buttonText) => (
-                    <Button variant={"outline"} bg={buttonColors} key={buttonText} onClick={opening}>
+                    <Button variant={"outline"} bg={buttonColors} key={buttonText} onClick={() => opening(buttonText)}>
                         {buttonText}
                     </Button>
                 ))}

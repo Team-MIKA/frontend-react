@@ -18,6 +18,7 @@ function TimerModal(props: {
     onClose: () => void;
     text;
 }) {
+    console.log(props.text);
     return (
         <Modal size={"2xl"} finalFocusRef={props.finalFocusRef} isOpen={props.open} onClose={props.onClose}>
             <ModalOverlay />
