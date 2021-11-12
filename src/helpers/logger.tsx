@@ -1,8 +1,8 @@
 
 const logger = {
 
-    log: (input: any) => {
-        console.log(input);
+    log: (message?: any, ...optionalParams: any[]) => {
+        console.log(message, optionalParams);
     }
 
 }
