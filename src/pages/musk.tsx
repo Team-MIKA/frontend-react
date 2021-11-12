@@ -2,6 +2,7 @@ import { Container, Heading } from "@chakra-ui/react";
 import { NextPage } from "next";
 import MikaTable from "@components/mika-table";
 import React from "react";
+import TestBox from "@components/test-box";
 
 const Musk: NextPage = () => {
 
@@ -25,8 +26,10 @@ const Musk: NextPage = () => {
 
     return (
         <Container>
-            <Heading>Test Site</Heading>
+            <Heading right="0">Test Site</Heading>
             <MikaTable columns={columns} data={data} title="Orders"></MikaTable>
+            <TestBox title="Sap Materials"></TestBox>
+            <TestBox title="Time Smart"></TestBox>
         </Container>
     );
 };
