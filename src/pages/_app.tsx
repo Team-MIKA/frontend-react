@@ -9,7 +9,7 @@ function Website({ Component, router, pageProps }: AppProps) {
     return (
         <ChakraProvider theme={theme}>
             <Fonts />
-            <Layout router={router}>
+            <Layout>
                 <AnimatePresence exitBeforeEnter initial={true}>
                     {/* How next js renders our pages */}
                     <Component {...pageProps} key={router.route} />
