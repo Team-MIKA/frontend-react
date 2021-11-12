@@ -30,7 +30,7 @@ const itemStore = {
     setItem: (newItem: Item) => {
         state = {
           ...state,
-          item: {...state.item, id: newItem.id} // We don't want to "merge" our previous item into our new item. Thus ...state.item is removed
+          item: {id: newItem.id} // We don't want to "merge" our previous item into our new item. Thus ...state.item is removed
          };
          subject.next(state);
          logger.log(state);
@@ -39,7 +39,7 @@ const itemStore = {
       clearItem: () => {
           state = {
               ...state,
-              item: {...state.item, id: ''},
+              item: {id: ''},
           }
           subject.next(state);
           logger.log(state);
