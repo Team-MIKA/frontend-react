@@ -34,16 +34,16 @@ const itemStore = {
          };
          subject.next(state);
          logger.log(state);
-      },
+    },
 
-      clearItem: () => {
-          state = {
-              ...state,
-              item: {id: ''},
-          }
-          subject.next(state);
-          logger.log(state);
-      },
+    clearItem: () => {
+        state = {
+            ...state,
+            item: {id: ''},
+        }
+        subject.next(state);
+        logger.log(state);
+    },
 
     initialState,
 };
