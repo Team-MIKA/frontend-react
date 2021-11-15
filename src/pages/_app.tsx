@@ -1,4 +1,3 @@
-import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
