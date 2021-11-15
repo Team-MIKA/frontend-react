@@ -4,6 +4,7 @@
   <img src="https://raw.githubusercontent.com/Team-MIKA/frontend-react/main/public/logo.svg">
 </div>
 
+
 --------------------------------------------------------------------
 [![Netlify Status](https://api.netlify.com/api/v1/badges/686481d6-5878-4771-b0f5-e824b2616041/deploy-status)](https://app.netlify.com/sites/business-assistant/deploys)
 
