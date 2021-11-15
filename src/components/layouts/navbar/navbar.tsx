@@ -20,10 +20,12 @@ import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
 
-const LinkItem = ({ href, path, children }: PropsWithChildren<{ href: string; path: string }>) => {
-    const active = path === href;
+const LinkItem = ({ href, children }: PropsWithChildren<{ href: string }>) => {
+    const { pathname } = useRouter();
+    const active = pathname === href;
     const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
     const highlightColor = "#202023";
+
     return (
         <NextLink href={href}>
             <Link
@@ -43,7 +45,6 @@ interface Props {
 }
 
 const TopNavBar: FC<Props> = ({ navItems }) => {
-    const { pathname } = useRouter();
     return (
         <Stack
             direction={{ base: "column", md: "row" }}
@@ -54,7 +55,7 @@ const TopNavBar: FC<Props> = ({ navItems }) => {
             mt={{ base: 4, md: 0 }}
         >
             {navItems.map((item) => (
-                <LinkItem href={item.href} path={pathname} key={"nav" + item.key}>
+                <LinkItem href={item.href} key={"nav" + item.key}>
                     {item.render}
                 </LinkItem>
             ))}
