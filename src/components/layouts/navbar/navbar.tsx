@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { NavBarItem, TextNavItem } from "@components/layouts/navbar/NavBarItems";
+import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
 
