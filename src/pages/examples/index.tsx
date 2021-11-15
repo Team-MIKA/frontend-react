@@ -1,5 +1,5 @@
-import AddGroupMember from "@components/examples/add_group_member";
-import GroupList from "@components/examples/group_list";
+import AddGroupMember from "@components/examples/add-group-member";
+import GroupList from "@components/examples/group-list";
 
 const Example = () => {
     return (
