@@ -5,6 +5,9 @@ import { Column, Row, useTable } from "react-table";
 
 import logger from "@helpers/logger";
 import itemStore from "@store/item";
+import ApiModal from "./connector-modal";
+import handler from "@pages/api/hello";
+import ConnectorModal from "./connector-modal";
 
 const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]; title: string }) => {
     const toast = useToast();
@@ -13,7 +16,10 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
 
     useEffect(() => {
         const subscription = itemStore.subscribe(setItemState);
-        logger.log("Initial Item state:", itemState);
+        logger.log("Item state:", itemState);
+
+
+            
         return () => subscription.unsubscribe();
     }, [itemState]); // [] avoids useEffect to be run on every render of component.
 
@@ -58,8 +64,18 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
 
     return (
         <Box border="2px solid gray" borderRadius="md">
+            
             <Table {...getTableProps()}>
-                <TableCaption>{title}</TableCaption>
+                <TableCaption>{title} 
+                
+                <Box >
+                    
+                <ConnectorModal></ConnectorModal>
+                
+                </Box>
+                
+                </TableCaption>
+                
                 <Thead>
                     {headerGroups.map((headerGroup) => (
                         <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>

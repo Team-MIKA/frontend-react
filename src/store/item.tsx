@@ -1,3 +1,4 @@
+import { httpMethod, Ressource } from '@components/connector-modal';
 import logger from '@helpers/logger';
 import React from 'react';
 import { Subject } from 'rxjs'
@@ -10,11 +11,14 @@ export interface Item {
 
 export interface ItemState {
     item: Item;
+    tableRessource: Ressource;
 }
 
 
 const initialState: ItemState = {
-    item: {id: ''}
+    item: {id: ''},
+    tableRessource: {label: '', id: '', httpMethod: httpMethod.GET, url: ''},
+    
 };
 
 const subject = new Subject<ItemState>();
@@ -43,6 +47,14 @@ const itemStore = {
         }
         subject.next(state);
         logger.log(state);
+    },
+
+    setTableRessource: (dataSource: Ressource) => {
+        state = {
+            ...state,
+            tableRessource: dataSource 
+           };
+           subject.next(state);
     },
 
     initialState,
