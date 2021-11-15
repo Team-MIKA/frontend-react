@@ -2,6 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
+import AddCardModal from "@components/workspace/add-card-modal";
 import { WorkspaceState } from "@store";
 
 const WorkspaceView: NextPage = () => {
@@ -25,6 +26,8 @@ const WorkspaceView: NextPage = () => {
                     </Heading>
                 </Box>
             </Box>
+
+            <AddCardModal />
         </>
     );
 };
