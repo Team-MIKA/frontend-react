@@ -8,7 +8,7 @@ function AddGroupMember() {
 
     const [name, setName] = useState("");
 
-    const handleSave = () => {
+    const addNameToUsers = () => {
         setUsers([...users, name]);
         setName("");
     };
@@ -23,7 +23,7 @@ function AddGroupMember() {
                 placeholder="Add Group Member"
                 size="sm"
             />
-            <Button onClick={handleSave}>Add</Button>
+            <Button onClick={addNameToUsers}>Add</Button>
         </>
     );
 }
