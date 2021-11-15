@@ -5,7 +5,7 @@ import { Column } from "react-table";
 import MikaTable from "@components/mika-table";
 import TestBox from "@components/test-box";
 
-const Musk: NextPage = () => {
+const Test: NextPage = () => {
     const data = React.useMemo(
         () => [
             JSON.parse('{ "id": "1234", "title": "Batman" }'),
@@ -33,4 +33,4 @@ const Musk: NextPage = () => {
     );
 };
 
-export default Musk;
+export default Test;
