@@ -1,7 +1,7 @@
+import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
-import React from "react";
 import { RecoilRoot } from "recoil";
 import Fonts from "../components/fonts";
 import Layout from "../components/layouts/main";
