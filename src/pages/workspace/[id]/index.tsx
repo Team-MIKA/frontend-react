@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { Box, Center, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Heading, Wrap, WrapItem } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddCardModal from "@components/workspace/add-card-modal";
+import CardTemp from "@components/workspace/card-temp";
 import { WorkspaceListState, WorkspaceState } from "@store";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
 
-    const [workspaces] = useRecoilState(WorkspaceListState);
+    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const WorkspaceView: NextPage = () => {
 
     return (
         <>
-            <Box display={{ md: "flex" }}>
+            <Box display={{ md: "flex" }} mb={4}>
                 <Box flexGrow={1}>
                     <Heading as="h2" variant="page-title">
                         {workspace.title}
@@ -28,17 +29,15 @@ const WorkspaceView: NextPage = () => {
                 </Box>
             </Box>
 
-            <Wrap>
+            <AddCardModal />
+
+            <Wrap mt={4}>
                 {workspace.cards?.map((card, key) => (
                     <WrapItem key={key}>
-                        <Center padding={2} border={"2px solid gray"} borderRadius={"md"} minW="80px" minH="60px">
-                            {card.title}
-                        </Center>
+                        <CardTemp card={card}></CardTemp>
                     </WrapItem>
                 ))}
             </Wrap>
-
-            <AddCardModal />
         </>
     );
 };
