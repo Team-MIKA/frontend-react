@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import {
-    IconButton,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -35,6 +34,10 @@ const AddCardModal = () => {
         return onClose();
     };
 
+    const handleClick = (card: Card) => {
+        selectedCard == card ? setSelectedCard({} as Card) : setSelectedCard(card);
+    };
+
     const save = () => {
         setWorkspace({
             ...workspace,
@@ -48,12 +51,14 @@ const AddCardModal = () => {
 
     return (
         <>
-            <IconButton
-                aria-label="Add Card"
-                colorScheme={useColorModeValue("purple", "orange")}
-                icon={<AddIcon />}
+            <Button
+                leftIcon={<AddIcon />}
                 onClick={onOpen}
-            />
+                colorScheme={useColorModeValue("purple", "orange")}
+                variant="solid"
+            >
+                Card
+            </Button>
 
             <Modal size={"2xl"} isOpen={isOpen} onClose={close}>
                 <ModalOverlay />
@@ -63,7 +68,7 @@ const AddCardModal = () => {
                     <ModalBody>
                         <Wrap>
                             {cards.map((card, key) => (
-                                <WrapItem key={key} onClick={() => setSelectedCard(card)} cursor={"pointer"}>
+                                <WrapItem key={key} onClick={() => handleClick(card)} cursor={"pointer"}>
                                     <Button
                                         padding={2}
                                         border={"2px solid gray"}
