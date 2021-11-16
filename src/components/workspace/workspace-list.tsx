@@ -1,23 +1,19 @@
-import { Wrap, Heading, WrapItem, Center } from "@chakra-ui/react";
-import Link from "next/link";
+import { Wrap, WrapItem } from "@chakra-ui/react";
+
 import { useRecoilState } from "recoil";
 import { WorkspaceListState } from "@store";
+
+import WorkspaceCard from "./workspace-card";
 
 const WorkspaceList = () => {
     const [workspaces] = useRecoilState(WorkspaceListState);
 
     return (
         <>
-            <Heading mb={4}>Workspaces</Heading>
-
-            <Wrap>
+            <Wrap mb={4}>
                 {workspaces.map((workspace, key) => (
                     <WrapItem key={key} cursor={"pointer"}>
-                        <Link href={"/workspace/" + workspace.id} passHref>
-                            <Center padding={2} border={"2px solid gray"} borderRadius={"md"} minW="80px" minH="60px">
-                                {workspace.title}
-                            </Center>
-                        </Link>
+                        <WorkspaceCard workspace={workspace}></WorkspaceCard>
                     </WrapItem>
                 ))}
             </Wrap>
