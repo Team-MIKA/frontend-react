@@ -13,12 +13,12 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { WorkspaceState } from "@store";
+import { Card, WorkspaceListState } from "@store";
 
 const AddWorkspaceModal = () => {
     const [title, setTitle] = useState("");
 
-    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceState);
+    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -30,7 +30,7 @@ const AddWorkspaceModal = () => {
         //Mock db returning ID.
         const idFromDb = Math.floor(Math.random() * 16).toString();
 
-        setWorkspaces([...workspaces, { title: title, id: idFromDb }]);
+        setWorkspaces([...workspaces, { title: title, id: idFromDb, cards: [] as Card[] }]);
         setTitle("");
         return onClose();
     };
@@ -51,6 +51,7 @@ const AddWorkspaceModal = () => {
                             onChange={(event) => setTitle(event.target.value)}
                             placeholder="Title of workspace"
                             size="sm"
+                            maxLength={30}
                         />
                     </ModalBody>
 
