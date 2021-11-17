@@ -1,8 +1,8 @@
 name: Test and build
 
 on:
-  push:
-    branches: [ ci ]
+  pull_request:
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
