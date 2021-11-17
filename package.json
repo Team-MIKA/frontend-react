@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier -write .",
+    "format": "prettier --write .",
     "lint": "next lint",
     "gen:theme-typings": "chakra-cli tokens src/components/layouts/theme.ts",
     "postinstall": "npm run gen:theme-typings",

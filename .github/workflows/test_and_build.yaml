@@ -31,5 +31,13 @@ jobs:
           eslint_args: "src --max-warnings=0"
           eslint_extensions: "ts,tsx"
 
+      - name: Prettier
+      - run: yarn format
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply formatting changes
+          branch: ${{ github.head_ref }}
+
       - name: Test
         run: yarn test:ci
