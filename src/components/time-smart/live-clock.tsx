@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Heading } from "@chakra-ui/react";
-import Clock from "react-live-clock";
 
 function LiveClock() {
+    function currentTime() {
+        return new Date().toLocaleTimeString("en-UK");
+    }
+    const now = currentTime();
+    const [time, setTime] = useState(now);
+    useEffect(() => {
+        setInterval(() => {
+            setTime(currentTime);
+        }, 100);
+    }, []);
     return (
         <>
-            <Heading size={"md"}>
-                <Clock format={"HH:mm:ss"} ticking={true} timezone={"Europe/Copenhagen"} />
+            <Heading suppressHydrationWarning size={"md"}>
+                {time}
             </Heading>
         </>
     );

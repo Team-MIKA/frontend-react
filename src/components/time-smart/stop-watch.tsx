@@ -1,26 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Heading } from "@chakra-ui/react";
-import ReactStopwatch from "react-stopwatch";
 
 function StopWatch() {
+    const [time, setTime] = useState(0);
+    useEffect(() => {
+        setInterval(() => {
+            setTime(time + 1);
+        }, 1000);
+    }, [time]);
     return (
         <>
-            <ReactStopwatch
-                seconds={0}
-                minutes={0}
-                hours={0}
-                onChange={() => {
-                    // do something
-                }}
-                onCallback={() => console.log("Finish")}
-                render={({ formatted }) => {
-                    return (
-                        <>
-                            <Heading size={"lg"}>{formatted}</Heading>
-                        </>
-                    );
-                }}
-            />
+            <Heading suppressHydrationWarning size={"md"}>
+                {new Date(time * 1000).toISOString().substr(14, 5)}
+            </Heading>
         </>
     );
 }

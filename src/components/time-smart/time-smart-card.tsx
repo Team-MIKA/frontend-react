@@ -5,7 +5,12 @@ import RegistrationButtons from "@components/time-smart/regitstration-buttons";
 
 function TimeSmartCard() {
     return (
-        <Box borderWidth="5px" borderRadius="lg" borderColor={useColorModeValue("lightgray", "gray")} overflow="hidden">
+        <Box
+            borderWidth="5px"
+            borderRadius="lg"
+            borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
+            overflow="hidden"
+        >
             <Box m={"4"} p={"2"}>
                 <Heading size="lg">TimeSmart</Heading>
                 <Box p={"2"}>
