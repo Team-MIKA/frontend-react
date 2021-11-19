@@ -11,38 +11,19 @@ import {
     MenuButton,
     MenuItem,
     MenuList,
-    Stack,
     useColorModeValue,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
-import { LinkItem } from "@components/layouts/navbar/linkItem";
+import { TopNavBar } from "@components/layouts/navbar/topNavBar";
 
-interface Props {
+export interface NavBarProps {
     navItems: NavBarItem[];
 }
 
-const TopNavBar: FC<Props> = ({ navItems }) => {
-    return (
-        <Stack
-            direction={{ base: "column", md: "row" }}
-            display={{ base: "none", md: "flex" }}
-            width={{ base: "full", md: "auto" }}
-            alignItems="center"
-            flexGrow={1}
-            mt={{ base: 4, md: 0 }}
-        >
-            {navItems.map((item) => (
-                <LinkItem href={item.href} key={"nav" + item.key}>
-                    {item.render}
-                </LinkItem>
-            ))}
-        </Stack>
-    );
-};
-const BurgerNavBar: FC<Props> = ({ navItems }) => (
+const BurgerNavBar: FC<NavBarProps> = ({ navItems }) => (
     <Box ml={2} display={{ base: "inline-block", md: "none" }}>
         <Menu isLazy id="navbar-menu">
             <MenuButton as={IconButton} icon={<HamburgerIcon />} variant="outline" aria-label="Options" />
