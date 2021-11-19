@@ -30,7 +30,7 @@ describe("WorkspaceCard", () => {
         const button = screen.getByTestId("removeWorkspace");
         userEvent.click(button);
 
-        const modal = screen.getByTestId("AlertDialog");
+        const modal = screen.getByTestId("deleteWorkspaceModal");
         expect(modal).toBeVisible;
     });
 });
