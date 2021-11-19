@@ -1,17 +1,24 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Box, Container, Flex, Heading, Menu, MenuButton, IconButton, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
+import { BurgerNavBar } from "@components/layouts/navbar/burgerNavBar";
+import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
+import { TopNavBar } from "@components/layouts/navbar/topNavBar";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
 
+export interface NavBarProps {
+    navItems: NavBarItem[];
+}
+
 const Navbar = () => {
+    const Items: NavBarItem[] = [new TextNavItem("/", "Home"), new TextNavItem("/settings", "Settings")];
+
     return (
         <Box
             position="fixed"
             as="nav"
             w="100%"
-            bg={useColorModeValue("#ffffff40", "#20202380")}
+            bg={useColorModeValue("#ffffff80", "#30303890")}
             style={{ backdropFilter: "blur(10px)" }}
-            zIndex={1}
         >
             <Container display="flex" p={2} maxW="container.md" wrap="wrap" align="center" justify="space-between">
                 <Flex align="center" mr={5}>
@@ -19,20 +26,11 @@ const Navbar = () => {
                         <Logo />
                     </Heading>
                 </Flex>
+                <TopNavBar navItems={Items} />
 
                 <Box flex={1} align="right">
                     <ThemeToggleButton />
-
-                    <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-                        <Menu isLazy id="navbar-menu">
-                            <MenuButton
-                                as={IconButton}
-                                icon={<HamburgerIcon />}
-                                variant="outline"
-                                aria-label="Options"
-                            />
-                        </Menu>
-                    </Box>
+                    <BurgerNavBar navItems={Items} />
                 </Box>
             </Container>
         </Box>

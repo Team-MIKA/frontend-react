@@ -31,7 +31,8 @@
   "exclude": [
     "node_modules",
     ".next",
-    "out"
+    "out",
+    "README.md"
   ],
   "include": [
     "next-env.d.ts",
