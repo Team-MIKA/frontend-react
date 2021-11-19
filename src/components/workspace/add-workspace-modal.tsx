@@ -15,7 +15,7 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceListState } from "@store";
+import { Card, WorkspaceListState } from "@store/index";
 
 const AddWorkspaceModal = () => {
     const [title, setTitle] = useState("");
