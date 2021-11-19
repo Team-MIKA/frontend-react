@@ -15,7 +15,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceState } from "@store";
+import { Card, WorkspaceState } from "@store/index";
 
 const cards = [
     { title: "SAP", id: "1" },
