@@ -13,7 +13,7 @@ describe("Links in navbar should", () => {
         mockRouter.setCurrentUrl("/");
 
         // Disable error for this test, as Chakra CSS produces errors.
-        console.error = jest.fn();
+        //console.error = jest.fn();
 
         const navItems = [new TextNavItem("/test", "Test")];
         render(<Navbar navItems={navItems} />);
@@ -33,5 +33,11 @@ describe("Links in navbar should", () => {
         userEvent.click(link);
 
         expect(Router).toMatchObject({ asPath: "/test" });
+    });
+
+    test("have links in burgerbar, on mobile", () => {
+        const link = screen.queryByTestId("nav-sidebar-link");
+
+        expect(link).not.toBeInTheDocument(); // it doesn't exist
     });
 });
