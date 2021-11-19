@@ -24,12 +24,18 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
         <>
             <ButtonGroup variant="solid" spacing="6">
                 {buttons.map((buttonText) => (
-                    <Button variant={"outline"} bg={buttonColors} key={buttonText} onClick={() => opening(buttonText)}>
+                    <Button
+                        role={"reg-button"}
+                        variant={"outline"}
+                        bg={buttonColors}
+                        key={buttonText}
+                        onClick={() => opening(buttonText)}
+                    >
                         {buttonText}
                     </Button>
                 ))}
             </ButtonGroup>
-            <TimerModal open={isOpen} onClose={closing} text={buttonText} />
+            <TimerModal data-testid={"timer-modal"} open={isOpen} onClose={closing} text={buttonText} />
         </>
     );
 }

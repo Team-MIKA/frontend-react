@@ -11,27 +11,27 @@ beforeEach(() => {
     });
 });
 
-test("StopWatch should start at time 0", () => {
+test("StopWatch should start at time 00:00:00", () => {
     const stopwatch = screen.getByTestId("stopwatch");
-    expect(stopwatch).toHaveTextContent("00:00");
+    expect(stopwatch).toHaveTextContent("00:00:00");
 });
 
 test("StopWatch should update time every 1000ms", () => {
     expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 1000);
 });
 
-test("StopWatch should update time to '00:02' after 2000ms", () => {
+test("StopWatch should update time to '00:00:02' after 2000ms", () => {
     act(() => {
         jest.advanceTimersByTime(2000);
     });
     let stopwatch = screen.getByTestId("stopwatch");
-    expect(stopwatch).toHaveTextContent("00:02");
+    expect(stopwatch).toHaveTextContent("00:00:02");
 });
 
-test("StopWatch should update time to '00:03' after 3000ms", () => {
+test("StopWatch should update time to '00:00:03' after 3000ms", () => {
     act(() => {
         jest.advanceTimersByTime(3000);
     });
     let stopwatch = screen.getByTestId("stopwatch");
-    expect(stopwatch).toHaveTextContent("00:03");
+    expect(stopwatch).toHaveTextContent("00:00:03");
 });

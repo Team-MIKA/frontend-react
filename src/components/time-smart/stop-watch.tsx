@@ -15,7 +15,7 @@ function StopWatch() {
     return (
         <>
             <Heading data-testid={"stopwatch"} suppressHydrationWarning size={"md"}>
-                {new Date(time * 1000).toISOString().substr(14, 5)}
+                {new Date(time * 1000).toISOString().substr(11, 8)}
             </Heading>
         </>
     );
