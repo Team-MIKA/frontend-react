@@ -1,42 +1,13 @@
-import { FC } from "react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import {
-    Box,
-    Container,
-    Flex,
-    Heading,
-    IconButton,
-    Link,
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuList,
-    useColorModeValue,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Box, Container, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
 import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
 import { TopNavBar } from "@components/layouts/navbar/topNavBar";
+import { BurgerNavBar } from "@components/layouts/navbar/burgerNavBar";
 
 export interface NavBarProps {
     navItems: NavBarItem[];
 }
-
-const BurgerNavBar: FC<NavBarProps> = ({ navItems }) => (
-    <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-        <Menu isLazy id="navbar-menu">
-            <MenuButton as={IconButton} icon={<HamburgerIcon />} variant="outline" aria-label="Options" />
-            <MenuList>
-                {navItems.map((item) => (
-                    <NextLink href={item.href} key={"burger-nav" + item.key}>
-                        <MenuItem as={Link}>{item.render}</MenuItem>
-                    </NextLink>
-                ))}
-            </MenuList>
-        </Menu>
-    </Box>
-);
 
 const Navbar = () => {
     const Items: NavBarItem[] = [new TextNavItem("/", "Home"), new TextNavItem("/settings", "Settings")];
