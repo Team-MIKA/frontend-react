@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,17 +17,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@*": [
-        "./src/*"
+      "@components/*": [
+        "./components/*"
+      ],
+      "@store/*": [
+        "./store/*"
       ]
-    }
+    },
+    "incremental": true
   },
   "exclude": [
     "node_modules",
     ".next",
-    "out"
+    "out",
+    "README.md"
   ],
   "include": [
     "next-env.d.ts",

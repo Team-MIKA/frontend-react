@@ -1,8 +1,9 @@
 # Business assistant
 
-<p align="center">
+<div align="center">
   <img src="https://raw.githubusercontent.com/Team-MIKA/frontend-react/main/public/logo.svg">
-</p>
+</div>
+
 
 --------------------------------------------------------------------
 [![Netlify Status](https://api.netlify.com/api/v1/badges/686481d6-5878-4771-b0f5-e824b2616041/deploy-status)](https://app.netlify.com/sites/business-assistant/deploys)
@@ -33,8 +34,8 @@ Go to [Architecture](wiki/architecture.md), to get an overview over the code
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

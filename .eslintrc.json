@@ -21,13 +21,23 @@
     "unused-imports/no-unused-imports": "error",
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "react/jsx-filename-extension": [1, {
-        "extensions": [".ts", ".tsx"]
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     ],
-    "import/order": ["error",
+    "import/order": [
+      "error",
       {
-        "groups": ["builtin", "external", "internal"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
         "pathGroups": [
           {
             "pattern": "react",
@@ -35,7 +45,9 @@
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
