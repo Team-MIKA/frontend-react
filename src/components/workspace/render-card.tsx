@@ -1,4 +1,4 @@
-import { Card } from "@store";
+import { Card } from "@store/index";
 import CardSap from "./cards/card-sap";
 import CardTimeSmart from "./cards/card-time-smart";
 
