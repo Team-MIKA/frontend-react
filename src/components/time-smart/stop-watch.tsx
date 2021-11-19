@@ -4,13 +4,17 @@ import { Heading } from "@chakra-ui/react";
 function StopWatch() {
     const [time, setTime] = useState(0);
     useEffect(() => {
-        setInterval(() => {
-            setTime(time + 1);
+        let isMounted = true;
+        let stopwatch = setInterval(() => {
+            if (isMounted) {
+                setTime((time) => time + 1);
+            }
         }, 1000);
+        return () => clearInterval(stopwatch);
     }, [time]);
     return (
         <>
-            <Heading suppressHydrationWarning size={"md"}>
+            <Heading data-testid={"stopwatch"} suppressHydrationWarning size={"md"}>
                 {new Date(time * 1000).toISOString().substr(14, 5)}
             </Heading>
         </>
