@@ -1,8 +1,8 @@
 name: Test and build
 
 on:
-    push:
-        branches: [ci]
+    pull_request:
+        branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -43,8 +43,9 @@ jobs:
                   path: "**/node_modules"
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+            # Gives error the code does not match the linter
             - name: Lint
               run: yarn lint
-
+            # Ensure coding style matches prettier
             - name: Prettier
               run: yarn format:ci
