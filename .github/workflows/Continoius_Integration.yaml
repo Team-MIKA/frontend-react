@@ -44,7 +44,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
             - name: Lint
-              run: yarn lint:ci
+              run: yarn lint
 
             - name: Prettier
               run: yarn format:ci
