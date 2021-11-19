@@ -1,7 +1,7 @@
 import { Stack, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { Workspace, WorkspaceListState } from "@store";
+import { Workspace, WorkspaceListState } from "@store/index";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 
 const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
