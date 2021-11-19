@@ -12,15 +12,10 @@ import {
 } from "@chakra-ui/react";
 import StopWatch from "@components/time-smart/stop-watch";
 
-function TimerModal(props: {
-    finalFocusRef: React.MutableRefObject<undefined>;
-    open: boolean;
-    onClose: () => void;
-    text;
-}) {
+function TimerModal(props: { open: boolean; onClose: () => void; text: string }) {
     console.log(props.text);
     return (
-        <Modal size={"2xl"} finalFocusRef={props.finalFocusRef} isOpen={props.open} onClose={props.onClose}>
+        <Modal size={"2xl"} isOpen={props.open} onClose={props.onClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>{props.text}</ModalHeader>

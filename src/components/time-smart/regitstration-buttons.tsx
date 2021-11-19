@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Button, ButtonGroup, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import TimerModal from "@components/time-smart/timer-modal";
 
-function RegistrationButtons({ buttons }) {
+function RegistrationButtons({ buttons }: { buttons: string[] }) {
     const [buttonText, setButtonText] = useState("");
     let buttonColors = useColorModeValue("pink", "teal");
-    const finalRef = React.useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
     let startTime = new Date();
 
-    const opening = (buttonText) => {
+    const opening = (buttonText: string) => {
         onOpen();
         setButtonText(buttonText);
         startTime = new Date();
@@ -30,7 +29,7 @@ function RegistrationButtons({ buttons }) {
                     </Button>
                 ))}
             </ButtonGroup>
-            <TimerModal finalFocusRef={finalRef} open={isOpen} onClose={closing} text={buttonText} />
+            <TimerModal open={isOpen} onClose={closing} text={buttonText} />
         </>
     );
 }
