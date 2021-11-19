@@ -44,11 +44,7 @@ jobs:
                   key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
             - name: Lint
-              uses: wearerequired/lint-action@v1
-              with:
-                  eslint: true
-                  eslint_args: "src --max-warnings=0"
-                  eslint_extensions: "ts,tsx"
+              run: yarn lint:ci
 
             - name: Prettier
               run: yarn format:ci
