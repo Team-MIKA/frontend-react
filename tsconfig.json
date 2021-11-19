@@ -28,4 +28,5 @@
     },
     "exclude": ["node_modules", ".next", "out", "README.md", ],
     "include": ["next-env.d.ts", "src/**/*.tsx", "src/**/*.ts"]
+  }
 }
