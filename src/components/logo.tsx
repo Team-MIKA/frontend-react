@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { Link, useColorModeValue, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { NextPage } from "next";
 import Image from "next/image";
 
 const LogoBox = styled.span`
@@ -21,7 +21,7 @@ const LogoBox = styled.span`
     }
 `;
 
-const Logo: FC = () => {
+const Logo: NextPage = () => {
     const cloudLogoPath = `/logo.svg`; //TODO ${useColorModeValue("", "-dark")} Make dark mode logo
     return (
         <Link href="/">
