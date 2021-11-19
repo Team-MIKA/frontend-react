@@ -11,7 +11,9 @@ export const BurgerNavBar: FC<NavBarProps> = ({ navItems }) => (
             <MenuList>
                 {navItems.map((item) => (
                     <NextLink href={item.href} key={"burger-nav" + item.key}>
-                        <MenuItem as={Link}>{item.render}</MenuItem>
+                        <MenuItem as={Link} data-testid="nav-sidebar-link">
+                            {item.render} data
+                        </MenuItem>
                     </NextLink>
                 ))}
             </MenuList>
