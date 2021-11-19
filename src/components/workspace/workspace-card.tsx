@@ -1,5 +1,4 @@
-import { DeleteIcon } from "@chakra-ui/icons";
-import { Stack, Heading, Text, useColorModeValue, IconButton } from "@chakra-ui/react";
+import { Stack, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { Workspace, WorkspaceListState } from "@store";
