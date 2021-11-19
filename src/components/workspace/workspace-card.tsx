@@ -27,7 +27,7 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
                 data-testid={"deleteWorkspaceModal"}
             />
 
-            <Link href={"/workspace/" + workspace.id} passHref>
+            <Link href={"/workspace/" + workspace.id} passHref data-testid={"workspaceLink"}>
                 <Stack
                     boxShadow={"xl"}
                     bg={useColorModeValue("gray.50", "gray.700")}
