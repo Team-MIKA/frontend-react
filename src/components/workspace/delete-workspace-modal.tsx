@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import React, { useRef } from "react";
 import {
     AlertDialog,
     AlertDialogBody,
@@ -8,20 +7,25 @@ import {
     AlertDialogHeader,
     AlertDialogOverlay,
     Button,
-    IconButton,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { Workspace, WorkspaceListState } from "@store/index";
 
-const DeleteWorkspaceModal = ({ workspace }: { workspace: Workspace }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const onClose = () => setIsOpen(false);
+const DeleteWorkspaceModal = ({
+    workspace,
+    onClose,
+    isOpen,
+}: {
+    workspace: Workspace;
+    onClose: any;
+    isOpen: boolean;
+}) => {
     const cancelRef = useRef(null);
 
     const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
-    const removeWorkspace = () => {
-        const filteredWorkspaces = workspaces.filter((x) => x.id !== workspace.id);
+    const removeWorkspace = (workspaceId: string) => {
+        const filteredWorkspaces = workspaces.filter((x) => x.id !== workspaceId);
         setWorkspaces(filteredWorkspaces);
 
         return onClose();
@@ -29,13 +33,6 @@ const DeleteWorkspaceModal = ({ workspace }: { workspace: Workspace }) => {
 
     return (
         <>
-            <IconButton
-                position={"absolute"}
-                background={"transparent"}
-                icon={<DeleteIcon />}
-                aria-label={"Remove Workspace"}
-                onClick={() => setIsOpen(true)}
-            />
             <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
                 <AlertDialogOverlay>
                     <AlertDialogContent>
@@ -44,14 +41,19 @@ const DeleteWorkspaceModal = ({ workspace }: { workspace: Workspace }) => {
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
-                            Are you sure you want to delete the Workspace '{workspace.title}'?
+                            Are you sure you want to delete the Workspace {workspace.title}?
                         </AlertDialogBody>
 
                         <AlertDialogFooter>
-                            <Button ref={cancelRef} onClick={onClose}>
+                            <Button ref={cancelRef} onClick={onClose} role={"cancel"}>
                                 Cancel
                             </Button>
-                            <Button colorScheme="red" onClick={removeWorkspace} ml={3}>
+                            <Button
+                                colorScheme="red"
+                                onClick={() => removeWorkspace(workspace.id)}
+                                ml={3}
+                                role={"delete"}
+                            >
                                 Delete
                             </Button>
                         </AlertDialogFooter>
