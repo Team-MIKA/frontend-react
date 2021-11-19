@@ -8,13 +8,17 @@ function LiveClock() {
     const now = currentTime();
     const [time, setTime] = useState(now);
     useEffect(() => {
-        setInterval(() => {
-            setTime(currentTime);
+        let isMounted = true;
+        let timer = setInterval(() => {
+            if (isMounted) {
+                setTime(currentTime);
+            }
         }, 100);
+        return () => clearInterval(timer);
     }, []);
     return (
         <>
-            <Heading suppressHydrationWarning size={"md"}>
+            <Heading data-testid={"time"} suppressHydrationWarning size={"md"}>
                 {time}
             </Heading>
         </>
