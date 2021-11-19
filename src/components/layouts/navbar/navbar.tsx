@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
     Box,
@@ -15,30 +15,10 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
-
-const LinkItem = ({ href, children }: PropsWithChildren<{ href: string }>) => {
-    const { pathname } = useRouter();
-    const active = pathname === href;
-    const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
-    const highlightColor = "#202023";
-
-    return (
-        <NextLink href={href}>
-            <Link
-                p={2}
-                bg={active ? "teal" : undefined}
-                borderRadius="7px"
-                color={active ? highlightColor : inactiveColor}
-            >
-                {children}
-            </Link>
-        </NextLink>
-    );
-};
+import { LinkItem } from "@components/layouts/navbar/linkItem";
 
 interface Props {
     navItems: NavBarItem[];
