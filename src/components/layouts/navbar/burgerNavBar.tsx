@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Box, IconButton, Link, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { Box, IconButton, Link, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { NavBarProps } from "@components/layouts/navbar/navbar";
 

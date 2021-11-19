@@ -1,5 +1,5 @@
 {
-"compilerOptions": {
+  "compilerOptions": {
     "target": "es5",
     "lib": [
       "dom",
@@ -26,7 +26,17 @@
         "./store/*"
       ]
     },
-    "exclude": ["node_modules", ".next", "out", "README.md", ],
-    "include": ["next-env.d.ts", "src/**/*.tsx", "src/**/*.ts"]
-  }
+    "incremental": true
+  },
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "README.md"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ]
 }
