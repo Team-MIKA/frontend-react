@@ -44,7 +44,7 @@ const DeleteWorkspaceModal = ({ workspace }: { workspace: Workspace }) => {
                         </AlertDialogHeader>
 
                         <AlertDialogBody>
-                            Are you sure you want to delete the Workspace {workspace.title}?
+                            Are you sure you want to delete the Workspace '{workspace.title}'?
                         </AlertDialogBody>
 
                         <AlertDialogFooter>
