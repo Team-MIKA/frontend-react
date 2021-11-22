@@ -8,7 +8,7 @@ function AddButton() {
     return (
         <>
             <Button
-                role={"reg-button"}
+                role={"add-button"}
                 bg={useColorModeValue("#ffffff40", "whiteAlpha.200")}
                 variant={"outline"}
                 onClick={() => onOpen()}

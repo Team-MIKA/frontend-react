@@ -28,7 +28,7 @@ function AddModal(props: { open: boolean; onClose: () => void }) {
                 <ModalCloseButton />
                 <ModalBody>
                     <Input
-                        id="regName"
+                        role="user-input"
                         placeholder="E.g. Pause"
                         onChange={(event) => setName(event.currentTarget.value)}
                     />
