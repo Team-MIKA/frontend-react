@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddCardModal from "@components/workspace/add-card-modal";
-import CardRender from "@components/workspace/card-render";
+import WidgetRender from "@components/workspace/widget-render";
 import { WorkspaceListState, WorkspaceState } from "@store/index";
 
 const WorkspaceView: NextPage = () => {
@@ -46,7 +46,7 @@ const WorkspaceView: NextPage = () => {
             <Wrap mt={4}>
                 {workspace.cards?.map((card, key) => (
                     <WrapItem key={key}>
-                        <CardRender card={card} />
+                        <WidgetRender card={card} />
                     </WrapItem>
                 ))}
             </Wrap>
