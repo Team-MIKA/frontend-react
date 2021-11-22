@@ -4,7 +4,7 @@ import { Box, Button, Heading, useColorModeValue, useDisclosure, Wrap, WrapItem 
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import AddCardModal from "@components/workspace/add-card-modal";
+import AddWidgetModal from "@components/workspace/add-widget-modal";
 import WidgetRender from "@components/workspace/widget-render";
 import { WorkspaceListState, WorkspaceState } from "@store/index";
 
@@ -41,7 +41,7 @@ const WorkspaceView: NextPage = () => {
                 Card
             </Button>
 
-            <AddCardModal onClose={onClose} isOpen={isOpen} />
+            <AddWidgetModal onClose={onClose} isOpen={isOpen} />
 
             <Wrap mt={4}>
                 {workspace.cards?.map((card, key) => (

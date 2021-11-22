@@ -20,7 +20,7 @@ const cards = [
     { title: "TABLE", id: "3" },
 ] as Card[];
 
-const AddCardModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
+const AddWidgetModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
     const [selectedCard, setSelectedCard] = useState({} as Card);
 
@@ -80,4 +80,4 @@ const AddCardModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) =>
     );
 };
 
-export default AddCardModal;
+export default AddWidgetModal;
