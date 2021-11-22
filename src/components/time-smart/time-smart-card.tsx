@@ -3,7 +3,7 @@ import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import LiveClock from "@components/time-smart/live-clock";
 import RegistrationButtons from "@components/time-smart/regitstration-buttons";
 
-function TimeSmartCard() {
+function TimeSmartCard({ categories }: { categories: string[] }) {
     return (
         <Box
             borderWidth="5px"
@@ -16,7 +16,7 @@ function TimeSmartCard() {
                 <Box p={"2"}>
                     <LiveClock />
                 </Box>
-                <RegistrationButtons buttons={["Kvalitet", "Fejl", "Møde", "Pause"]} />
+                <RegistrationButtons buttons={categories} />
             </Box>
         </Box>
     );
