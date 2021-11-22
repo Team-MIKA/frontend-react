@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import TimerModal from "@components/time-smart/timer-modal";
 
 function RegistrationButtons({ buttons }: { buttons: string[] }) {
@@ -21,22 +21,21 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     };
 
     return (
-        <>
-            <ButtonGroup variant="solid" spacing="6">
-                {buttons.map((buttonText) => (
-                    <Button
-                        role={"reg-button"}
-                        variant={"outline"}
-                        bg={buttonColors}
-                        key={buttonText}
-                        onClick={() => opening(buttonText)}
-                    >
-                        {buttonText}
-                    </Button>
-                ))}
-            </ButtonGroup>
+        <SimpleGrid minChildWidth="85px" spacing="20px">
+            {buttons.map((buttonText) => (
+                <Button
+                    role={"reg-button"}
+                    variant={"outline"}
+                    bg={buttonColors}
+                    key={buttonText}
+                    onClick={() => opening(buttonText)}
+                >
+                    {buttonText}
+                </Button>
+            ))}
+
             <TimerModal data-testid={"timer-modal"} open={isOpen} onClose={closing} text={buttonText} />
-        </>
+        </SimpleGrid>
     );
 }
 
