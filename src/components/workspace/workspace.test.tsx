@@ -36,6 +36,15 @@ describe("WorkspaceCard", () => {
         const button = screen.getByTestId("removeWorkspace");
         expect(button).toBeInTheDocument;
     });
+
+    test("When clicking delete btn open remove workspace modal", () => {
+        const button = screen.getByTestId("removeWorkspace");
+        userEvent.click(button);
+
+        const modalTitle = screen.getByTestId("deleteWorkspaceModal");
+
+        expect(modalTitle).toBeInTheDocument;
+    });
 });
 
 describe("DeleteWorkspaceModal", () => {
@@ -51,12 +60,12 @@ describe("DeleteWorkspaceModal", () => {
     });
 
     test("Have cancel button", () => {
-        const cancelBtn = screen.getByRole("cancel");
+        const cancelBtn = screen.getByTestId("cancel");
         expect(cancelBtn).toBeInTheDocument;
     });
 
     test("Have delete button", () => {
-        const deleteBtn = screen.getByRole("delete");
+        const deleteBtn = screen.getByTestId("delete");
         expect(deleteBtn).toBeInTheDocument;
     });
 
