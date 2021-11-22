@@ -9,7 +9,7 @@ beforeEach(() => {
     });
 });
 
-test("Registration buttons should recieve an array of strings", () => {
+test("Registration buttons should receive an array of strings", () => {
     const buttons = screen.getAllByRole("reg-button");
     expect(buttons[0]).toHaveTextContent("hej");
     expect(buttons[0]).toBeEnabled();
