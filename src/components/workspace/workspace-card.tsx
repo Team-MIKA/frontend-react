@@ -20,12 +20,7 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
                 onClick={() => setIsOpen(true)}
             />
 
-            <DeleteWorkspaceModal
-                workspace={workspace}
-                isOpen={isOpen}
-                onClose={onClose}
-                data-testid={"deleteWorkspaceModal"}
-            />
+            <DeleteWorkspaceModal workspace={workspace} isOpen={isOpen} onClose={onClose} />
 
             <Link href={"/workspace/" + workspace.id} passHref data-testid={"workspaceLink"}>
                 <Stack
