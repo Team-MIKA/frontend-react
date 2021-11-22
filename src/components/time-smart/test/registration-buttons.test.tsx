@@ -1,5 +1,6 @@
 import React from "react";
 import { act, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import RegistrationButtons from "@components/time-smart/regitstration-buttons";
 
 beforeEach(() => {
@@ -16,7 +17,11 @@ test("Registration buttons should receive an array of strings", () => {
     expect(buttons.length).toBe(3);
 });
 
-//test("Registration buttons should open a modal when clicked", () => {
-//const button = screen.getAllByRole("reg-button")[0];
-//userEvent.click(button);
-//});
+test("Registration buttons should open a modal when clicked", () => {
+    const button = screen.getByText("hej");
+    let modalHeader = screen.queryByTestId("modal-header");
+    expect(modalHeader).not.toBeInTheDocument();
+    userEvent.click(button);
+    modalHeader = screen.queryByTestId("modal-header");
+    expect(modalHeader).toBeInTheDocument();
+});
