@@ -1,8 +1,8 @@
 import { Card } from "@store/index";
-import CardSap from "./cards/card-sap";
-import CardTimeSmart from "./cards/card-time-smart";
+import CardSap from "./cards/card-sap-example";
+import CardTimeSmart from "./cards/card-time-smart-example";
 
-const RenderCard = ({ card }: { card: Card }) => {
+const CardRender = ({ card }: { card: Card }) => {
     switch (card.title) {
         case "TIME SMART":
             return <CardTimeSmart card={card} />;
@@ -13,4 +13,4 @@ const RenderCard = ({ card }: { card: Card }) => {
     }
 };
 
-export default RenderCard;
+export default CardRender;
