@@ -1,7 +1,7 @@
 import { Heading, Avatar, Box, Center, Text, Stack, Button, Link, Badge, useColorModeValue } from "@chakra-ui/react";
 import { Card } from "@store/index";
 
-const CardSap = ({ card }: { card: Card }) => {
+const WidgetSap = ({ card }: { card: Card }) => {
     return (
         <Center py={6}>
             <Box
@@ -90,4 +90,4 @@ const CardSap = ({ card }: { card: Card }) => {
     );
 };
 
-export default CardSap;
+export default WidgetSap;
