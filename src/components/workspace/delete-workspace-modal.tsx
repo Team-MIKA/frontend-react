@@ -34,7 +34,7 @@ const DeleteWorkspaceModal = ({
     return (
         <>
             <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
-                <AlertDialogOverlay>
+                <AlertDialogOverlay data-testid={"deleteWorkspaceModal"}>
                     <AlertDialogContent>
                         <AlertDialogHeader fontSize="lg" fontWeight="bold">
                             Delete Workspace
@@ -45,14 +45,14 @@ const DeleteWorkspaceModal = ({
                         </AlertDialogBody>
 
                         <AlertDialogFooter>
-                            <Button ref={cancelRef} onClick={onClose} role={"cancel"}>
+                            <Button ref={cancelRef} onClick={onClose} data-testid={"cancel"}>
                                 Cancel
                             </Button>
                             <Button
                                 colorScheme="red"
                                 onClick={() => removeWorkspace(workspace.id)}
                                 ml={3}
-                                role={"delete"}
+                                data-testid={"delete"}
                             >
                                 Delete
                             </Button>
