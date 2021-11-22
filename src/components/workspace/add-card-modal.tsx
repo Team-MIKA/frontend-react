@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AddIcon } from "@chakra-ui/icons";
 import {
     Modal,
     ModalBody,
@@ -8,8 +7,6 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    useColorModeValue,
-    useDisclosure,
     Wrap,
     WrapItem,
     Button,
@@ -23,8 +20,7 @@ const cards = [
     { title: "TABLE", id: "3" },
 ] as Card[];
 
-const AddCardModal = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+const AddCardModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
     const [selectedCard, setSelectedCard] = useState({} as Card);
 
@@ -51,15 +47,6 @@ const AddCardModal = () => {
 
     return (
         <>
-            <Button
-                leftIcon={<AddIcon />}
-                onClick={onOpen}
-                colorScheme={useColorModeValue("purple", "orange")}
-                variant="solid"
-            >
-                Card
-            </Button>
-
             <Modal size={"2xl"} isOpen={isOpen} onClose={close}>
                 <ModalOverlay />
                 <ModalContent>

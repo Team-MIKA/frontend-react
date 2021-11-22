@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { AddIcon } from "@chakra-ui/icons";
 import {
-    useDisclosure,
     Button,
     Modal,
     ModalOverlay,
@@ -12,17 +10,14 @@ import {
     ModalContent,
     Input,
     Text,
-    useColorModeValue,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { Card, WorkspaceListState } from "@store/index";
 
-const AddWorkspaceModal = () => {
+const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
     const [title, setTitle] = useState("");
 
     const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
-
-    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const save = () => {
         // Save to database
@@ -39,15 +34,6 @@ const AddWorkspaceModal = () => {
 
     return (
         <>
-            <Button
-                leftIcon={<AddIcon />}
-                onClick={onOpen}
-                colorScheme={useColorModeValue("purple", "orange")}
-                variant="solid"
-            >
-                Workspace
-            </Button>
-
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
