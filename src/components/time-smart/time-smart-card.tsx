@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Spacer, Flex, useColorModeValue } from "@chakra-ui/react";
+import AddButton from "@components/time-smart/add-button";
 import LiveClock from "@components/time-smart/live-clock";
 import RegistrationButtons from "@components/time-smart/regitstration-buttons";
-
 function TimeSmartCard() {
     return (
         <Box
@@ -12,7 +12,11 @@ function TimeSmartCard() {
             overflow="hidden"
         >
             <Box m={"4"} p={"2"}>
-                <Heading size="lg">TimeSmart</Heading>
+                <Flex>
+                    <Heading size="lg">TimeSmart</Heading>
+                    <Spacer />
+                    <AddButton />
+                </Flex>
                 <Box p={"2"}>
                     <LiveClock />
                 </Box>
