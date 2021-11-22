@@ -13,7 +13,6 @@ import {
 import StopWatch from "@components/time-smart/stop-watch";
 
 function TimerModal(props: { open: boolean; onClose: () => void; text: string }) {
-    console.log(props.text);
     return (
         <Modal size={"2xl"} isOpen={props.open} onClose={props.onClose}>
             <ModalOverlay />
