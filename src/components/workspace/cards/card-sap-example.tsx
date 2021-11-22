@@ -1,5 +1,5 @@
 import { Heading, Avatar, Box, Center, Text, Stack, Button, Link, Badge, useColorModeValue } from "@chakra-ui/react";
-import { Card } from "@store";
+import { Card } from "@store/index";
 
 const CardSap = ({ card }: { card: Card }) => {
     return (

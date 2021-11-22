@@ -1,5 +1,5 @@
 import { Heading, Avatar, Box, Center, Image, Flex, Text, Stack, Button, useColorModeValue } from "@chakra-ui/react";
-import { Card } from "@store";
+import { Card } from "@store/index";
 
 export default function CardTimeSmart({ card }: { card: Card }) {
     return (
