@@ -21,7 +21,7 @@ function TimerModal(props: { open: boolean; onClose: () => void; text: string })
                 <ModalCloseButton />
                 <ModalBody>
                     <StopWatch />
-                    <>Start time: {new Date().toLocaleTimeString()}</>
+                    <>Start time: {new Date().toLocaleTimeString("en-UK")}</>
                 </ModalBody>
                 <ModalFooter>
                     <Button role={"done-button"} bg={useColorModeValue("pink", "teal")} mr={3} onClick={props.onClose}>
