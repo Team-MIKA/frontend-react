@@ -14,17 +14,17 @@ import StopWatch from "@components/time-smart/stop-watch";
 
 function TimerModal(props: { open: boolean; onClose: () => void; text: string }) {
     return (
-        <Modal size={"2xl"} isOpen={props.open} onClose={props.onClose}>
+        <Modal data-testid={"modal"} size={"2xl"} isOpen={props.open} onClose={props.onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>{props.text}</ModalHeader>
+                <ModalHeader data-testid={"modal-header"}>{props.text}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     <StopWatch />
                     <>Start time: {new Date().toLocaleTimeString()}</>
                 </ModalBody>
                 <ModalFooter>
-                    <Button bg={useColorModeValue("pink", "teal")} mr={3} onClick={props.onClose}>
+                    <Button role={"done-button"} bg={useColorModeValue("pink", "teal")} mr={3} onClick={props.onClose}>
                         Done
                     </Button>
                 </ModalFooter>
