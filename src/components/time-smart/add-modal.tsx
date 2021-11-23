@@ -11,13 +11,18 @@ import {
     Input,
     useColorModeValue,
 } from "@chakra-ui/react";
+import { useRecoilState } from "recoil";
+import { addCategory, categoriesState } from "@components/time-smart/registration.store";
 
 function AddModal(props: { open: boolean; onClose: () => void }) {
     const initialRef = React.useRef();
     const [name, setName] = useState("");
+    const state = useRecoilState(categoriesState);
+
     const closing = () => {
         props.onClose();
         console.log(name);
+        addCategory(state, name);
     };
 
     const handleKeypress = (e) => {
