@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TimerModal from "@components/time-smart/timer-modal";
 
@@ -23,4 +23,16 @@ test("TimerModal should call onClose function once", () => {
     const doneButton = screen.getByRole("done-button");
     userEvent.click(doneButton);
     expect(onCloseFunc).toHaveBeenCalledTimes(1);
+});
+
+test("TimerModal should show start time as date = now", () => {
+    act(() => {
+        jest.useFakeTimers();
+        jest.setSystemTime(new Date());
+        render(<TimerModal open={true} onClose={jest.fn()} text={"testing start time"} />);
+    });
+
+    const startTime = screen.getByRole("start-time");
+    const timeNowString = new Date().toLocaleTimeString("en-UK");
+    expect(startTime).toHaveTextContent(new RegExp(timeNowString));
 });
