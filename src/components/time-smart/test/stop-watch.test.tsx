@@ -35,3 +35,19 @@ test("StopWatch should update time to '00:00:03' after 3000ms", () => {
     let stopwatch = screen.getByTestId("stopwatch");
     expect(stopwatch).toHaveTextContent("00:00:03");
 });
+
+test("StopWatch should update time to '00:01:00' after 60.000ms", () => {
+    act(() => {
+        jest.advanceTimersByTime(60000);
+    });
+    let stopwatch = screen.getByTestId("stopwatch");
+    expect(stopwatch).toHaveTextContent("00:01:00");
+});
+
+test("StopWatch should update time to '01:00:00' after 3.600.000ms", () => {
+    act(() => {
+        jest.advanceTimersByTime(3600000);
+    });
+    let stopwatch = screen.getByTestId("stopwatch");
+    expect(stopwatch).toHaveTextContent("01:00:00");
+});
