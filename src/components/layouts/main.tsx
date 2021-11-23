@@ -13,7 +13,7 @@ const Main: NextPage = ({ children }) => {
 
             <NavBar />
 
-            <Box w="100%" p={4}>
+            <Box w="100%" p={4} pt={20}>
                 {children}
                 <Footer />
             </Box>

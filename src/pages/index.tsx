@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
     return (
-        <Box pt={50}>
+        <Box>
             <Container>
                 <Box display={{ md: "flex" }}>
                     <Box flexGrow={1}>
@@ -14,8 +14,9 @@ const Home: NextPage = () => {
                     </Box>
                 </Box>
             </Container>
-            <SimpleGrid minChildWidth="200px" spacing="40px">
+            <SimpleGrid minChildWidth="25%" spacing="40px">
                 <Box
+                    maxW="50%"
                     borderRadius="lg"
                     mb={6}
                     p={3}
