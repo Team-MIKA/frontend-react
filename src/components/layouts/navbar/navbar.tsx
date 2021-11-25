@@ -10,7 +10,11 @@ export interface NavBarProps {
 }
 
 const Navbar = () => {
-    const Items: NavBarItem[] = [new TextNavItem("/", "Home"), new TextNavItem("/settings", "Settings")];
+    const Items: NavBarItem[] = [
+        new TextNavItem("/", "Home"),
+        new TextNavItem("/settings", "Settings"),
+        new TextNavItem("/examples", "Example"),
+    ];
 
     return (
         <Box

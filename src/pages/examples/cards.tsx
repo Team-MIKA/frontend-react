@@ -1,11 +1,11 @@
 import { NextPage } from "next";
-import Musk from "src/components/widgets/sap/musk";
+import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
 
 const Example: NextPage = () => {
     return (
         <>
             <p>Hej nu</p>
-            <Musk />
+            <SapOrderWidget />
         </>
     );
 };

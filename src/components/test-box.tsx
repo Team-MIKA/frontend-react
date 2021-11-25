@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Text, Heading } from "@chakra-ui/react";
-import itemStore from "@store/item";
+import { useRecoilValue } from "recoil";
+import { publishId } from "@store/item";
 
 const TestBox = ({ title }: { title: string }) => {
-    const [itemState, setItemState] = useState(itemStore.initialState);
-
-    useEffect(() => {
-        const subscription = itemStore.subscribe(setItemState);
-        return () => subscription.unsubscribe();
-    }, [itemState]); // [] avoids useEffect to be run on every render of component.
+    const itemState = useRecoilValue(publishId);
 
     return (
         <Box border="2px solid gray" borderRadius="md">
             <Heading> {title}</Heading>
-            <Text>{itemState.item.id}</Text>
+            <Text>{itemState.id}</Text>
         </Box>
     );
 };

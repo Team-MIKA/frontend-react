@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { Column, Row, useTable } from "react-table";
+import { useRecoilState } from "recoil";
 import { log } from "@helpers/logger";
+import { publishId } from "@store/item";
 
-import itemStore from "@store/item";
-
-const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]; title: string }) => {
+const Table = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]; title: string }) => {
     const toast = useToast();
 
-    const [itemState, setItemState] = useState(itemStore.initialState);
+    const [itemState, setItemState] = useRecoilState(publishId);
 
     useEffect(() => {
-        const subscription = itemStore.subscribe(setItemState);
         log("Initial Item state:", itemState);
-        return () => subscription.unsubscribe();
     }, [itemState]); // [] avoids useEffect to be run on every render of component.
 
     const onRowClick = (event: Row<JSON>) => {
         log("Row Clicked: ", event);
-        itemState.item.id == event.values.id ? unSelect() : select(event.values.id);
+        setItemState(event.values.id == itemState.id ? unSelect() : select(event.values.id));
     };
 
     const unSelect = () => {
         log("UnSelecting...");
-        itemStore.clearItem();
         addUnselectToast();
+        return { id: "" };
     };
 
     const select = (itemId: string) => {
         log("Selecting ID: ", itemId);
-        itemStore.setItem({ id: itemId });
         addSelectToast();
+        return { id: itemId };
     };
 
     const addSelectToast = () => {
@@ -58,7 +56,7 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
 
     return (
         <Box border="2px solid gray" borderRadius="md">
-            <Table {...getTableProps()}>
+            <ChakraTable {...getTableProps()}>
                 <TableCaption>{title}</TableCaption>
                 <Thead>
                     {headerGroups.map((headerGroup) => (
@@ -80,7 +78,7 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
                                 onClick={() => onRowClick(row)}
                                 style={{
                                     cursor: "pointer",
-                                    background: row.values.id == itemState.item.id ? "gray" : "",
+                                    background: row.values.id == itemState.id ? "gray" : "",
                                 }}
                                 key={row.id}
                             >
@@ -93,8 +91,8 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
                         );
                     })}
                 </Tbody>
-            </Table>
+            </ChakraTable>
         </Box>
     );
 };
-export default MikaTable;
+export default Table;
