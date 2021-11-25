@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text, Heading } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
-import { publishId } from "@store/item";
+import { publishId } from "@store/order";
 
 const TestBox = ({ title }: { title: string }) => {
     const itemState = useRecoilValue(publishId);

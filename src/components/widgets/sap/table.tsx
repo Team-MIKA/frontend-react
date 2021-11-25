@@ -1,58 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
 import { Column, Row, useTable } from "react-table";
-import { useRecoilState } from "recoil";
-import { log } from "@helpers/logger";
-import { publishId } from "@store/item";
 
-const Table = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]; title: string }) => {
-    const toast = useToast();
+interface TableProps<T extends {}> {
+    columns: Column<T>[];
+    data: T[];
+    title: string;
+    onSelect: (arg0: T) => void;
+}
 
-    const [itemState, setItemState] = useRecoilState(publishId);
-
-    useEffect(() => {
-        log("Initial Item state:", itemState);
-    }, [itemState]); // [] avoids useEffect to be run on every render of component.
-
-    const onRowClick = (event: Row<JSON>) => {
-        log("Row Clicked: ", event);
-        setItemState(event.values.id == itemState.id ? unSelect() : select(event.values.id));
-    };
-
-    const unSelect = () => {
-        log("UnSelecting...");
-        addUnselectToast();
-        return { id: "" };
-    };
-
-    const select = (itemId: string) => {
-        log("Selecting ID: ", itemId);
-        addSelectToast();
-        return { id: itemId };
-    };
-
-    const addSelectToast = () => {
-        toast({
-            description: "Item Selected",
-            position: "top-right",
-            duration: 2000,
-            isClosable: true,
-            status: "success",
-        });
-    };
-
-    const addUnselectToast = () => {
-        toast({
-            description: "Item Unselected",
-            position: "top-right",
-            duration: 2000,
-            isClosable: true,
-            status: "warning",
-        });
-    };
-
+const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect }: TableProps<T>) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
+
+    const [selectedRow, setSelectedRow] = useState<Row<T>>(rows[0]);
+    function selectRow(row: Row<T>) {
+        setSelectedRow(row);
+        onSelect(row.original);
+    }
 
     return (
         <Box border="2px solid gray" borderRadius="md">
@@ -75,10 +39,10 @@ const Table = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]
                         return (
                             <Tr
                                 {...row.getRowProps()}
-                                onClick={() => onRowClick(row)}
+                                onClick={() => selectRow(row)}
                                 style={{
                                     cursor: "pointer",
-                                    background: row.values.id == itemState.id ? "gray" : "",
+                                    background: row === selectedRow ? "gray" : "",
                                 }}
                                 key={row.id}
                             >
@@ -95,4 +59,4 @@ const Table = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]
         </Box>
     );
 };
-export default Table;
+export default SelectableTable;
