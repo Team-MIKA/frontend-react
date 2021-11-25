@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { Column, Row, useTable } from "react-table";
+import { log } from "@helpers/logger";
 
-import logger from "@helpers/logger";
 import itemStore from "@store/item";
 
 const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JSON[]; title: string }) => {
@@ -13,23 +13,23 @@ const MikaTable = ({ columns, data, title }: { columns: Column<JSON>[]; data: JS
 
     useEffect(() => {
         const subscription = itemStore.subscribe(setItemState);
-        logger.log("Initial Item state:", itemState);
+        log("Initial Item state:", itemState);
         return () => subscription.unsubscribe();
     }, [itemState]); // [] avoids useEffect to be run on every render of component.
 
     const onRowClick = (event: Row<JSON>) => {
-        logger.log("Row Clicked: ", event);
+        log("Row Clicked: ", event);
         itemState.item.id == event.values.id ? unSelect() : select(event.values.id);
     };
 
     const unSelect = () => {
-        logger.log("UnSelecting...");
+        log("UnSelecting...");
         itemStore.clearItem();
         addUnselectToast();
     };
 
     const select = (itemId: string) => {
-        logger.log("Selecting ID: ", itemId);
+        log("Selecting ID: ", itemId);
         itemStore.setItem({ id: itemId });
         addSelectToast();
     };

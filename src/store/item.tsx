@@ -1,7 +1,6 @@
-import logger from '@helpers/logger';
-import React from 'react';
-import { Subject } from 'rxjs'
-
+import React from "react";
+import { Subject } from "rxjs";
+import { log } from "@helpers/logger";
 
 // https://www.youtube.com/watch?v=EsIYiRpDZuA
 export interface Item {
@@ -12,42 +11,37 @@ export interface ItemState {
     item: Item;
 }
 
-
 const initialState: ItemState = {
-    item: {id: ''}
+    item: { id: "" },
 };
 
 const subject = new Subject<ItemState>();
 
-
 let state = initialState;
 
-    
 const itemStore = {
-
-    subscribe: (setItemState: React.Dispatch<React.SetStateAction<ItemState>>) => subject.subscribe((state) => setItemState(state)),
+    subscribe: (setItemState: React.Dispatch<React.SetStateAction<ItemState>>) =>
+        subject.subscribe((state) => setItemState(state)),
 
     setItem: (newItem: Item) => {
         state = {
-          ...state,
-          item: {id: newItem.id} // We don't want to "merge" our previous item into our new item. Thus ...state.item is removed
-         };
-         subject.next(state);
-         logger.log(state);
+            ...state,
+            item: { id: newItem.id }, // We don't want to "merge" our previous item into our new item. Thus ...state.item is removed
+        };
+        subject.next(state);
+        log(state);
     },
 
     clearItem: () => {
         state = {
             ...state,
-            item: {id: ''},
-        }
+            item: { id: "" },
+        };
         subject.next(state);
-        logger.log(state);
+        log(state);
     },
 
     initialState,
 };
-
-
 
 export default itemStore;

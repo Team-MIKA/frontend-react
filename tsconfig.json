@@ -16,7 +16,8 @@
         "baseUrl": "./src",
         "paths": {
             "@components/*": ["./components/*"],
-            "@store/*": ["./store/*"]
+            "@store/*": ["./store/*"],
+            "@helpers/*" : ["./helpers/*"]
         },
         "incremental": true
     },
