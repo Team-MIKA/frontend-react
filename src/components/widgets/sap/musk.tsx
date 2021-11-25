@@ -1,11 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import { Container, Heading } from "@chakra-ui/react";
-import { NextPage } from "next";
 import { Column } from "react-table";
 import MikaTable from "@components/mika-table";
 import TestBox from "@components/test-box";
 
-const Musk: NextPage = () => {
+const Musk: FC = () => {
     const data = React.useMemo(
         () => [
             JSON.parse('{ "id": "1234", "title": "Batman" }'),
