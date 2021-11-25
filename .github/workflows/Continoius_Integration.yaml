@@ -1,0 +1,54 @@
+name: build/test/format
+
+on:
+    pull_request:
+        branches: [main]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
+
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+
+            # Caches node modules, busting on yarn.lock changes
+            - uses: actions/cache@v2
+              with:
+                  path: "**/node_modules"
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            - name: Install
+              run: yarn install
+
+            - name: Build
+              run: yarn build
+
+            - name: Test
+              run: yarn test:ci
+
+    format:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+
+            # Caches node modules, busting on yarn.lock changes
+            - uses: actions/cache@v2
+              with:
+                  path: "**/node_modules"
+                  key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+            - name: Install
+              run: yarn install
+
+            # Gives error the code does not match the linter
+            - name: Lint
+              run: yarn lint
+            # Ensure coding style matches prettier
+            - name: Prettier
+              run: yarn format:ci

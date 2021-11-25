@@ -1,8 +1,8 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
 import Footer from "./footer";
-import NavBar from "./navbar";
+import NavBar from "./navbar/navbar";
 
 const Main: NextPage = ({ children }) => {
     return (
@@ -13,10 +13,10 @@ const Main: NextPage = ({ children }) => {
 
             <NavBar />
 
-            <Container maxW="container.md" pt={14}>
+            <Box w="100%" p={4} pt={20}>
                 {children}
                 <Footer />
-            </Container>
+            </Box>
         </Box>
     );
 };
