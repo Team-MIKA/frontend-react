@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
+import { Table as ChakraTable, Thead, Tbody, Tr, Th, Td, TableCaption, Box, useColorModeValue } from "@chakra-ui/react";
 import { Column, Row, useTable } from "react-table";
 
 interface TableProps<T extends {}> {
     columns: Column<T>[];
     data: T[];
     title: string;
-    onSelect: (arg0: T) => void;
+    onSelect: (row: T) => void;
 }
 
 const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect }: TableProps<T>) => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data });
 
-    const [selectedRow, setSelectedRow] = useState<Row<T>>(rows[0]);
+    const [rowIndex, setRowIndex] = useState<number | null>(null);
     function selectRow(row: Row<T>) {
-        setSelectedRow(row);
+        setRowIndex(row.index);
         onSelect(row.original);
     }
 
+    const bg = useColorModeValue("pink", "teal");
     return (
         <Box border="2px solid gray" borderRadius="md">
             <ChakraTable {...getTableProps()}>
@@ -42,7 +43,7 @@ const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect
                                 onClick={() => selectRow(row)}
                                 style={{
                                     cursor: "pointer",
-                                    background: row === selectedRow ? "gray" : "",
+                                    background: rowIndex === row.index ? bg : "",
                                 }}
                                 key={row.id}
                             >
