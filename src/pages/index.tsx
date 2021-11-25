@@ -17,17 +17,15 @@ const Home: NextPage = () => {
             </Container>
             <SimpleGrid minChildWidth="25%" spacing="40px">
                 <Box
-                    maxW="50%"
+                    maxW="100%"
                     borderRadius="lg"
-                    mb={6}
-                    p={3}
                     textAlign="center"
                     bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
                 >
                     This could be the first integration
                 </Box>
+                <TimeSmartCard />
             </SimpleGrid>
-            <TimeSmartCard />
         </Box>
     );
 };
