@@ -31,7 +31,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
     };
 
     const handleClick = (card: Card) => {
-        setSelectedCard(selectedCard == card ? {} as Card : card;
+        setSelectedCard(selectedCard == card ? ({} as Card) : card);
     };
 
     const save = () => {
