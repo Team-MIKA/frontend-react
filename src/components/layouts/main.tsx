@@ -1,4 +1,4 @@
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
@@ -16,10 +16,10 @@ const Main: NextPage = ({ children }) => {
 
             <NavBar navItems={Items} />
 
-            <Container maxW="container.md" pt={14}>
+            <Box w="100%" p={4} pt={20}>
                 {children}
                 <Footer />
-            </Container>
+            </Box>
         </Box>
     );
 };
