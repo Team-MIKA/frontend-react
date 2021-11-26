@@ -2,7 +2,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { Stack, Heading, Text, useColorModeValue, IconButton } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import { Workspace, WorkspaceListState } from "@store";
+import { Workspace, WorkspaceListState } from "@store/workspace";
 
 const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
     const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
