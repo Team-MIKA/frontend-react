@@ -1,11 +1,11 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { RecoilRoot } from "recoil";
+import { MutableSnapshot, RecoilRoot } from "recoil";
 import { categoriesState } from "@components/time-smart/registration.store";
 import TimeSmartCard from "@components/time-smart/time-smart-card";
 
 test("TimerModal should render button with text 'test1'", () => {
-    const initializeState = ({ set }: any) => {
+    const initializeState = ({ set }: MutableSnapshot) => {
         set(categoriesState, ["test1"]);
     };
 
@@ -19,7 +19,7 @@ test("TimerModal should render button with text 'test1'", () => {
 });
 
 test("TimerModal should render 2 buttons on input ['1', '2']", () => {
-    const initializeState = ({ set }: any) => {
+    const initializeState = ({ set }: MutableSnapshot) => {
         set(categoriesState, ["1", "2"]);
     };
 
@@ -33,7 +33,7 @@ test("TimerModal should render 2 buttons on input ['1', '2']", () => {
 });
 
 test("TimerModal should render correct labels on multiple buttons", () => {
-    const initializeState = ({ set }: any) => {
+    const initializeState = ({ set }: MutableSnapshot) => {
         set(categoriesState, ["0", "1"]);
     };
 

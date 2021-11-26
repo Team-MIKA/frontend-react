@@ -1,5 +1,5 @@
 import { atom, SetterOrUpdater } from "recoil";
-import { log } from "../../helpers/logger";
+import { log } from "@helpers/logger";
 
 export const categoriesState = atom({
     key: "categories",
@@ -23,6 +23,6 @@ export function addCategory(state, newCategory: string) {
         }, 500);
     }).then(() => {
         setCategories([...categories, newCategory]);
-        console.log(newCategory);
+        log(newCategory);
     });
 }

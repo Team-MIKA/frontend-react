@@ -1,17 +1,15 @@
 import React from "react";
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import AddButton from "@components/time-smart/add-button";
 
 beforeEach(() => {
-    act(() => {
-        render(
-            <RecoilRoot>
-                <AddButton />
-            </RecoilRoot>
-        );
-    });
+    render(
+        <RecoilRoot>
+            <AddButton />
+        </RecoilRoot>
+    );
 });
 
 test("Add buttons should open a modal when clicked", () => {

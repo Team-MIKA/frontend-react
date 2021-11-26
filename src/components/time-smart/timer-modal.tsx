@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    Box,
     Button,
     Modal,
     ModalBody,
@@ -21,7 +22,7 @@ function TimerModal(props: { open: boolean; onClose: () => void; text: string })
                 <ModalCloseButton />
                 <ModalBody>
                     <StopWatch />
-                    <div role={"start-time"}>Start time: {new Date().toLocaleTimeString("en-UK")}</div>
+                    <Box role={"start-time"}>Start time: {new Date().toLocaleTimeString("en-UK")}</Box>
                 </ModalBody>
                 <ModalFooter>
                     <Button role={"done-button"} bg={useColorModeValue("pink", "teal")} mr={3} onClick={props.onClose}>
