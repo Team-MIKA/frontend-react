@@ -18,7 +18,8 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     const closing = () => {
         onClose();
         let stopTime = new Date();
-        log(Math.floor((stopTime.getTime() - startTime.getTime()) / 1000));
+        let registrationDuration = Math.floor((stopTime.getTime() - startTime.getTime()) / 1000);
+        log(registrationDuration);
     };
 
     return (
