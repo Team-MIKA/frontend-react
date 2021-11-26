@@ -1,5 +1,5 @@
 import { atom, SetterOrUpdater } from "recoil";
-import { log } from "../../helpers/logger";
+import { log } from "@helpers/logger";
 
 export const categoriesState = atom({
     key: "categories",

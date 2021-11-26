@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import TimerModal from "@components/time-smart/timer-modal";
-import { log } from "../../helpers/logger";
+import { log } from "@helpers/logger";
 
 function RegistrationButtons({ buttons }: { buttons: string[] }) {
     const [buttonText, setButtonText] = useState("");
