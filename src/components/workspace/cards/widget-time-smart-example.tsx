@@ -1,7 +1,7 @@
 import { Heading, Avatar, Box, Center, Image, Flex, Text, Stack, Button, useColorModeValue } from "@chakra-ui/react";
 import { Card } from "@store/workspace";
 
-export default function CardTimeSmart({ card }: { card: Card }) {
+export default function WidgetTimeSmart({ card }: { card: Card }) {
     return (
         <Center py={6}>
             <Box

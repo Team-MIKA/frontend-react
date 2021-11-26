@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AddIcon } from "@chakra-ui/icons";
 import {
     Modal,
     ModalBody,
@@ -8,14 +7,12 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    useColorModeValue,
-    useDisclosure,
     Wrap,
     WrapItem,
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceState } from "@store";
+import { Card, WorkspaceState } from "@store/index";
 
 const cards = [
     { title: "SAP", id: "1" },
@@ -23,8 +20,7 @@ const cards = [
     { title: "TABLE", id: "3" },
 ] as Card[];
 
-const AddCardModal = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
+const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
     const [selectedCard, setSelectedCard] = useState({} as Card);
 
@@ -35,7 +31,7 @@ const AddCardModal = () => {
     };
 
     const handleClick = (card: Card) => {
-        selectedCard == card ? setSelectedCard({} as Card) : setSelectedCard(card);
+        setSelectedCard(selectedCard == card ? {} as Card : card;
     };
 
     const save = () => {
@@ -51,15 +47,6 @@ const AddCardModal = () => {
 
     return (
         <>
-            <Button
-                leftIcon={<AddIcon />}
-                onClick={onOpen}
-                colorScheme={useColorModeValue("purple", "orange")}
-                variant="solid"
-            >
-                Card
-            </Button>
-
             <Modal size={"2xl"} isOpen={isOpen} onClose={close}>
                 <ModalOverlay />
                 <ModalContent>
@@ -93,4 +80,4 @@ const AddCardModal = () => {
     );
 };
 
-export default AddCardModal;
+export default AddWidgetModal;

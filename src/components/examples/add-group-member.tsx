@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Button } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { GroupMemberState } from "@store";
+import { GroupMemberState } from "@store/index";
 
 function AddGroupMember() {
     const [users, setUsers] = useRecoilState(GroupMemberState);

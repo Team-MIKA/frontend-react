@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Box, Heading, Wrap, WrapItem } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
+import { Box, Button, Heading, useColorModeValue, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import AddCardModal from "@components/workspace/add-card-modal";
-import RenderCard from "@components/workspace/render-card";
+import AddWidgetModal from "@components/workspace/add-widget-modal";
+import WidgetRender from "@components/workspace/widget-render";
 import { WorkspaceListState, WorkspaceState } from "@store/workspace";
 
 const WorkspaceView: NextPage = () => {
@@ -12,6 +13,8 @@ const WorkspaceView: NextPage = () => {
 
     const [workspaces] = useRecoilState(WorkspaceListState);
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
         const workspaceId = router.query.id as string;
@@ -29,12 +32,21 @@ const WorkspaceView: NextPage = () => {
                 </Box>
             </Box>
 
-            <AddCardModal />
+            <Button
+                leftIcon={<AddIcon />}
+                onClick={onOpen}
+                colorScheme={useColorModeValue("purple", "orange")}
+                variant="solid"
+            >
+                Card
+            </Button>
+
+            <AddWidgetModal onClose={onClose} isOpen={isOpen} />
 
             <Wrap mt={4}>
                 {workspace.cards?.map((card, key) => (
                     <WrapItem key={key}>
-                        <RenderCard card={card} />
+                        <WidgetRender card={card} />
                     </WrapItem>
                 ))}
             </Wrap>

@@ -1,8 +1,9 @@
 # Business assistant
 
-<p align="center">
+<div align="center">
   <img src="https://raw.githubusercontent.com/Team-MIKA/frontend-react/main/public/logo.svg">
-</p>
+</div>
+
 
 ---
 
