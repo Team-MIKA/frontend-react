@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddCardModal from "@components/workspace/add-card-modal";
 import RenderCard from "@components/workspace/render-card";
-import { WorkspaceListState, WorkspaceState } from "@store";
+import { WorkspaceListState, WorkspaceState } from "@store/workspace";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
 
-    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
+    const [workspaces] = useRecoilState(WorkspaceListState);
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
 
     useEffect(() => {
