@@ -12,7 +12,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceListState } from "@store/index";
+import { Card, WorkspaceListState } from "@store/workspace";
 
 const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
     const [title, setTitle] = useState("");
