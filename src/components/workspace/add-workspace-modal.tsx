@@ -34,7 +34,7 @@ const AddWorkspaceModal = () => {
 
         setWorkspaces([...workspaces, { title: title, id: idFromDb, cards: [] as Card[] }]);
         setTitle("");
-        return onClose();
+        onClose();
     };
 
     return (
