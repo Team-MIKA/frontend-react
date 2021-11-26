@@ -35,7 +35,7 @@ describe("Links in navbar should", () => {
         expect(Router).toMatchObject({ asPath: "/test" });
     });
 
-    test("have links in burgerbar, on mobile", () => {
+    test("links only exists after sidebar button is clicked, on mobile", () => {
         const link = screen.queryByTestId("nav-sidebar-link");
 
         expect(link).not.toBeInTheDocument(); // it doesn't exist
