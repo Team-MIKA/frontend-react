@@ -23,6 +23,6 @@ export function addCategory(state, newCategory: string) {
         }, 500);
     }).then(() => {
         setCategories([...categories, newCategory]);
-        console.log(newCategory);
+        log(newCategory);
     });
 }

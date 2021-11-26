@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { addCategory, categoriesState } from "@components/time-smart/registration.store";
+import { log } from "../../helpers/logger";
 
 function AddModal(props: { open: boolean; onClose: () => void }) {
     const initialRef = React.useRef();
@@ -21,7 +22,7 @@ function AddModal(props: { open: boolean; onClose: () => void }) {
 
     const closing = () => {
         props.onClose();
-        console.log(name);
+        log(name);
         addCategory(state, name);
     };
 

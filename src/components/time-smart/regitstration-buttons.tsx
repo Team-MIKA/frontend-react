@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import TimerModal from "@components/time-smart/timer-modal";
+import { log } from "../../helpers/logger";
 
 function RegistrationButtons({ buttons }: { buttons: string[] }) {
     const [buttonText, setButtonText] = useState("");
@@ -17,7 +18,7 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     const closing = () => {
         onClose();
         let stopTime = new Date();
-        console.log(Math.floor((stopTime.getTime() - startTime.getTime()) / 1000));
+        log(Math.floor((stopTime.getTime() - startTime.getTime()) / 1000));
     };
 
     return (
