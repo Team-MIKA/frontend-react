@@ -21,7 +21,7 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     };
 
     return (
-        <SimpleGrid minChildWidth="85px" spacing="20px">
+        <SimpleGrid minChildWidth="120px" spacing="20px">
             {buttons.map((buttonText) => (
                 <Button
                     role={"reg-button"}

@@ -48,6 +48,7 @@ function AddModal(props: { open: boolean; onClose: () => void }) {
                     <Input
                         ref={initialRef}
                         role="user-input"
+                        maxLength={12}
                         placeholder="E.g. Pause"
                         onKeyDown={handleKeypress}
                         onChange={(event) => setName(event.currentTarget.value)}

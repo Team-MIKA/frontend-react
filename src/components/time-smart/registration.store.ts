@@ -7,7 +7,7 @@ export const categoriesState = atom({
 });
 
 export function getCategoriesAPICall(): string[] {
-    return ["Kvalitet", "Fejl", "Møde", "Pause"];
+    return ["Quality", "Error", "Meeting", "Pause"];
 }
 
 export function addCategory(state, newCategory: string) {
