@@ -1,5 +1,5 @@
 import React from "react";
-import { useColorModeValue } from "@chakra-ui/react";
+import { TagLabel, useColorModeValue } from "@chakra-ui/react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, Tag } from "@chakra-ui/react";
 import { useTable, useSortBy } from "react-table";
 function TimeSmartList() {
@@ -7,7 +7,7 @@ function TimeSmartList() {
     const data = React.useMemo(
         () => [
             {
-                category: CategoryTag,
+                category: CategoryTag(),
                 duration: "millimetres (mm)",
                 startTime: 25.4,
                 endTime: 25.4,
@@ -93,7 +93,11 @@ function TimeSmartList() {
 
 function CategoryTag() {
     //WIP see dis: https://react-table.tanstack.com/docs/examples/filtering
-    return <Tag>hej</Tag>;
+    return (
+        <Tag size={"lg"} borderRadius="full" variant="solid" colorScheme="pink">
+            <TagLabel>Pause</TagLabel>
+        </Tag>
+    );
 }
 
 export default TimeSmartList;
