@@ -9,12 +9,8 @@ export interface NavBarProps {
     navItems: NavBarItem[];
 }
 
-const Navbar = () => {
-    const Items: NavBarItem[] = [
-        new TextNavItem("/", "Home"),
-        new TextNavItem("/settings", "Settings"),
-        new TextNavItem("/examples", "Example"),
-    ];
+const Navbar: FC<NavBarProps> = ({ navItems }) => {
+    if (navItems === null) navItems = [];
 
     return (
         <Box
@@ -30,11 +26,11 @@ const Navbar = () => {
                         <Logo />
                     </Heading>
                 </Flex>
-                <TopNavBar navItems={Items} />
+                <TopNavBar navItems={navItems} />
 
                 <Box flex={1} align="right">
                     <ThemeToggleButton />
-                    <BurgerNavBar navItems={Items} />
+                    <BurgerNavBar navItems={navItems} />
                 </Box>
             </Container>
         </Box>
