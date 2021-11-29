@@ -1,21 +1,14 @@
 import React from "react";
-import { TagLabel, useColorModeValue } from "@chakra-ui/react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, Tag } from "@chakra-ui/react";
-import { useTable, useSortBy } from "react-table";
+import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue } from "@chakra-ui/react";
+import { useSortBy, useTable } from "react-table";
+import { useRecoilValue } from "recoil";
+import { tableRowState } from "@components/time-smart-list/logged-registrations.store";
+
 function TimeSmartList() {
+    const data = useRecoilValue(tableRowState);
+    console.log(data);
+
     //const Registrations = useRecoilValue(RegistrationState);
-    const data = React.useMemo(
-        () => [
-            {
-                category: CategoryTag(),
-                duration: "millimetres (mm)",
-                startTime: 25.4,
-                endTime: 25.4,
-                orderId: 25.4,
-            },
-        ],
-        []
-    );
 
     const columns = React.useMemo(
         () => [
@@ -88,15 +81,6 @@ function TimeSmartList() {
                 </Tbody>
             </Table>
         </Box>
-    );
-}
-
-function CategoryTag() {
-    //WIP see dis: https://react-table.tanstack.com/docs/examples/filtering
-    return (
-        <Tag size={"lg"} borderRadius="full" variant="solid" colorScheme="pink">
-            <TagLabel>Pause</TagLabel>
-        </Tag>
     );
 }
 
