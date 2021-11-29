@@ -6,7 +6,11 @@ import Footer from "./footer";
 import NavBar from "./navbar/navbar";
 
 const Main: NextPage = ({ children }) => {
-    const Items: NavBarItem[] = [new TextNavItem("/", "Home"), new TextNavItem("/settings", "Settings")];
+    const Items: NavBarItem[] = [
+        new TextNavItem("/", "Home"),
+        new TextNavItem("/settings", "Settings"),
+        new TextNavItem("/examples", "Examples"),
+    ];
 
     return (
         <Box as="main" pb={8}>

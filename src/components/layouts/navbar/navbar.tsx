@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { Box, Container, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
 import { BurgerNavBar } from "@components/layouts/navbar/burgerNavBar";
-import { NavBarItem, TextNavItem } from "@components/layouts/navbar/navbaritem";
+import { NavBarItem } from "@components/layouts/navbar/navbaritem";
 import { TopNavBar } from "@components/layouts/navbar/topNavBar";
 import ThemeToggleButton from "@components/layouts/theme-toggle-button";
 import Logo from "@components/logo";
