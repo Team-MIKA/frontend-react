@@ -8,4 +8,5 @@ export const publishId = atom({
 // https://www.youtube.com/watch?v=EsIYiRpDZuA
 export interface Order {
     id: string;
+    title: string;
 }

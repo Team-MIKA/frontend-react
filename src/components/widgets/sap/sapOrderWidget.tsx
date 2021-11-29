@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
-import { Container, Heading, useToast } from "@chakra-ui/react";
+import { Container, Heading, Spinner, useToast } from "@chakra-ui/react";
+import axios from "axios";
 import { Column } from "react-table";
 import { useRecoilState } from "recoil";
 import TestBox from "@components/test-box";
 import SelectableTable from "@components/widgets/sap/table";
-import { error, log } from "@helpers/logger";
+import { log } from "@helpers/logger";
 import { Order, publishId } from "@store/order";
 
 const SapOrderWidget: FC = () => {
@@ -13,16 +14,11 @@ const SapOrderWidget: FC = () => {
     const toast = useToast();
 
     useEffect(() => {
-        fetch("/api/sap")
-            .then((r) => {
-                log("URL: ", r.url);
-                r.json().then((t) => {
-                    const orders: Order[] = t;
-                    log("orders: ", orders);
-                    setOrders(orders);
-                });
-            })
-            .catch((e) => error(e));
+        axios("http://localhost:3000/api/sap").then((o) => {
+            const orders: Order[] = o.data;
+            log("orders: ", orders);
+            setOrders(orders);
+        });
     }, []);
 
     const columns = [
@@ -50,7 +46,11 @@ const SapOrderWidget: FC = () => {
     return (
         <Container>
             <Heading right="0">Test Site</Heading>
-            <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
+            {orders.length == 0 ? (
+                <Spinner speed="0.65s" size="xl" />
+            ) : (
+                <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
+            )}
             <TestBox title="Sap Materials" />
             <TestBox title="Time Smart" />
         </Container>

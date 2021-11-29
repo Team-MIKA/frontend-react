@@ -6,7 +6,7 @@ interface TableProps<T extends {}> {
     columns: Column<T>[];
     data: T[];
     title: string;
-    onSelect: (row: T) => void;
+    onSelect: (obj: T) => void;
 }
 
 const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect }: TableProps<T>) => {
@@ -19,39 +19,50 @@ const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect
     }
 
     const bg = useColorModeValue("pink", "teal");
+
     return (
         <Box border="2px solid gray" borderRadius="md">
             <ChakraTable {...getTableProps()}>
                 <TableCaption>{title}</TableCaption>
                 <Thead>
-                    {headerGroups.map((headerGroup) => (
-                        <Tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
-                            {headerGroup.headers.map((column) => (
-                                <Th {...column.getHeaderProps()} key={column.id}>
-                                    {column.render("Header")}
-                                </Th>
-                            ))}
-                        </Tr>
-                    ))}
+                    {headerGroups.map((headerGroup) => {
+                        const { key, ...restOfProps } = headerGroup.getHeaderGroupProps();
+                        return (
+                            <Tr key={key} {...restOfProps}>
+                                {headerGroup.headers.map((column) => {
+                                    const { key, ...restOfProps } = column.getHeaderProps();
+                                    return (
+                                        <Th key={key} {...restOfProps}>
+                                            {column.render("Header")}
+                                        </Th>
+                                    );
+                                })}
+                            </Tr>
+                        );
+                    })}
                 </Thead>
                 <Tbody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
+                        const { key, ...restOfProps } = row.getRowProps();
                         return (
                             <Tr
-                                {...row.getRowProps()}
+                                key={key}
+                                {...restOfProps}
                                 onClick={() => selectRow(row)}
                                 style={{
                                     cursor: "pointer",
                                     background: rowIndex === row.index ? bg : "",
                                 }}
-                                key={row.id}
                             >
-                                {row.cells.map((cell) => (
-                                    <Td {...cell.getCellProps()} key={cell.row.id + cell.column.id}>
-                                        {cell.render("Cell")}
-                                    </Td>
-                                ))}
+                                {row.cells.map((cell) => {
+                                    const { key, ...restOfProps } = cell.getCellProps();
+                                    return (
+                                        <Td key={key} {...restOfProps}>
+                                            {cell.render("Cell")}
+                                        </Td>
+                                    );
+                                })}
                             </Tr>
                         );
                     })}
