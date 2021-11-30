@@ -69,9 +69,14 @@ function TimeSmartList() {
                     {rows.map((row) => {
                         prepareRow(row);
                         return (
-                            <Tr key={row} {...row.getRowProps()}>
+                            <Tr key={row} {...row.getRowProps()} role={"row"}>
                                 {row.cells.map((cell) => (
-                                    <Td key={cell} {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
+                                    <Td
+                                        key={cell}
+                                        {...cell.getCellProps()}
+                                        isNumeric={cell.column.isNumeric}
+                                        role={"cell"}
+                                    >
                                         {cell.render("Cell")}
                                     </Td>
                                 ))}

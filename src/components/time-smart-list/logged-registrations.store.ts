@@ -31,7 +31,6 @@ export function addRegistration(state, newRegistration) {
     const [registrations, setRegistrations] = state;
 
     const newRegs = [...registrations, newRegistration];
-    console.log(newRegs);
 
     setRegistrations(newRegs);
     log(newRegistration);
