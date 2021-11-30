@@ -1,20 +1,20 @@
 import React, { FC, useEffect, useState } from "react";
 import { Container, Heading, Spinner, useToast } from "@chakra-ui/react";
-import axios from "axios";
 import { Column } from "react-table";
 import { useRecoilState } from "recoil";
 import TestBox from "@components/test-box";
 import SelectableTable from "@components/widgets/sap/table";
 import { log } from "@helpers/logger";
+import api from "@store/axios";
 import { Order, publishId } from "@store/order";
 
-const SapOrderWidget: FC<{ origin: string }> = ({ origin }) => {
+const SapOrderWidget: FC = () => {
     const [orders, setOrders] = useState([] as Order[]);
     const [itemState, setItemState] = useRecoilState(publishId);
     const toast = useToast();
 
     useEffect(() => {
-        axios(origin + "/api/sap").then((o) => {
+        api("/sap").then((o) => {
             const orders: Order[] = o.data;
             log("orders: ", orders);
             setOrders(orders);
