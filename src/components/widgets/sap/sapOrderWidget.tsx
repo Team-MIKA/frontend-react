@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import TestBox from "@components/test-box";
 import SelectableTable from "@components/widgets/sap/table";
 import { log } from "@helpers/logger";
-import api from "@store/axios";
+import api, { config } from "@store/axios";
 import { Order, publishId } from "@store/order";
 
 const SapOrderWidget: FC = () => {
@@ -14,6 +14,7 @@ const SapOrderWidget: FC = () => {
     const toast = useToast();
 
     useEffect(() => {
+        log(config.host);
         api("/sap").then((o) => {
             const orders: Order[] = o.data;
             log("orders: ", orders);
