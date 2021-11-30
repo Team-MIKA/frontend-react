@@ -19,9 +19,8 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     };
 
     const closing = () => {
-        console.log("clinsing");
         const stopTime = new Date();
-        const newReg = { category: buttonText, startTime: startTime, endTime: stopTime, orderId: "5" };
+        const newReg = { category: buttonText, buttons, startTime: startTime, endTime: stopTime, orderId: "5" };
         addRegistration(state, newReg);
         const registrationDuration = Math.floor((stopTime.getTime() - startTime.getTime()) / 1000);
         log(registrationDuration);
