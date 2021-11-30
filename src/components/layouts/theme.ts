@@ -6,7 +6,7 @@ import { mode } from "@chakra-ui/theme-tools";
 // https://github.com/chakra-ui/chakra-ui/tree/main/packages/theme/src/foundations
 const config = {
     initialColorMode: "dark",
-    useSystemColorMode: true,
+    useSystemColorMode: false,
 };
 
 const styles = {
