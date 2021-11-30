@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
 import api, { config } from "@store/axios";
 import { Order, publishId } from "@store/order";
-import { render } from "test-utils";
+import { render, setupUrlMock } from "test-utils";
 
 describe("sap ting", () => {
     const mockOrders = [
@@ -13,7 +13,7 @@ describe("sap ting", () => {
     ] as Order[];
 
     beforeAll(() => {
-        api.defaults.adapter = require("axios/lib/adapters/http"); //Flyt til test utils
+        setupUrlMock();
     });
 
     beforeEach(() => {
