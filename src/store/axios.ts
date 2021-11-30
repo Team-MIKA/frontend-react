@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export const config = {
-    port: process.env.PORT || 3000,
-    baseUrl: process.env.HOSTNAME || "localhost",
+    port: process.env.NEXT_PUBLIC_PORT || 3000,
+    baseUrl: process.env.NEXT_PUBLIC_PORT || "localhost",
     get host(): string {
-        return `http://${this.baseUrl}:${this.port}`;
+        return `https://${this.baseUrl}:${this.port}`;
     },
 };
 const instance = axios.create({
