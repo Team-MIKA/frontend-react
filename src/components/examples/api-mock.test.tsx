@@ -31,11 +31,8 @@ describe("Mock users from url", () => {
         axios.defaults.adapter = require("axios/lib/adapters/http"); //Flyt til test utils
     });
 
-    beforeEach(() => {
-        nock("https://test-server.com").get("/get-users").reply(200, mockUsers);
-    });
-
     it("should return an array of users", async () => {
+        nock("https://test-server.com").get("/get-users").reply(200, mockUsers);
         const users = await getUsers();
 
         users.every((user, index) => expect(user.equal(mockUsers[index])).toBeTruthy());

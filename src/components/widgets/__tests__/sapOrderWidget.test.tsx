@@ -1,8 +1,8 @@
 import { fireEvent, waitForElementToBeRemoved } from "@testing-library/dom";
-import axios from "axios";
 import nock from "nock";
 import { useRecoilValue } from "recoil";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
+import api, { config } from "@store/axios";
 import { Order, publishId } from "@store/order";
 import { render } from "test-utils";
 
@@ -11,16 +11,19 @@ describe("sap ting", () => {
         { id: "1", title: "Order 1" },
         { id: "2", title: "Order 2" },
     ] as Order[];
+
     beforeAll(() => {
-        axios.defaults.adapter = require("axios/lib/adapters/http"); //Flyt til test utils
+        api.defaults.adapter = require("axios/lib/adapters/http"); //Flyt til test utils
     });
 
-    beforeEach(
-        () => nock("http://localhost:3000").get("/api/sap").reply(200, mockOrders) // Skriv eksempel på det her.
-    );
+    beforeEach(() => {
+        nock(config.host + "/api")
+            .get("/sap")
+            .reply(200, mockOrders);
+    });
 
     test("test mock", async () => {
-        const orders = await axios.get("http://localhost:3000/api/sap");
+        const orders = await api.get("/sap");
 
         expect(orders.data).toEqual(mockOrders);
     });
