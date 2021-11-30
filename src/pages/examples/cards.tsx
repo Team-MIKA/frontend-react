@@ -5,7 +5,7 @@ import { absoluteUrl } from "../../lib";
 
 // @ts-ignore
 const Example: NextPage = ({ origin }: { origin: string }) => {
-    instance.defaults.baseURL = origin;
+    instance.defaults.baseURL = origin + "/api";
     return (
         <>
             <SapOrderWidget />
