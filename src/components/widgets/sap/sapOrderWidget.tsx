@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import TestBox from "@components/test-box";
 import SelectableTable from "@components/widgets/sap/table";
 import { log } from "@helpers/logger";
-import api, { config } from "@store/axios";
+import api from "@store/axios";
 import { Order, publishId } from "@store/order";
 
 const SapOrderWidget: FC = () => {
@@ -14,7 +14,6 @@ const SapOrderWidget: FC = () => {
     const toast = useToast();
 
     useEffect(() => {
-        log(config.host);
         api("/sap").then((o) => {
             const orders: Order[] = o.data;
             log("orders: ", orders);
@@ -44,14 +43,12 @@ const SapOrderWidget: FC = () => {
         });
     };
 
+    if (orders.length == 0) return <Spinner />;
+
     return (
         <Container>
             <Heading right="0">Test Site</Heading>
-            {orders.length == 0 ? (
-                <Spinner speed="0.65s" size="xl" />
-            ) : (
-                <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
-            )}
+            <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
             <TestBox title="Sap Materials" />
             <TestBox title="Time Smart" />
         </Container>
