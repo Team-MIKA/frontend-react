@@ -1,16 +1,12 @@
 import { NextPage } from "next";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
-import { config, refresh } from "@store/axios";
 import { absoluteUrl } from "../../lib";
 
 // @ts-ignore
-const Example: NextPage = ({ origin }) => {
-    config.host = origin;
-    refresh();
-
+const Example: NextPage = ({ origin }: { origin: string }) => {
     return (
         <>
-            <SapOrderWidget />
+            <SapOrderWidget origin={origin} />
         </>
     );
 };
