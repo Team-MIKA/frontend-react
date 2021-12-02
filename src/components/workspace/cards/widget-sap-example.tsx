@@ -1,5 +1,5 @@
 import { Heading, Avatar, Box, Center, Text, Stack, Button, Link, Badge, useColorModeValue } from "@chakra-ui/react";
-import { Card } from "@store/index";
+import { Card } from "@store/workspace";
 
 const WidgetSap = ({ card }: { card: Card }) => {
     return (

@@ -20,7 +20,7 @@ const cards = [
     { title: "TABLE", id: "3" },
 ] as Card[];
 
-const AddWidgetModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
+const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
     const [selectedCard, setSelectedCard] = useState({} as Card);
 
@@ -31,7 +31,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) 
     };
 
     const handleClick = (card: Card) => {
-        selectedCard == card ? setSelectedCard({} as Card) : setSelectedCard(card);
+        setSelectedCard(selectedCard == card ? ({} as Card) : card);
     };
 
     const save = () => {

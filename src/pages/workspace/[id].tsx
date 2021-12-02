@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import WidgetRender from "@components/workspace/widget-render";
-import { WorkspaceListState, WorkspaceState } from "@store/index";
+import { WorkspaceListState, WorkspaceState } from "@store/workspace";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();

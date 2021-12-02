@@ -1,5 +1,5 @@
 import { Heading, Avatar, Box, Center, Image, Flex, Text, Stack, Button, useColorModeValue } from "@chakra-ui/react";
-import { Card } from "@store/index";
+import { Card } from "@store/workspace";
 
 export default function WidgetTimeSmart({ card }: { card: Card }) {
     return (
