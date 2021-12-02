@@ -21,7 +21,24 @@ const SelectableTable = <T extends object = {}>({ columns, data, title, onSelect
     const bg = useColorModeValue("pink", "teal");
 
     return (
-        <Box border="2px solid gray" borderRadius="md">
+        <Box
+            borderWidth="5px"
+            borderRadius="lg"
+            borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
+            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+            sx={{
+                "&::-webkit-scrollbar": {
+                    width: "0px",
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+                "&::-webkit-scrollbar-thumb": {
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+            }}
+            maxH={"375px"}
+            overflowY={"scroll"}
+        >
             <ChakraTable {...getTableProps()}>
                 <TableCaption>{title}</TableCaption>
                 <Thead>
