@@ -46,8 +46,19 @@ function TimeSmartList() {
             borderWidth="5px"
             borderRadius="lg"
             borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
-            overflow="hidden"
             bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+            sx={{
+                "&::-webkit-scrollbar": {
+                    width: "16px",
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+                "&::-webkit-scrollbar-thumb": {
+                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+            }}
+            maxH={"375px"}
+            overflowY={"scroll"}
         >
             <Table {...getTableProps()}>
                 <Thead>
