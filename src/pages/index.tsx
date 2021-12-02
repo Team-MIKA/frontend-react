@@ -1,6 +1,5 @@
 import { Box, Container, Heading, SimpleGrid, useColorModeValue } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import TimeSmartCard from "@components/time-smart/time-smart-card";
 
 const Home: NextPage = () => {
     return (
@@ -24,7 +23,6 @@ const Home: NextPage = () => {
                 >
                     This could be the first integration
                 </Box>
-                <TimeSmartCard />
             </SimpleGrid>
         </Box>
     );

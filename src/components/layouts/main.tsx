@@ -9,7 +9,8 @@ const Main: NextPage = ({ children }) => {
     const Items: NavBarItem[] = [
         new TextNavItem("/", "Home"),
         new TextNavItem("/settings", "Settings"),
-        new TextNavItem("/examples", "Examples"),
+        new TextNavItem("/workspace", "Workspaces"),
+        new TextNavItem("/examples", "Examples")
     ];
 
     return (
