@@ -5,16 +5,22 @@ import { NextPage } from "next";
 import { useRecoilState } from "recoil";
 import AddWorkspaceModal from "@components/workspace/add-workspace-modal";
 import WorkspaceList from "@components/workspace/workspace-list";
+import { WidgetListState } from "@store/widget";
 import { WorkspaceListState } from "@store/workspace";
-import { WorkspaceService } from "../../services/openapi";
+import { WidgetService, WorkspaceService } from "../../services/openapi";
 
 const WorkspacePage: NextPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [, setWorkspaces] = useRecoilState(WorkspaceListState);
+    const [, setWidgets] = useRecoilState(WidgetListState);
 
     useEffect(() => {
         WorkspaceService.getWorkspace().then((result) => {
             setWorkspaces(result);
+        });
+
+        WidgetService.getWidget().then((result) => {
+            setWidgets(result);
         });
     }, []);
     return (
