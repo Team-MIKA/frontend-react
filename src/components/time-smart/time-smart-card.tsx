@@ -14,6 +14,7 @@ function TimeSmartCard() {
             borderRadius="lg"
             borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
             overflow="hidden"
+            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
         >
             <Box m={"4"} p={"2"}>
                 <Flex>
