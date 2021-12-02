@@ -1,10 +1,5 @@
 import { atom } from "recoil";
 
-export const GroupMemberState = atom({
-    key: "groupMembers",
-    default: [] as string[],
-});
-
 export interface Card {
     title: string;
     id: string;
