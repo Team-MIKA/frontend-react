@@ -9,6 +9,8 @@ const WidgetRender = ({ widget }: { widget: Widget }) => {
             return <TimeSmartCard />;
         case "Timesmart List":
             return <TimeSmartList />;
+        case "SAP List":
+            return <SapOrderWidget />;
         default:
             return null;
     }
