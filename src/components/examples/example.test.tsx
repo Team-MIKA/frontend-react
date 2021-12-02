@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Example from "@components/example/example-component";
+import Example from "@components/examples/example-component";
 import { sum } from "./example";
 
 test("adds 1 + 2 to equal 3", () => {
