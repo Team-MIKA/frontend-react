@@ -10,7 +10,6 @@ export interface NavBarProps {
     navItems: NavBarItem[];
 }
 
-
 const Navbar: FC<NavBarProps> = ({ navItems }) => {
     if (navItems === null) navItems = [];
 
