@@ -12,6 +12,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
+import { log } from "@helpers/logger";
 import { Widget, WidgetListState } from "@store/widget";
 import { WorkspaceState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
@@ -36,8 +37,9 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
             if (result) {
                 setWorkspace({
                     ...workspace,
-                    widgets: [...workspace.widgets, selectedWidget],
+                    widgets: [...workspace.widgets, { ...selectedWidget, id: result }],
                 });
+                log("workspace:", workspace);
             }
         });
 

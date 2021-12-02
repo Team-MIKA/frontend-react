@@ -9,7 +9,7 @@ const DeleteWidget = ({ widgetId }: { widgetId: string }) => {
     const hide = useRecoilValue(HideOptionsState);
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
     const removeWidget = () => {
-        WorkspaceService.deleteWorkspace1(workspace.id, widgetId).then((result) => {
+        WorkspaceService.deleteWorkspace1(widgetId).then((result) => {
             if (result) {
                 const filteredWidgets = workspace.widgets.filter((x) => x.id !== widgetId);
                 setWorkspace({ ...workspace, widgets: filteredWidgets });
