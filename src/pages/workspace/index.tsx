@@ -16,13 +16,13 @@ const WorkspacePage: NextPage = () => {
 
     useEffect(() => {
         WorkspaceService.getWorkspace().then((result) => {
-            setWorkspaces(result);
+            if (result) setWorkspaces(result);
         });
 
         WidgetService.getWidget().then((result) => {
-            setWidgets(result);
+            if (result) setWidgets(result);
         });
-    }, []);
+    }, [setWidgets, setWorkspaces]);
     return (
         <>
             <Heading mb={4}>Workspaces</Heading>

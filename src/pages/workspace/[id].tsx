@@ -6,23 +6,29 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import WidgetRender from "@components/workspace/widget-render";
+import { log } from "@helpers/logger";
 import { WorkspaceState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
-
+    const { id } = router.query;
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
-        WorkspaceService.getWorkspace1(router.query.id as string).then((result) => {
+        if (!id) return;
+
+        const workspaceId = id as string;
+        log(workspaceId);
+
+        WorkspaceService.getWorkspace1(workspaceId).then((result) => {
             if (result) {
                 setWorkspace(result);
             }
         });
-    }, [router.query.id, setWorkspace]);
+    }, [id, setWorkspace]);
 
     return (
         <>
