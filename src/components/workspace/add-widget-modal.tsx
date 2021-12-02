@@ -12,35 +12,31 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceState } from "@store/index";
-
-const cards = [
-    { title: "SAP", id: "1" },
-    { title: "TIME SMART", id: "2" },
-    { title: "TABLE", id: "3" },
-] as Card[];
+import { Widget, WidgetListState } from "@store/widget";
+import { WorkspaceState } from "@store/workspace";
 
 const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
-    const [selectedCard, setSelectedCard] = useState({} as Card);
+    const [widgets] = useRecoilState(WidgetListState);
+    const [selectedWidget, setSelectedWidget] = useState({} as Widget);
 
     const close = () => {
-        setSelectedCard({} as Card);
+        setSelectedWidget({} as Widget);
 
         return onClose();
     };
 
-    const handleClick = (card: Card) => {
-        setSelectedCard(selectedCard == card ? ({} as Card) : card);
+    const handleClick = (widget: Widget) => {
+        setSelectedWidget(selectedWidget == widget ? ({} as Widget) : widget);
     };
 
     const save = () => {
         setWorkspace({
             ...workspace,
-            cards: [...workspace.cards, selectedCard],
+            widgets: [...workspace.widgets, selectedWidget],
         });
 
-        setSelectedCard({} as Card);
+        setSelectedWidget({} as Widget);
 
         return onClose();
     };
@@ -54,17 +50,17 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
                     <ModalCloseButton />
                     <ModalBody>
                         <Wrap>
-                            {cards.map((card, key) => (
-                                <WrapItem key={key} onClick={() => handleClick(card)} cursor={"pointer"}>
+                            {widgets.map((widget, key) => (
+                                <WrapItem key={key} onClick={() => handleClick(widget)} cursor={"pointer"}>
                                     <Button
                                         padding={2}
                                         border={"2px solid gray"}
                                         borderRadius={"md"}
                                         minW="80px"
                                         minH="60px"
-                                        background={selectedCard == card ? "gray" : ""}
+                                        background={selectedWidget == widget ? "gray" : ""}
                                     >
-                                        {card.title}
+                                        {widget.title}
                                     </Button>
                                 </WrapItem>
                             ))}
