@@ -15,9 +15,10 @@ function TimeSmartCard() {
             borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
             overflow="hidden"
             bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+            minW={"600px"}
         >
             <Box m={"4"} p={"2"}>
-                <Flex>
+                <Flex minH={"55px"}>
                     <Heading size="lg">TimeSmart</Heading>
                     <Spacer />
                     <AddButton />
