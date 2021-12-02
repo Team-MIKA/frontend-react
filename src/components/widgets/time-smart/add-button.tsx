@@ -1,7 +1,7 @@
 import React from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import { Button, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import AddModal from "@components/time-smart/add-modal";
+import AddModal from "@components/widgets/time-smart/add-modal";
 
 function AddButton() {
     const { isOpen, onOpen, onClose } = useDisclosure();

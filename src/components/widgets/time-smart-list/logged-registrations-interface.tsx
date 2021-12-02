@@ -1,8 +1,8 @@
 import React from "react";
 import { Tag, TagLabel, useColorModeValue } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
-import { registration } from "@components/time-smart/registration";
-import { categoriesState } from "@components/time-smart/registration.store";
+import { registration } from "@components/widgets/time-smart/registration";
+import { categoriesState } from "@components/widgets/time-smart/registration.store";
 
 export interface tableRow {
     category: JSX.Element;

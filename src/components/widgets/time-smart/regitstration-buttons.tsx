@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { addRegistration, registrationsState } from "@components/time-smart-list/logged-registrations.store";
-import TimerModal from "@components/time-smart/timer-modal";
+import { addRegistration, registrationsState } from "@components/widgets/time-smart-list/logged-registrations.store";
+import TimerModal from "@components/widgets/time-smart/timer-modal";
 import { log } from "@helpers/logger";
 
 function RegistrationButtons({ buttons }: { buttons: string[] }) {

@@ -1,5 +1,5 @@
 import { act, render, screen } from "@testing-library/react";
-import LiveClock from "@components/time-smart/live-clock";
+import LiveClock from "@components/widgets/time-smart/live-clock";
 
 beforeEach(() => {
     jest.useFakeTimers();

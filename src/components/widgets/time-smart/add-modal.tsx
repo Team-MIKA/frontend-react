@@ -12,7 +12,7 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { addCategory, categoriesState } from "@components/time-smart/registration.store";
+import { addCategory, categoriesState } from "@components/widgets/time-smart/registration.store";
 import { log } from "@helpers/logger";
 
 function AddModal(props: { open: boolean; onClose: () => void }) {

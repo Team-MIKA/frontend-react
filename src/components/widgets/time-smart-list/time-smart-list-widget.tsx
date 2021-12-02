@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue } from "@chakra-ui/react";
 import { useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
-import { tableRowState } from "@components/time-smart-list/logged-registrations.store";
+import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
 
 function TimeSmartList() {
     const data = useRecoilValue(tableRowState);

@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MutableSnapshot, RecoilRoot } from "recoil";
-import { registrationsState } from "@components/time-smart-list/logged-registrations.store";
-import TimeSmartList from "@components/time-smart-list/time-smart-list-widget";
-import { categoriesState } from "@components/time-smart/registration.store";
+import { registrationsState } from "@components/widgets/time-smart-list/logged-registrations.store";
+import TimeSmartList from "@components/widgets/time-smart-list/time-smart-list-widget";
+import { categoriesState } from "@components/widgets/time-smart/registration.store";
 
 let rowPause;
 let rowMeeting;
