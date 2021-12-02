@@ -1,14 +1,10 @@
 import { atom } from "recoil";
-
-export interface Card {
-    title: string;
-    id: string;
-}
+import { Widget } from "./widget";
 
 export interface Workspace {
     id: string;
     title: string;
-    cards: Card[];
+    widgets: Widget[];
 }
 
 export const WorkspaceListState = atom({
@@ -18,5 +14,5 @@ export const WorkspaceListState = atom({
 
 export const WorkspaceState = atom({
     key: "workspace",
-    default: { id: "", title: "", cards: [] as Card[] } as Workspace,
+    default: { id: "", title: "", widgets: [] as Widget[] } as Workspace,
 });
