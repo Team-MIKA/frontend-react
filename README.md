@@ -14,12 +14,24 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server:
+Run following command to generate services for endpoints
+```bash
+npm run types:openapi
+# or
+yarn types:openapi
+```
+
+Set the base Url to the backend servers IP:
+file: src/services/openapi/core/OpenAPI.ts
+property: base
+value: Backend IP ("http://localhost:5000")
 
 ```bash
 npm run dev
 # or
 yarn dev
 ```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
