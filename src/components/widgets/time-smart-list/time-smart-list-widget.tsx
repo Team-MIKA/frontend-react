@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue } from "@chakra-ui/react";
+import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, TableCaption } from "@chakra-ui/react";
 import { useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
 import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
+import { log } from "@helpers/logger";
 
 function TimeSmartList() {
     const data = useRecoilValue(tableRowState);
-    console.log(data);
+    log(data);
 
     //const Registrations = useRecoilValue(RegistrationState);
 
@@ -49,7 +50,7 @@ function TimeSmartList() {
             bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
             sx={{
                 "&::-webkit-scrollbar": {
-                    width: "16px",
+                    width: "0px",
                     borderRadius: "8px",
                     backgroundColor: `rgba(0, 0, 0, 0.05)`,
                 },
@@ -61,6 +62,7 @@ function TimeSmartList() {
             overflowY={"scroll"}
         >
             <Table {...getTableProps()}>
+                <TableCaption>TimeSmart Registrations</TableCaption>
                 <Thead>
                     {headerGroups.map((headerGroup) => (
                         <Tr key={headerGroup} {...headerGroup.getHeaderGroupProps()}>
