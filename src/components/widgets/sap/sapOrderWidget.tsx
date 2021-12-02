@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Container, Heading, Spinner, useToast } from "@chakra-ui/react";
+import { Spinner, useToast } from "@chakra-ui/react";
 import { Column } from "react-table";
 import { useRecoilState } from "recoil";
 import SelectableTable from "@components/widgets/sap/table";
@@ -44,12 +44,7 @@ const SapOrderWidget: FC = () => {
 
     if (orders.length == 0) return <Spinner />;
 
-    return (
-        <Container>
-            <Heading right="0">Test Site</Heading>
-            <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
-        </Container>
-    );
+    return <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />;
 };
 
 export default SapOrderWidget;
