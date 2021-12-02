@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { Workspace, WorkspaceListState } from "@store/index";
+import { WorkspaceService } from "../../services/openapi";
 
 const DeleteWorkspaceModal = ({
     workspace,
@@ -25,10 +26,13 @@ const DeleteWorkspaceModal = ({
     const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
     const removeWorkspace = (workspaceId: string) => {
-        const filteredWorkspaces = workspaces.filter((x) => x.id !== workspaceId);
-        setWorkspaces(filteredWorkspaces);
-
-        return onClose();
+        WorkspaceService.deleteWorkspace(workspaceId).then((result) => {
+            if (result) {
+                const filteredWorkspaces = workspaces.filter((x) => x.id !== workspaceId);
+                setWorkspaces(filteredWorkspaces);
+            }
+        });
+        onClose();
     };
 
     return (

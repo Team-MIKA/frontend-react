@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { Card, WorkspaceListState } from "@store/workspace";
+import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
 
 const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
     const [title, setTitle] = useState("");
@@ -20,14 +21,13 @@ const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean 
     const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
     const save = () => {
-        // Save to database
-        // Insert generated ID from backend
-        // Add to state
+        const workSpace: WorkspaceDTO = { title: title };
+        WorkspaceService.postWorkspace(workSpace).then((result) => {
+            if (result) {
+                setWorkspaces([...workspaces, { title: title, id: result, cards: [] as Card[] }]);
+            }
+        });
 
-        //Mock db returning ID.
-        const idFromDb = Math.floor(Math.random() * 16).toString();
-
-        setWorkspaces([...workspaces, { title: title, id: idFromDb, cards: [] as Card[] }]);
         setTitle("");
         onClose();
     };
