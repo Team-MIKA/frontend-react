@@ -1,9 +1,9 @@
 import TimeSmartCard from "@components/time-smart/time-smart-card";
-import { Card } from "@store/index";
+import { Widget } from "@store/widget";
 
-const WidgetRender = ({ card }: { card: Card }) => {
-    switch (card.title) {
-        case "TIME SMART":
+const WidgetRender = ({ widget }: { widget: Widget }) => {
+    switch (widget.title) {
+        case "Timesmart Registration":
             return <TimeSmartCard />;
         default:
             return null;
