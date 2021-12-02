@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
-import { AddIcon } from "@chakra-ui/icons";
-import { Box, Button, Heading, useColorModeValue, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
+import { AddIcon, EditIcon } from "@chakra-ui/icons";
+import { Box, Button, Heading, IconButton, useColorModeValue, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
+import DeleteWidget from "@components/workspace/delete-widget";
 import WidgetRender from "@components/workspace/widget-render";
 import { log } from "@helpers/logger";
-import { WorkspaceState } from "@store/workspace";
+import { WorkspaceState, HideOptionsState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
     const { id } = router.query;
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
+    const [hide, setHide] = useRecoilState(HideOptionsState);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -40,7 +42,19 @@ const WorkspaceView: NextPage = () => {
                 </Box>
             </Box>
 
+            <IconButton
+                float={"right"}
+                marginLeft={"2"}
+                colorScheme={useColorModeValue("purple", "orange")}
+                variant="solid"
+                aria-label="Edit Workspace"
+                icon={<EditIcon />}
+                onClick={() => setHide(!hide)}
+            />
+
             <Button
+                float={"right"}
+                hidden={hide}
                 leftIcon={<AddIcon />}
                 onClick={onOpen}
                 colorScheme={useColorModeValue("purple", "orange")}
@@ -54,6 +68,7 @@ const WorkspaceView: NextPage = () => {
             <Wrap mt={4}>
                 {workspace.widgets?.map((widget, key) => (
                     <WrapItem key={key}>
+                        <DeleteWidget widgetId={widget.id} />
                         <WidgetRender widget={widget} />
                     </WrapItem>
                 ))}
