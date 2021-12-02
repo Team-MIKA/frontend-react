@@ -40,7 +40,6 @@ const components = {
     },
     Link: {
         baseStyle: (props: ThemingProps) => ({
-            color: mode("#3d7aed", "#ff63c3")(props),
             textUnderlineOffset: 3,
         }),
     },
