@@ -7,6 +7,7 @@ import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import WidgetRender from "@components/workspace/widget-render";
 import { WorkspaceListState, WorkspaceState } from "@store/workspace";
+import { WorkspaceService } from "../../services/openapi";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
@@ -17,10 +18,12 @@ const WorkspaceView: NextPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
-        const workspaceId = router.query.id as string;
-        let workspace = workspaces.find((x) => x.id == workspaceId);
-        if (workspace) setWorkspace(workspace);
-    }, [router.query.id, setWorkspace, workspaces]);
+        WorkspaceService.getWorkspace1(router.query.id as string).then((result) => {
+            if (result) {
+                setWorkspace(result);
+            }
+        });
+    }, []);
 
     return (
         <>
@@ -44,9 +47,9 @@ const WorkspaceView: NextPage = () => {
             <AddWidgetModal onClose={onClose} isOpen={isOpen} />
 
             <Wrap mt={4}>
-                {workspace.widgets?.map((card, key) => (
+                {workspace.widgets?.map((widget, key) => (
                     <WrapItem key={key}>
-                        <WidgetRender card={card} />
+                        <WidgetRender widget={widget} />
                     </WrapItem>
                 ))}
             </Wrap>

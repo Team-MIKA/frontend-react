@@ -12,7 +12,8 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Widget, WorkspaceListState } from "@store/workspace";
+import { Widget } from "@store/widget";
+import { WorkspaceListState } from "@store/workspace";
 import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
 
 const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {

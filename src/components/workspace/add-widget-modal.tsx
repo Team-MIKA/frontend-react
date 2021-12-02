@@ -14,6 +14,7 @@ import {
 import { useRecoilState } from "recoil";
 import { Widget, WidgetListState } from "@store/widget";
 import { WorkspaceState } from "@store/workspace";
+import { WorkspaceService } from "../../services/openapi";
 
 const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
@@ -23,7 +24,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
     const close = () => {
         setSelectedWidget({} as Widget);
 
-        return onClose();
+        onClose();
     };
 
     const handleClick = (widget: Widget) => {
@@ -31,14 +32,18 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
     };
 
     const save = () => {
-        setWorkspace({
-            ...workspace,
-            widgets: [...workspace.widgets, selectedWidget],
+        WorkspaceService.postWorkspace1(workspace.id, { id: selectedWidget.id }).then((result) => {
+            if (result) {
+                setWorkspace({
+                    ...workspace,
+                    widgets: [...workspace.widgets, selectedWidget],
+                });
+            }
         });
 
         setSelectedWidget({} as Widget);
 
-        return onClose();
+        onClose();
     };
 
     return (
