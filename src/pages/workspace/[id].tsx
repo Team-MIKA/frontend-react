@@ -44,7 +44,7 @@ const WorkspaceView: NextPage = () => {
             <AddWidgetModal onClose={onClose} isOpen={isOpen} />
 
             <Wrap mt={4}>
-                {workspace.cards?.map((card, key) => (
+                {workspace.widgets?.map((card, key) => (
                     <WrapItem key={key}>
                         <WidgetRender card={card} />
                     </WrapItem>
