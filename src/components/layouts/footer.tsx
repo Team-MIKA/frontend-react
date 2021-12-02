@@ -11,13 +11,16 @@ import {
     HTMLChakraProps,
     useColorModeValue,
     useToken,
+    Flex,
 } from "@chakra-ui/react";
 import { FullLogo } from "@components/logo";
 
 const Copyright: FC<TextProps> = (props) => (
-    <Text fontSize="sm" {...props}>
-        &copy; {new Date().getFullYear()} Business assistant, Inc. All rights reserved.
-    </Text>
+    <Flex>
+        <Text fontSize="sm" {...props}>
+            &copy; {new Date().getFullYear()} Business assistant, Inc. All rights reserved.
+        </Text>
+    </Flex>
 );
 
 const SocialMediaLinks = (props: ButtonGroupProps) => (
@@ -53,13 +56,11 @@ const GtiHubLogo = (props: HTMLChakraProps<"svg">) => {
 };
 
 const Footer = () => (
-    <Box as="footer" role="contentinfo" mx="auto" maxW="7xl" py="12" px={{ base: "4", md: "8" }}>
-        <Stack>
-            <Stack direction="row" spacing="4" align="center" justify="space-between">
-                <FullLogo />
-                <SocialMediaLinks />
-            </Stack>
+    <Box as="footer" role="contentinfo" mx="auto" maxW="container.xl" py="12" px={{ base: "4", md: "8" }}>
+        <Stack direction="row" spacing="4" align="center" justify="space-between">
+            <FullLogo />
             <Copyright alignSelf={{ base: "center", sm: "start" }} />
+            <SocialMediaLinks />
         </Stack>
     </Box>
 );
