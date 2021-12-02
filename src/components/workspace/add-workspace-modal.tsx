@@ -12,7 +12,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Card, WorkspaceListState } from "@store/workspace";
+import { Widget, WorkspaceListState } from "@store/workspace";
 import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
 
 const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
@@ -24,7 +24,7 @@ const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean 
         const workSpace: WorkspaceDTO = { title: title };
         WorkspaceService.postWorkspace(workSpace).then((result) => {
             if (result) {
-                setWorkspaces([...workspaces, { title: title, id: result, cards: [] as Card[] }]);
+                setWorkspaces([...workspaces, { title: title, id: result, widgets: [] as Widget[] }]);
             }
         });
 
