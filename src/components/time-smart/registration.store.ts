@@ -10,8 +10,8 @@ export function getCategoriesAPICall(): string[] {
     return ["Quality", "Error", "Meeting", "Pause"];
 }
 
-export function addCategory(state, newCategory: string) {
-    const [categories, setCategories]: [string[], SetterOrUpdater<string[]>] = state;
+export function addCategory(state: [string[], SetterOrUpdater<string[]>], newCategory: string) {
+    const [categories, setCategories] = state;
     if (categories.some((cat) => cat === newCategory)) {
         log("Cannot add category of same name!");
         return;

@@ -1,9 +1,9 @@
 import { ListItem, UnorderedList } from "@chakra-ui/layout";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { GroupMemberState } from "@store/index";
 
 const GroupList = () => {
-    const [value, setValue] = useRecoilState(GroupMemberState);
+    const value = useRecoilValue(GroupMemberState);
 
     return (
         <>

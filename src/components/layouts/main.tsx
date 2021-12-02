@@ -10,6 +10,7 @@ const Main: NextPage = ({ children }) => {
         new TextNavItem("/", "Home"),
         new TextNavItem("/settings", "Settings"),
         new TextNavItem("/workspace", "Workspaces"),
+        new TextNavItem("/examples", "Examples"),
     ];
 
     return (

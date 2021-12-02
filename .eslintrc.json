@@ -7,6 +7,9 @@
         "jest": true,
         "node": true
     },
+    "globals": {
+        "Promise": "off"
+    },
     "rules": {
         "no-unused-vars": "off",
         "react/require-default-props": 0,

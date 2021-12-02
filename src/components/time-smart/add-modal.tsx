@@ -16,7 +16,7 @@ import { addCategory, categoriesState } from "@components/time-smart/registratio
 import { log } from "@helpers/logger";
 
 function AddModal(props: { open: boolean; onClose: () => void }) {
-    const initialRef = React.useRef();
+    const initialRef = React.useRef(null);
     const [name, setName] = useState("");
     const state = useRecoilState(categoriesState);
 
@@ -26,8 +26,8 @@ function AddModal(props: { open: boolean; onClose: () => void }) {
         addCategory(state, name);
     };
 
-    const handleKeypress = (e) => {
-        if (e.code === "Enter") {
+    const handleKeypress = (event: React.KeyboardEvent) => {
+        if (event.code === "Enter") {
             closing();
         }
     };
