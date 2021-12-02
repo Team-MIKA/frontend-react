@@ -6,13 +6,12 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import WidgetRender from "@components/workspace/widget-render";
-import { WorkspaceListState, WorkspaceState } from "@store/workspace";
+import { WorkspaceState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
 
-    const [workspaces] = useRecoilState(WorkspaceListState);
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,7 +22,7 @@ const WorkspaceView: NextPage = () => {
                 setWorkspace(result);
             }
         });
-    }, []);
+    }, [router.query.id, setWorkspace]);
 
     return (
         <>
