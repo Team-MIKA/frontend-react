@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import { Container, Heading, Spinner, useToast } from "@chakra-ui/react";
 import { Column } from "react-table";
 import { useRecoilState } from "recoil";
-import TestBox from "@components/test-box";
 import SelectableTable from "@components/widgets/sap/table";
 import { log } from "@helpers/logger";
 import api from "@store/axios";
@@ -49,8 +48,6 @@ const SapOrderWidget: FC = () => {
         <Container>
             <Heading right="0">Test Site</Heading>
             <SelectableTable columns={columns} data={orders} title={"Orders"} onSelect={onRowClick} />
-            <TestBox title="Sap Materials" />
-            <TestBox title="Time Smart" />
         </Container>
     );
 };
