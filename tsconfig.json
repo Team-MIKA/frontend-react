@@ -17,7 +17,8 @@
         "paths": {
             "@components/*": ["./components/*"],
             "@store/*": ["./store/*"],
-            "@helpers/*": ["./helpers/*"]
+            "@helpers/*": ["./helpers/*"],
+            "@generated/*": ["./services/openapi/*"]
         },
         "incremental": true
     },
