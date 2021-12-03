@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import { Heading } from "@chakra-ui/react";
 
 interface ClockProps {
@@ -14,13 +14,12 @@ export const TimeClock = () => {
 };
 
 const LiveClock: FC<ClockProps> = ({ format }) => {
-    const currentTime = format(new Date());
-
-    const [time, setTime] = useState<string>(currentTime);
-
+    const currentTime = useCallback(() => format(new Date()), [format]);
+    const now = currentTime();
+    const [time, setTime] = useState<string>(now);
     useEffect(() => {
         let timer = setInterval(() => {
-            setTime(currentTime);
+            setTime(currentTime());
         }, 100);
         return () => clearInterval(timer);
     }, [currentTime, setTime]);
