@@ -16,3 +16,8 @@ export const WorkspaceState = atom({
     key: "workspace",
     default: { id: "", title: "", widgets: [] as Widget[] } as Workspace,
 });
+
+export const HideOptionsState = atom({
+    key: "edit",
+    default: true,
+});

@@ -1,5 +1,5 @@
 import { act, render, screen } from "@testing-library/react";
-import StopWatch from "@components/time-smart/stop-watch";
+import StopWatch from "@components/widgets/time-smart/stop-watch";
 
 beforeEach(() => {
     jest.useFakeTimers();

@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Heading, Spacer, Flex, useColorModeValue } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
-import AddButton from "@components/time-smart/add-button";
-import LiveClock from "@components/time-smart/live-clock";
-import { categoriesState } from "@components/time-smart/registration.store";
-import RegistrationButtons from "@components/time-smart/regitstration-buttons";
+import AddButton from "@components/widgets/time-smart/add-button";
+import LiveClock from "@components/widgets/time-smart/live-clock";
+import { categoriesState } from "@components/widgets/time-smart/registration.store";
+import RegistrationButtons from "@components/widgets/time-smart/regitstration-buttons";
 function TimeSmartCard() {
     const categories = useRecoilValue(categoriesState);
 
@@ -14,9 +14,11 @@ function TimeSmartCard() {
             borderRadius="lg"
             borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
             overflow="hidden"
+            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+            minW={"600px"}
         >
             <Box m={"4"} p={"2"}>
-                <Flex>
+                <Flex minH={"55px"}>
                     <Heading size="lg">TimeSmart</Heading>
                     <Spacer />
                     <AddButton />

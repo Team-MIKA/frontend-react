@@ -7,7 +7,7 @@ import AddWorkspaceModal from "@components/workspace/add-workspace-modal";
 import WorkspaceList from "@components/workspace/workspace-list";
 import { WidgetListState } from "@store/widget";
 import { WorkspaceListState } from "@store/workspace";
-import { WidgetService, WorkspaceService } from "../../services/openapi";
+import { WorkspaceService } from "../../services/openapi";
 
 const WorkspacePage: NextPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -16,13 +16,9 @@ const WorkspacePage: NextPage = () => {
 
     useEffect(() => {
         WorkspaceService.getWorkspace().then((result) => {
-            setWorkspaces(result);
+            if (result) setWorkspaces(result);
         });
-
-        WidgetService.getWidget().then((result) => {
-            setWidgets(result);
-        });
-    }, []);
+    }, [setWorkspaces]);
     return (
         <>
             <Heading mb={4}>Workspaces</Heading>

@@ -1,7 +1,7 @@
 import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import TimerModal from "@components/time-smart/timer-modal";
+import TimerModal from "@components/widgets/time-smart/timer-modal";
 
 test("TimerModal should render with text 'test1'", () => {
     render(<TimerModal open={true} onClose={jest.fn()} text={"test1"} />);

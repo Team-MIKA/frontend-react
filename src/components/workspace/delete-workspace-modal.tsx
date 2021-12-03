@@ -9,7 +9,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { Workspace, WorkspaceListState } from "@store/index";
+import { Workspace, WorkspaceListState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
 
 const DeleteWorkspaceModal = ({

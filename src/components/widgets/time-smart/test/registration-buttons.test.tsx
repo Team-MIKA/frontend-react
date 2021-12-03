@@ -1,7 +1,7 @@
 import React from "react";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RegistrationButtons from "@components/time-smart/regitstration-buttons";
+import RegistrationButtons from "@components/widgets/time-smart/regitstration-buttons";
 
 beforeEach(() => {
     const buttonArray = ["hej", "med", "dig"];

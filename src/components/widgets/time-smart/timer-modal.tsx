@@ -11,7 +11,7 @@ import {
     ModalOverlay,
     useColorModeValue,
 } from "@chakra-ui/react";
-import StopWatch from "@components/time-smart/stop-watch";
+import StopWatch from "@components/widgets/time-smart/stop-watch";
 
 function TimerModal(props: { open: boolean; onClose: () => void; text: string }) {
     return (

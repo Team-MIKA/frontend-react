@@ -1,10 +1,13 @@
 import React from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import { Button, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import AddModal from "@components/time-smart/add-modal";
+import { useRecoilValue } from "recoil";
+import AddModal from "@components/widgets/time-smart/add-modal";
+import { HideOptionsState } from "@store/workspace";
 
 function AddButton() {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const hide = useRecoilValue(HideOptionsState);
     return (
         <>
             <Button
@@ -12,6 +15,7 @@ function AddButton() {
                 bg={useColorModeValue("#ffffff40", "whiteAlpha.200")}
                 variant={"outline"}
                 onClick={() => onOpen()}
+                hidden={hide}
             >
                 {<AddIcon w={6} h={6} />}
             </Button>

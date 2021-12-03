@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MutableSnapshot, RecoilRoot } from "recoil";
-import { categoriesState } from "@components/time-smart/registration.store";
-import TimeSmartCard from "@components/time-smart/time-smart-card";
+import { categoriesState } from "@components/widgets/time-smart/registration.store";
+import TimeSmartCard from "@components/widgets/time-smart/time-smart-card";
 
 test("TimerModal should render button with text 'test1'", () => {
     const initializeState = ({ set }: MutableSnapshot) => {
