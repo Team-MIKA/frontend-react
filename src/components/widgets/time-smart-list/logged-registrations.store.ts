@@ -17,14 +17,7 @@ export const tableRowState = selector<tableRow[]>({
 });
 
 export function getCategoriesAPICall(): registration[] {
-    return [
-        {
-            category: "Meeting",
-            startTime: new Date(0),
-            endTime: new Date(0),
-            orderId: "5",
-        },
-    ];
+    return [];
 }
 
 export function addRegistration(state, newRegistration) {

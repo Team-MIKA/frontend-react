@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Modal,
     ModalBody,
@@ -15,12 +15,18 @@ import { useRecoilState } from "recoil";
 import { log } from "@helpers/logger";
 import { Widget, WidgetListState } from "@store/widget";
 import { WorkspaceState } from "@store/workspace";
-import { WorkspaceService } from "../../services/openapi";
+import { WidgetService, WorkspaceService } from "../../services/openapi";
 
 const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
-    const [widgets] = useRecoilState(WidgetListState);
+    const [widgets, setWidgets] = useRecoilState(WidgetListState);
     const [selectedWidget, setSelectedWidget] = useState({} as Widget);
+
+    useEffect(() => {
+        WidgetService.getWidget().then((result) => {
+            if (result) setWidgets(result);
+        });
+    });
 
     const close = () => {
         setSelectedWidget({} as Widget);
