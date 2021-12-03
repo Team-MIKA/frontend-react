@@ -6,17 +6,11 @@ import { useRouter } from "next/router";
 export const LinkItem = ({ href, children }: PropsWithChildren<{ href: string }>) => {
     const { pathname } = useRouter();
     const active = pathname === href;
-    const inactiveColor = useColorModeValue("gray200", "whiteAlpha.900");
-    const highlightColor = "#202023";
+    const activeBackground = useColorModeValue("pink", "teal");
 
     return (
         <NextLink href={href}>
-            <Link
-                p={2}
-                bg={active ? "teal" : undefined}
-                borderRadius="7px"
-                color={active ? highlightColor : inactiveColor}
-            >
+            <Link p={2} bg={active ? activeBackground : undefined} borderRadius="7px">
                 {children}
             </Link>
         </NextLink>

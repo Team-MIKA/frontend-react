@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, SlideFade } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
@@ -13,8 +13,9 @@ function Website({ Component, router, pageProps }: AppProps) {
                 <Fonts />
                 <Layout>
                     <AnimatePresence exitBeforeEnter initial={true}>
-                        {/* How next js renders our pages */}
-                        <Component {...pageProps} key={router.route} />
+                        <SlideFade key={router.route} in={true}>
+                            <Component {...pageProps} key={router.route} />
+                        </SlideFade>
                     </AnimatePresence>
                 </Layout>
             </RecoilRoot>
