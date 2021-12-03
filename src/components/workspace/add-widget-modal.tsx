@@ -26,7 +26,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
         WidgetService.getWidget().then((result) => {
             if (result) setWidgets(result);
         });
-    });
+    }, [setWidgets]);
 
     const close = () => {
         setSelectedWidget({} as Widget);
