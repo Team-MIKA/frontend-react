@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom, selector, SetterOrUpdater } from "recoil";
 import { tableRow, tableRowDisplay } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { registration } from "@components/widgets/time-smart/registration";
 import { log } from "@helpers/logger";
@@ -20,7 +20,10 @@ export function getCategoriesAPICall(): registration[] {
     return [];
 }
 
-export function addRegistration(state, newRegistration) {
+export function addRegistration(
+    state: [registration[], SetterOrUpdater<registration[]>],
+    newRegistration: registration
+) {
     const [registrations, setRegistrations] = state;
 
     const newRegs = [...registrations, newRegistration];

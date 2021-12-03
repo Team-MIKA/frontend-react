@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Heading } from "@chakra-ui/react";
 
-function LiveClock() {
-    function currentTime() {
-        return new Date().toLocaleTimeString("en-UK");
-    }
-    const now = currentTime();
-    const [time, setTime] = useState(now);
+interface ClockProps {
+    format: (date: Date) => string;
+}
+
+export const TimeClock = () => {
+    return (
+        <Heading data-testid={"time"} suppressHydrationWarning size={"md"}>
+            <LiveClock format={(date) => date.toLocaleTimeString("en-UK")} />
+        </Heading>
+    );
+};
+
+const LiveClock: FC<ClockProps> = ({ format }) => {
+    const currentTime = format(new Date());
+
+    const [time, setTime] = useState<string>(currentTime);
+
     useEffect(() => {
-        let isMounted = true;
         let timer = setInterval(() => {
-            if (isMounted) {
-                setTime(currentTime);
-            }
+            setTime(currentTime);
         }, 100);
         return () => clearInterval(timer);
-    }, []);
-    return (
-        <>
-            <Heading data-testid={"time"} suppressHydrationWarning size={"md"}>
-                {time}
-            </Heading>
-        </>
-    );
-}
+    }, [currentTime, setTime]);
+    return <>{time}</>;
+};
 
 export default LiveClock;
