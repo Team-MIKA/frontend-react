@@ -1,7 +1,11 @@
-import { Box, Container, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Container, Heading } from "@chakra-ui/react";
 import type { NextPage } from "next";
+import { log } from "../helpers/logger";
+import { absoluteUrl } from "../lib";
+import instance from "../store/axios";
 
-const Home: NextPage = () => {
+const Home: NextPage<{ origin: string }> = ({ origin }) => {
+    instance.defaults.baseURL = origin + "/api";
     return (
         <Box>
             <Container>
@@ -14,9 +18,15 @@ const Home: NextPage = () => {
                     </Box>
                 </Box>
             </Container>
-            <SimpleGrid minChildWidth="25%" spacing="40px"></SimpleGrid>
         </Box>
     );
+};
+
+Home.getInitialProps = async ({ req }) => {
+    log(absoluteUrl(req));
+    const { host } = absoluteUrl(req);
+    const origin = "http://" + host;
+    return { origin };
 };
 
 export default Home;
