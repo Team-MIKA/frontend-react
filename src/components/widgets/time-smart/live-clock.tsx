@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 
 interface ClockProps {
     format: (date: Date) => string;
@@ -7,7 +7,7 @@ interface ClockProps {
 
 export const TimeClock = () => {
     return (
-        <Heading data-testid={"time"} suppressHydrationWarning size={"md"}>
+        <Heading data-testid={"time"} size={"md"}>
             <LiveClock format={(date) => date.toLocaleTimeString("en-UK")} />
         </Heading>
     );
@@ -23,7 +23,7 @@ const LiveClock: FC<ClockProps> = ({ format }) => {
         }, 100);
         return () => clearInterval(timer);
     }, [currentTime, setTime]);
-    return <>{time}</>;
+    return <Box suppressHydrationWarning>{time}</Box>;
 };
 
 export default LiveClock;
