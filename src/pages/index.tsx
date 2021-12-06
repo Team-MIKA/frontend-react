@@ -14,7 +14,6 @@ import {
 import type { NextPage } from "next";
 import LiveClock from "../components/widgets/time-smart/live-clock";
 
-
 const Home: NextPage<{ origin: string }> = ({ origin }) => {
     instance.defaults.baseURL = origin + "/api";
     return (

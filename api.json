@@ -7,9 +7,7 @@
     "paths": {
         "/Settings": {
             "get": {
-                "tags": [
-                    "Settings"
-                ],
+                "tags": ["Settings"],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -63,9 +61,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "Settings"
-                ],
+                "tags": ["Settings"],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -131,9 +127,7 @@
         },
         "/Settings/test/{id}": {
             "get": {
-                "tags": [
-                    "Settings"
-                ],
+                "tags": ["Settings"],
                 "parameters": [
                     {
                         "name": "id",
@@ -191,9 +185,7 @@
         },
         "/Widget/CreateWidget": {
             "post": {
-                "tags": [
-                    "Widget"
-                ],
+                "tags": ["Widget"],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -259,9 +251,7 @@
         },
         "/Widget/ListWidgets": {
             "get": {
-                "tags": [
-                    "Widget"
-                ],
+                "tags": ["Widget"],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -317,9 +307,7 @@
         },
         "/Widget/DeleteWidget/{id}": {
             "delete": {
-                "tags": [
-                    "Widget"
-                ],
+                "tags": ["Widget"],
                 "parameters": [
                     {
                         "name": "id",
@@ -377,9 +365,7 @@
         },
         "/Workspace/ListWorkspaces": {
             "get": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -435,9 +421,7 @@
         },
         "/Workspace/GetById/{id}": {
             "get": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "parameters": [
                     {
                         "name": "id",
@@ -495,9 +479,7 @@
         },
         "/Workspace/CreateWorkspace": {
             "post": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -563,9 +545,7 @@
         },
         "/Workspace/DeleteWorkspace/{id}": {
             "delete": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "parameters": [
                     {
                         "name": "id",
@@ -623,9 +603,7 @@
         },
         "/Workspace/AddWidgetToWorkspace/{id}": {
             "post": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "parameters": [
                     {
                         "name": "id",
@@ -702,9 +680,7 @@
         },
         "/Workspace/RemoveWidgetFromWorkspace/{id}": {
             "delete": {
-                "tags": [
-                    "Workspace"
-                ],
+                "tags": ["Workspace"],
                 "parameters": [
                     {
                         "name": "id",
@@ -718,7 +694,6 @@
                 ],
                 "responses": {
                     "200": {
-
                         "description": "Success",
                         "content": {
                             "text/plain": {
