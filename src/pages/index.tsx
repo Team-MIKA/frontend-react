@@ -14,12 +14,20 @@ import {
 import type { NextPage } from "next";
 import LiveClock from "../components/widgets/time-smart/live-clock";
 
-const Home: NextPage = () => {
+const Home: NextPage<{ origin: string }> = ({ origin }) => {
+    instance.defaults.baseURL = origin + "/api";
     return (
         <Container maxW={"container.xl"}>
             <BasicStatistics />
         </Container>
     );
+};
+
+Home.getInitialProps = async ({ req }) => {
+    log(absoluteUrl(req));
+    const { host } = absoluteUrl(req);
+    const origin = "http://" + host;
+    return { origin };
 };
 
 export default Home;

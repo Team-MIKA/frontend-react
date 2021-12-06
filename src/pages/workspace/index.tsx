@@ -11,6 +11,7 @@ import { WorkspaceService } from "../../services/openapi";
 const WorkspacePage: NextPage = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [, setWorkspaces] = useRecoilState(WorkspaceListState);
+
     useEffect(() => {
         WorkspaceService.getWorkspace().then((result) => {
             if (result) {
