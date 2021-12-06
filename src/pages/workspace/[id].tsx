@@ -7,9 +7,10 @@ import { useRecoilState } from "recoil";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import DeleteWidget from "@components/workspace/delete-widget";
 import WidgetRender from "@components/workspace/widget-render";
+import { WorkspaceService } from "@generated/services/WorkspaceService";
 import { log } from "@helpers/logger";
-import { WorkspaceState, HideOptionsState } from "@store/workspace";
-import { WorkspaceService } from "../../services/openapi";
+import { Widget } from "@store/widget";
+import { WorkspaceState, HideOptionsState, Workspace } from "@store/workspace";
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
@@ -27,7 +28,11 @@ const WorkspaceView: NextPage = () => {
 
         WorkspaceService.getWorkspace1(workspaceId).then((result) => {
             if (result) {
-                setWorkspace(result);
+                setWorkspace({
+                    id: result.id,
+                    title: result.title,
+                    widgets: result.widgets as Widget[],
+                } as Workspace);
             }
         });
     }, [id, setWorkspace]);

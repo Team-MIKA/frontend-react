@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import { useRecoilState } from "recoil";
 import AddWorkspaceModal from "@components/workspace/add-workspace-modal";
 import WorkspaceList from "@components/workspace/workspace-list";
-import { WorkspaceListState } from "@store/workspace";
+import { Workspace, WorkspaceListState } from "@store/workspace";
 import { WorkspaceService } from "../../services/openapi";
 
 const WorkspacePage: NextPage = () => {
@@ -14,9 +14,12 @@ const WorkspacePage: NextPage = () => {
 
     useEffect(() => {
         WorkspaceService.getWorkspace().then((result) => {
-            if (result) setWorkspaces(result);
+            if (result) {
+                setWorkspaces(result.map((w) => w as Workspace));
+            }
         });
     }, [setWorkspaces]);
+
     return (
         <>
             <Heading mb={4}>Workspaces</Heading>

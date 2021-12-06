@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { Widget } from "./widget";
+import { Widget } from "@store/widget";
 
 export interface Workspace {
     id: string;

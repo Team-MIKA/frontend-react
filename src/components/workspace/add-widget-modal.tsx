@@ -24,7 +24,9 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
 
     useEffect(() => {
         WidgetService.getWidget().then((result) => {
-            if (result) setWidgets(result);
+            if (result) {
+                setWidgets(result.map((w) => w as Widget));
+            }
         });
     }, [setWidgets]);
 

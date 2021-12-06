@@ -1,5 +1,5 @@
 import { act, render, screen } from "@testing-library/react";
-import LiveClock from "@components/widgets/time-smart/live-clock";
+import { TimeClock } from "@components/widgets/time-smart/live-clock";
 
 beforeEach(() => {
     jest.useFakeTimers();
@@ -7,7 +7,7 @@ beforeEach(() => {
     jest.spyOn(global, "setInterval");
 
     act(() => {
-        render(<LiveClock />);
+        render(<TimeClock />);
     });
 });
 

@@ -22,7 +22,7 @@ export function tableRowDisplay(registrations: registration[]): tableRow[] {
     }));
 }
 
-function CategoryTag(tag) {
+function CategoryTag(tag: string) {
     function GetTag() {
         //const categories = ["Quality", "Error", "Meeting", "Pause"];
         const categories = useRecoilValue(categoriesState);
@@ -39,8 +39,8 @@ function CategoryTag(tag) {
     return <GetTag />;
 }
 
-function findColor(category, categories) {
+function findColor(category: string, categories: string[]) {
     const colors = ["pink", "teal", "green", "orange", "blue", "purple"];
-    const match_category = (element) => category === element;
+    const match_category = (element: string) => category === element;
     return colors[categories.findIndex(match_category)];
 }
