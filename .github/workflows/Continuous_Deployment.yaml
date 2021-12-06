@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: 888aaen/business-assistant:latest
+          tags: user/business-assistant:latest
