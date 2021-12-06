@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Router from "next/router";
 import { RecoilRoot } from "recoil";
-import { Workspace, WorkspaceListState } from "@store/index";
+import { Workspace, WorkspaceListState } from "@store/workspace";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 import WorkspaceCard from "./workspace-card";
 import WorkspaceList from "./workspace-list";
@@ -15,7 +15,7 @@ describe("WorkspaceCard", () => {
     beforeEach(() => {
         render(
             <RecoilRoot>
-                <WorkspaceCard workspace={workspace}></WorkspaceCard>
+                <WorkspaceCard workspace={workspace} />
             </RecoilRoot>
         );
     });
@@ -54,7 +54,7 @@ describe("DeleteWorkspaceModal", () => {
     beforeEach(() => {
         render(
             <RecoilRoot>
-                <DeleteWorkspaceModal workspace={workspace} isOpen={true} onClose={onClose}></DeleteWorkspaceModal>
+                <DeleteWorkspaceModal workspace={workspace} isOpen={true} onClose={onClose} />
             </RecoilRoot>
         );
     });
@@ -79,25 +79,25 @@ describe("WorkspaceList", () => {
     const workspace1 = { title: "hest", id: "123" } as Workspace;
     const workspace2 = { title: "ged", id: "321" } as Workspace;
 
-    const initializeState = ({ set }: any) => {
-        set(WorkspaceListState, [workspace1, workspace2]);
-    };
-
     beforeEach(() => {
         render(
-            <RecoilRoot initializeState={initializeState}>
-                <WorkspaceList></WorkspaceList>
+            <RecoilRoot
+                initializeState={({ set }) => {
+                    set(WorkspaceListState, [workspace1, workspace2]);
+                }}
+            >
+                <WorkspaceList />
             </RecoilRoot>
         );
     });
 
-    test("Display title of workspace1", () => {
-        const workspaceTitle1 = screen.findByText(workspace1.title);
+    test("Display title of workspace1", async () => {
+        const workspaceTitle1 = await screen.findByText(workspace1.title!);
 
-        expect(workspaceTitle1).toBeInTheDocument;
+        expect(workspaceTitle1).toBeInTheDocument();
     });
-    test("Display title of workspace2", () => {
-        const workspaceTitle2 = screen.findByText(workspace2.title);
-        expect(workspaceTitle2).toBeInTheDocument;
+    test("Display title of workspace2", async () => {
+        const workspaceTitle2 = await screen.findByText(workspace2.title!);
+        expect(workspaceTitle2).toBeInTheDocument();
     });
 });

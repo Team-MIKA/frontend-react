@@ -2,8 +2,8 @@ import React from "react";
 import { IconButton } from "@chakra-ui/button";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { WorkspaceService } from "@generated/services/WorkspaceService";
 import { HideOptionsState, WorkspaceState } from "@store/workspace";
-import { WorkspaceService } from "services/openapi/services/WorkspaceService";
 
 const DeleteWidget = ({ widgetId }: { widgetId: string }) => {
     const hide = useRecoilValue(HideOptionsState);

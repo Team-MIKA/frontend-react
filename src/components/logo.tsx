@@ -23,24 +23,30 @@ const LogoBox = styled.span`
 `;
 
 const Logo: FC = () => {
-    const cloudLogoPath = `/logo.svg`; //TODO ${useColorModeValue("", "-dark")} Make dark mode logo
     return (
         <NextLink href="/" passHref>
             <Link>
-                <LogoBox>
-                    <Image src={cloudLogoPath} width={20} height={20} alt="logo" />
-                    <Text
-                        color={useColorModeValue("gray.800", "whiteAlpha.900")}
-                        fontFamily='M PLUS Rounded 1c", sans-serif'
-                        fontWeight="bold"
-                        ml={3}
-                    >
-                        Team Mika
-                    </Text>
-                </LogoBox>
+                <FullLogo />
             </Link>
         </NextLink>
     );
 };
 
+export const FullLogo = () => {
+    const cloudLogoPath = `/logo.svg`; //TODO ${useColorModeValue("", "-dark")} Make dark mode logo
+
+    return (
+        <LogoBox>
+            <Image src={cloudLogoPath} width={20} height={20} alt="logo" />
+            <Text
+                color={useColorModeValue("gray.800", "whiteAlpha.900")}
+                fontFamily='M PLUS Rounded 1c", sans-serif'
+                fontWeight="bold"
+                ml={3}
+            >
+                Team Mika
+            </Text>
+        </LogoBox>
+    );
+};
 export default Logo;
