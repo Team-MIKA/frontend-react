@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, TableCaption } from "@chakra-ui/react";
 import { useSortBy, useTable } from "react-table";
-import { useRecoilValue } from "recoil";
-import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
-import { log } from "@helpers/logger";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { registrationsState, tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
+import { registration } from "@components/widgets/time-smart/registration";
+import { publishId } from "@store/order";
+import { TimeSmartService } from "../../../services/openapi";
 
 function TimeSmartList() {
     const data = useRecoilValue(tableRowState);
-    log(data);
+    const setRegistrations = useSetRecoilState(registrationsState);
+    const order = useRecoilValue(publishId);
 
-    //const Registrations = useRecoilValue(RegistrationState);
+    useEffect(() => {
+        console.log(order.id);
+        TimeSmartService.getTimeSmart1(order.id == "" ? null : order.id)
+            .then((registrations) => {
+                setRegistrations(
+                    registrations.map((regDto) => {
+                        return {
+                            category: regDto.category,
+                            startTime: new Date(Date.parse(regDto.startTime)),
+                            endTime: new Date(Date.parse(regDto.endTime)),
+                            orderId: regDto.orderId,
+                        } as registration;
+                    })
+                );
+            })
+            .catch(() => {
+                setRegistrations([]);
+            });
+    }, [setRegistrations, order]);
 
     const columns = React.useMemo(
         () => [

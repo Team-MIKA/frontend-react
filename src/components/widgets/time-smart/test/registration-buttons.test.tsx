@@ -6,7 +6,7 @@ import RegistrationButtons from "@components/widgets/time-smart/regitstration-bu
 beforeEach(() => {
     const buttonArray = ["hej", "med", "dig"];
     act(() => {
-        render(<RegistrationButtons buttons={buttonArray} />);
+        render(<RegistrationButtons buttonCategories={buttonArray} />);
     });
 });
 

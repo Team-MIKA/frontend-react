@@ -1,5 +1,7 @@
+import { CategoryDTO } from "../../../services/openapi";
+
 export interface registration {
-    category: string;
+    category: CategoryDTO;
     startTime: Date;
     endTime: Date;
     orderId: string;

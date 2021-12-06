@@ -1,11 +1,11 @@
 import { atom, selector } from "recoil";
 import { tableRow, tableRowDisplay } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { registration } from "@components/widgets/time-smart/registration";
-import { log } from "@helpers/logger";
+import { CreateRegistrationDTO, TimeSmartService } from "../../../services/openapi";
 
 export const registrationsState = atom({
     key: "registrations",
-    default: getCategoriesAPICall(),
+    default: getRegistrations(),
 });
 
 export const tableRowState = selector<tableRow[]>({
@@ -16,15 +16,22 @@ export const tableRowState = selector<tableRow[]>({
     },
 });
 
-export function getCategoriesAPICall(): registration[] {
+export function getRegistrations(): registration[] {
     return [];
 }
 
-export function addRegistration(state, newRegistration) {
+export function addRegistration(state, newRegistration: registration) {
     const [registrations, setRegistrations] = state;
 
-    const newRegs = [...registrations, newRegistration];
-
-    setRegistrations(newRegs);
-    log(newRegistration);
+    TimeSmartService.postTimeSmart1({
+        categoryId: newRegistration.category.id,
+        orderId: newRegistration.orderId,
+        startTime: newRegistration.startTime,
+        endTime: newRegistration.endTime,
+    } as CreateRegistrationDTO)
+        .then(() => {
+            const newRegs = [...registrations, newRegistration];
+            setRegistrations(newRegs);
+        })
+        .catch(() => {});
 }
