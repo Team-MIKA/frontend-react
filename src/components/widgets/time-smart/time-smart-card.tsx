@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Heading, Spacer, Flex, useColorModeValue } from "@chakra-ui/react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import AddButton from "@components/widgets/time-smart/add-button";
 import LiveClock from "@components/widgets/time-smart/live-clock";
 import { categoriesState } from "@components/widgets/time-smart/registration.store";
 import RegistrationButtons from "@components/widgets/time-smart/regitstration-buttons";
+import { TimeSmartService } from "../../../services/openapi";
 function TimeSmartCard() {
-    const categories = useRecoilValue(categoriesState);
+    const [categories, setCategories] = useRecoilState(categoriesState);
+
+    useEffect(() => {
+        TimeSmartService.getTimeSmart()
+            .then((cats) => {
+                setCategories(cats);
+            })
+            .catch(() => {
+                setCategories([]);
+            });
+    }, [setCategories]);
 
     return (
         <Box
@@ -26,7 +37,7 @@ function TimeSmartCard() {
                 <Box p={"2"}>
                     <LiveClock />
                 </Box>
-                <RegistrationButtons buttons={categories} />
+                <RegistrationButtons buttonCategories={categories} />
             </Box>
         </Box>
     );

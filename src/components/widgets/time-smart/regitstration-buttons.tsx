@@ -5,26 +5,31 @@ import { addRegistration, registrationsState } from "@components/widgets/time-sm
 import TimerModal from "@components/widgets/time-smart/timer-modal";
 import { log } from "@helpers/logger";
 import { publishId } from "@store/order";
+import { CategoryDTO } from "../../../services/openapi";
 
-function RegistrationButtons({ buttons }: { buttons: string[] }) {
-    const [buttonText, setButtonText] = useState("");
+function RegistrationButtons({ buttonCategories }: { buttonCategories: CategoryDTO[] }) {
+    const [selectedCategory, setSelectedCategory] = useState({} as CategoryDTO);
+    const state = useRecoilState(registrationsState);
+    const order = useRecoilValue(publishId);
+
     let buttonColors = useColorModeValue("pink", "teal");
     const { isOpen, onOpen, onClose } = useDisclosure();
     let startTime = new Date();
-    const state = useRecoilState(registrationsState);
 
-    const order = useRecoilValue(publishId);
-    log("order id", order);
-
-    const opening = (buttonText: string) => {
+    const opening = (category: CategoryDTO) => {
         onOpen();
-        setButtonText(buttonText);
+        setSelectedCategory(category);
         startTime = new Date();
     };
 
     const closing = () => {
         const stopTime = new Date();
-        const newReg = { category: buttonText, buttons, startTime: startTime, endTime: stopTime, orderId: order.id };
+        const newReg = {
+            category: selectedCategory,
+            startTime: startTime,
+            endTime: stopTime,
+            orderId: order.id,
+        };
         addRegistration(state, newReg);
         const registrationDuration = Math.floor((stopTime.getTime() - startTime.getTime()) / 1000);
         log(registrationDuration);
@@ -32,20 +37,20 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
     };
     return (
         <SimpleGrid minChildWidth="120px" spacing="20px">
-            {buttons.map((buttonText) => (
+            {buttonCategories.map((category, key) => (
                 <Button
                     disabled={order.id === ""}
                     role={"reg-button"}
                     variant={"outline"}
                     bg={buttonColors}
-                    key={buttonText}
-                    onClick={() => opening(buttonText)}
+                    key={key}
+                    onClick={() => opening(category)}
                 >
-                    {buttonText}
+                    {category.text}
                 </Button>
             ))}
 
-            <TimerModal data-testid={"timer-modal"} open={isOpen} onClose={closing} text={buttonText} />
+            <TimerModal data-testid={"timer-modal"} open={isOpen} onClose={closing} text={selectedCategory.text} />
         </SimpleGrid>
     );
 }

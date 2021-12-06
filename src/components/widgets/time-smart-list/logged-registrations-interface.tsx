@@ -13,8 +13,9 @@ export interface tableRow {
 }
 
 export function tableRowDisplay(registrations: registration[]): tableRow[] {
+    console.log(registrations);
     return registrations.map((input) => ({
-        category: CategoryTag(input.category),
+        category: CategoryTag(input.category.text),
         duration: Math.floor((input.endTime.getTime() - input.startTime.getTime()) / 1000),
         startTime: input.startTime.toISOString().substr(11, 8),
         endTime: input.endTime.toISOString().substr(11, 8),
@@ -22,17 +23,18 @@ export function tableRowDisplay(registrations: registration[]): tableRow[] {
     }));
 }
 
-function CategoryTag(tag) {
+function CategoryTag(categoryText) {
     function GetTag() {
-        //const categories = ["Quality", "Error", "Meeting", "Pause"];
         const categories = useRecoilValue(categoriesState);
-        const color = findColor(tag, categories);
+        const color = findColor(
+            categoryText,
+            categories.map((cat) => cat.text)
+        );
         const colorValue = useColorModeValue(color + ".200", color + ".500");
         const textColorValue = useColorModeValue("black", "white");
         return (
-            //const categories = useRecoilValue(categoriesState);
             <Tag size={"lg"} borderRadius="full" variant="solid" bg={colorValue} color={textColorValue}>
-                <TagLabel>{tag}</TagLabel>
+                <TagLabel>{categoryText}</TagLabel>
             </Tag>
         );
     }
