@@ -12,6 +12,9 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
+import { log } from "@helpers/logger";
+import { absoluteUrl } from "@lib/absoluteUrl";
+import instance from "@store/axios";
 import LiveClock from "../components/widgets/time-smart/live-clock";
 
 const Home: NextPage<{ origin: string }> = ({ origin }) => {
