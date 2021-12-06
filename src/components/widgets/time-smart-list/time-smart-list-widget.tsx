@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, TableCaption } from "@chakra-ui/react";
-import { useSortBy, useTable } from "react-table";
+import { Column, useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
+import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
 import { log } from "@helpers/logger";
 
@@ -11,7 +12,7 @@ function TimeSmartList() {
 
     //const Registrations = useRecoilValue(RegistrationState);
 
-    const columns = React.useMemo(
+    const columns = React.useMemo<Column<tableRow>[]>(
         () => [
             {
                 Header: "Category",

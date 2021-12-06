@@ -2,9 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Router from "next/router";
 import { RecoilRoot } from "recoil";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
-import { WorkspaceListState } from "@store/workspace";
-import Workspace from "../../pages/workspace";
+import { Workspace, WorkspaceListState } from "@store/workspace";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 import WorkspaceCard from "./workspace-card";
 import WorkspaceList from "./workspace-list";
@@ -78,8 +76,8 @@ describe("DeleteWorkspaceModal", () => {
 });
 
 describe("WorkspaceList", () => {
-    const workspace1 = { title: "hest", id: "123" } as WorkspaceDTO;
-    const workspace2 = { title: "ged", id: "321" } as WorkspaceDTO;
+    const workspace1 = { title: "hest", id: "123" } as Workspace;
+    const workspace2 = { title: "ged", id: "321" } as Workspace;
 
     beforeEach(() => {
         render(

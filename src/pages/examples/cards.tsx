@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
+import { absoluteUrl } from "@lib/absoluteUrl";
 import instance from "@store/axios";
-import { absoluteUrl } from "../../lib";
 
 // @ts-ignore
 const Example: NextPage = ({ origin }: { origin: string }) => {
