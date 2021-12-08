@@ -21,7 +21,7 @@ const Navbar: FC<NavBarProps> = ({ navItems }) => {
             bg={useColorModeValue("#ffffff80", "#30303890")}
             style={{ backdropFilter: "blur(10px)" }}
         >
-            <Container display="flex" p={2} maxW="container.md" wrap="wrap" align="center" justify="space-between">
+            <Container display="flex" p={2} maxW="container.xl" wrap="wrap" align="center" justify="space-between">
                 <Flex align="center" mr={5}>
                     <Heading as="h1" size="lg" letterSpacing={"tighter"}>
                         <Logo />
