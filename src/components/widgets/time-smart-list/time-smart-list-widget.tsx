@@ -4,7 +4,7 @@ import { Column, useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
 import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
-import { log } from "@helpers/logger";
+import { log } from "@lib/logger";
 
 function TimeSmartList() {
     const data = useRecoilValue(tableRowState);

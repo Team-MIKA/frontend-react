@@ -3,7 +3,7 @@ import { Spinner, useToast } from "@chakra-ui/react";
 import { Column } from "react-table";
 import { useRecoilState } from "recoil";
 import SelectableTable from "@components/widgets/sap/table";
-import { log } from "@helpers/logger";
+import { log } from "@lib/logger";
 import api from "@store/axios";
 import { Order, publishId } from "@store/order";
 
