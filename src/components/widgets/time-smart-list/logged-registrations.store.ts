@@ -1,7 +1,7 @@
 import { atom, selector, SetterOrUpdater } from "recoil";
 import { tableRow, tableRowDisplay } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { registration } from "@components/widgets/time-smart/registration";
-import { log } from "@lib/logger";
+import { log } from "@helpers/logger";
 
 export const registrationsState = atom({
     key: "registrations",

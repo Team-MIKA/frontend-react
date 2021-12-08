@@ -12,7 +12,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { log } from "@lib/logger";
+import { log } from "@helpers/logger";
 import { Widget, WidgetListState } from "@store/widget";
 import { WorkspaceState } from "@store/workspace";
 import { WidgetService, WorkspaceService } from "../../services/openapi";

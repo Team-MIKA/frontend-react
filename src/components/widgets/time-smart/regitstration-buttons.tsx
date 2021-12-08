@@ -3,7 +3,7 @@ import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui
 import { useRecoilState, useRecoilValue } from "recoil";
 import { addRegistration, registrationsState } from "@components/widgets/time-smart-list/logged-registrations.store";
 import TimerModal from "@components/widgets/time-smart/timer-modal";
-import { log } from "@lib/logger";
+import { log } from "@helpers/logger";
 import { publishId } from "@store/order";
 
 function RegistrationButtons({ buttons }: { buttons: string[] }) {
