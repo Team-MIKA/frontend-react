@@ -8,7 +8,7 @@ import AddWidgetModal from "@components/workspace/add-widget-modal";
 import DeleteWidget from "@components/workspace/delete-widget";
 import WidgetRender from "@components/workspace/widget-render";
 import { WorkspaceService } from "@generated/services/WorkspaceService";
-import { log } from "@helpers/logger";
+import { log } from "@lib/logger";
 import { Widget } from "@store/widget";
 import { WorkspaceState, HideOptionsState, Workspace } from "@store/workspace";
 
