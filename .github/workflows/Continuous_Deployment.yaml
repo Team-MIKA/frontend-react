@@ -41,4 +41,4 @@ jobs:
             - name: Update stack
               uses: wei/curl@master
               with: 
-                args: ${{ secrets.UPDATE_SERVICE_WEBHOOK }}
+                args: -X POST ${{ secrets.UPDATE_SERVICE_WEBHOOK }}
