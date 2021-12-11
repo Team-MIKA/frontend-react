@@ -21,7 +21,6 @@ const Home: NextPage<{ origin: string }> = ({ origin }) => {
     instance.defaults.baseURL = origin + "/api";
     return (
         <Container maxW={"container.xl"}>
-            <p>Test af Roling Release</p>
             <BasicStatistics />
         </Container>
     );
