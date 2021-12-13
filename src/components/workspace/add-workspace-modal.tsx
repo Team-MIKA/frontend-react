@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import {
     Button,
     Modal,
@@ -11,21 +11,20 @@ import {
     Input,
     Text,
 } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
-import { Widget } from "@store/widget";
-import { WorkspaceListState } from "@store/workspace";
 import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
-
-const AddWorkspaceModal = ({ onClose, isOpen }: { onClose: any; isOpen: boolean }) => {
+interface AddWorkspaceModalProps {
+    onClose: any;
+    isOpen: boolean;
+    setWorkspaces: (setter: (prevState: WorkspaceDTO[]) => WorkspaceDTO[]) => void;
+}
+const AddWorkspaceModal: FC<AddWorkspaceModalProps> = ({ onClose, isOpen, setWorkspaces }) => {
     const [title, setTitle] = useState("");
-
-    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
     const save = () => {
         const workSpace: WorkspaceDTO = { title: title };
         WorkspaceService.postWorkspace(workSpace).then((result) => {
             if (result) {
-                setWorkspaces([...workspaces, { title: title, id: result, widgets: [] as Widget[] }]);
+                setWorkspaces((prevState: WorkspaceDTO[]) => [...prevState, { ...workSpace, id: result }]);
             }
         });
 

@@ -1,8 +1,7 @@
 import { Wrap, WrapItem } from "@chakra-ui/react";
 
 import { useRecoilValue } from "recoil";
-import { WorkspaceListState } from "@store/workspace";
-
+import { WorkspaceListState } from "@store/Workspace";
 import WorkspaceCard from "./workspace-card";
 
 const WorkspaceList = () => {

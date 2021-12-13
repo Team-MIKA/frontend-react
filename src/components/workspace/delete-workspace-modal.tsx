@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { FC, useRef } from "react";
 import {
     AlertDialog,
     AlertDialogBody,
@@ -8,28 +8,22 @@ import {
     AlertDialogOverlay,
     Button,
 } from "@chakra-ui/react";
-import { useRecoilState } from "recoil";
-import { Workspace, WorkspaceListState } from "@store/workspace";
-import { WorkspaceService } from "../../services/openapi";
+import { useSetRecoilState } from "recoil";
+import { WorkspaceListState } from "@store/Workspace";
+import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
 
-const DeleteWorkspaceModal = ({
+const DeleteWorkspaceModal: FC<{ workspace: WorkspaceDTO; onClose: any; isOpen: boolean }> = ({
     workspace,
     onClose,
     isOpen,
-}: {
-    workspace: Workspace;
-    onClose: any;
-    isOpen: boolean;
 }) => {
+    const setWorkspaces = useSetRecoilState(WorkspaceListState);
     const cancelRef = useRef(null);
-
-    const [workspaces, setWorkspaces] = useRecoilState(WorkspaceListState);
 
     const removeWorkspace = (workspaceId: string) => {
         WorkspaceService.deleteWorkspace(workspaceId).then((result) => {
             if (result) {
-                const filteredWorkspaces = workspaces.filter((x) => x.id !== workspaceId);
-                setWorkspaces(filteredWorkspaces);
+                setWorkspaces((w) => w.filter((x) => x.id !== workspaceId));
             }
         });
         onClose();

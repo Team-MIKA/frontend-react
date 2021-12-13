@@ -5,7 +5,9 @@ import AddButton from "@components/widgets/time-smart/add-button";
 import { TimeClock } from "@components/widgets/time-smart/live-clock";
 import { categoriesState } from "@components/widgets/time-smart/registration.store";
 import RegistrationButtons from "@components/widgets/time-smart/regitstration-buttons";
-function TimeSmartCard() {
+import { SubscriberComponent } from "@lib/Widget";
+import { Order } from "@store/order";
+const TimeSmartCard: SubscriberComponent<Order> = ({ item }) => {
     const categories = useRecoilValue(categoriesState);
 
     return (
@@ -26,10 +28,10 @@ function TimeSmartCard() {
                 <Box p={"2"}>
                     <TimeClock />
                 </Box>
-                <RegistrationButtons buttons={categories} />
+                <RegistrationButtons buttons={categories} order={item} />
             </Box>
         </Box>
     );
-}
+};
 
 export default TimeSmartCard;

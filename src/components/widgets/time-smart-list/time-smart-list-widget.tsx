@@ -5,8 +5,10 @@ import { useRecoilValue } from "recoil";
 import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
 import { log } from "@lib/logger";
+import { SubscriberComponent } from "@lib/Widget";
+import { Order } from "@store/order";
 
-function TimeSmartList() {
+const TimeSmartList: SubscriberComponent<Order> = () => {
     const data = useRecoilValue(tableRowState);
     log(data);
 
@@ -105,6 +107,6 @@ function TimeSmartList() {
             </Table>
         </Box>
     );
-}
+};
 
 export default TimeSmartList;

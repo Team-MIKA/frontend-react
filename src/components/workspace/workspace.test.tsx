@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Router from "next/router";
 import { RecoilRoot } from "recoil";
-import { Workspace, WorkspaceListState } from "@store/workspace";
+import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
+import { WorkspaceListState } from "@store/Workspace";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 import WorkspaceCard from "./workspace-card";
 import WorkspaceList from "./workspace-list";
@@ -10,7 +11,7 @@ import WorkspaceList from "./workspace-list";
 jest.mock("next/dist/client/router", () => require("next-router-mock"));
 
 describe("WorkspaceCard", () => {
-    const workspace = { title: "test", id: "123" } as Workspace;
+    const workspace = { title: "test", id: "123" } as WorkspaceDTO;
 
     beforeEach(() => {
         render(
@@ -48,7 +49,7 @@ describe("WorkspaceCard", () => {
 });
 
 describe("DeleteWorkspaceModal", () => {
-    const workspace = { title: "test", id: "123" } as Workspace;
+    const workspace = { title: "test", id: "123" } as WorkspaceDTO;
     const onClose = jest.fn();
 
     beforeEach(() => {
@@ -76,8 +77,8 @@ describe("DeleteWorkspaceModal", () => {
 });
 
 describe("WorkspaceList", () => {
-    const workspace1 = { title: "hest", id: "123" } as Workspace;
-    const workspace2 = { title: "ged", id: "321" } as Workspace;
+    const workspace1 = { title: "hest", id: "123" } as WorkspaceDTO;
+    const workspace2 = { title: "ged", id: "321" } as WorkspaceDTO;
 
     beforeEach(() => {
         render(

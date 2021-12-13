@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import AddButton from "@components/widgets/time-smart/add-button";
-import { HideOptionsState } from "@store/workspace";
+import { HideOptionsState } from "@store/Workspace";
 
 beforeEach(() => {
     render(

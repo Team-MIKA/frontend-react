@@ -23,6 +23,6 @@
         },
         "incremental": true
     },
-    "exclude": ["node_modules", ".next", "out"],
-    "include": ["next-env.d.ts", "src/components/**/*.tsx", "src/pages/**/*.tsx", "src/**/*.ts"]
+    "exclude": ["node_modules", ".next", "out", "src/services/openapi/core"],
+    "include": ["next-env.d.ts", "src/components/**/*.tsx", "src/pages/**/*.tsx", "src/**/*.ts", "src/**/*.tsx"]
 }

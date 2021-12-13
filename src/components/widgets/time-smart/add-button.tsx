@@ -3,7 +3,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import { Button, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import AddModal from "@components/widgets/time-smart/add-modal";
-import { HideOptionsState } from "@store/workspace";
+import { HideOptionsState } from "@store/Workspace";
 
 function AddButton() {
     const { isOpen, onOpen, onClose } = useDisclosure();
