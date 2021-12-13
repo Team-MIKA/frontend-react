@@ -9,12 +9,7 @@ import Footer from "./footer";
 import NavBar from "./navbar/navbar";
 
 const Main: NextPage = ({ children }) => {
-    const Items: NavBarItem[] = [
-        new TextNavItem("/", "Home"),
-        new TextNavItem("/settings", "Settings"),
-        new TextNavItem("/workspace", "Workspaces"),
-        new TextNavItem("/examples", "Examples"),
-    ];
+    const Items: NavBarItem[] = [new TextNavItem("/", "Home"), new TextNavItem("/workspace", "Workspaces")];
 
     return (
         <Flex as="main" direction="column" align="center" maxW={"container.xl"} m="0 auto">
