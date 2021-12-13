@@ -3,15 +3,14 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { RecoilRoot } from "recoil";
 import RegistrationButtons from "@components/widgets/time-smart/regitstration-buttons";
-import { Order, publishId } from "@store/order";
 
 describe("Registration buttons shuold", () => {
     beforeEach(() => {
         const buttonArray = ["hej", "med", "dig"];
 
         render(
-            <RecoilRoot initializeState={({ set }) => set(publishId, { id: "0", title: "test" } as Order)}>
-                <RegistrationButtons buttons={buttonArray} />
+            <RecoilRoot>
+                <RegistrationButtons buttons={buttonArray} order={{ id: "0", title: "test" }} />
             </RecoilRoot>
         );
     });
@@ -34,8 +33,8 @@ describe("Registration buttons shuold", () => {
 
     test("should be disabled if a order is not selected", () => {
         const { getByText } = render(
-            <RecoilRoot initializeState={({ set }) => set(publishId, { id: "" } as Order)}>
-                <RegistrationButtons buttons={["test"]} />
+            <RecoilRoot>
+                <RegistrationButtons buttons={["test"]} order={null} />
             </RecoilRoot>
         );
         const button = getByText("test");
