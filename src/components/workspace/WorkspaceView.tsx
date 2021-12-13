@@ -1,61 +1,19 @@
-import React, { FC, ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddIcon, EditIcon } from "@chakra-ui/icons";
-import {
-    Box,
-    Button,
-    Flex,
-    Heading,
-    IconButton,
-    Stack,
-    useColorModeValue,
-    useDisclosure,
-    Wrap,
-} from "@chakra-ui/react";
+import { Box, Button, Heading, IconButton, useColorModeValue, useDisclosure, Wrap } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { Workspace } from "@components/widgets/generic";
 import AddWidgetModal from "@components/workspace/add-widget-modal";
 import DeleteWidget from "@components/workspace/delete-widget";
+import { Panel } from "@components/workspace/Panel";
 import { OptionsPopOver } from "@components/workspace/widget-render";
 import { WorkspaceService } from "@generated/services/WorkspaceService";
 import { log } from "@lib/logger";
 import { PublisherWidget, SubscriberWidget } from "@lib/Widget";
 import { Order } from "@store/order";
 import { HideOptionsState, WorkspaceState } from "@store/Workspace";
-
-const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
-    return (
-        <Flex>
-            <Box width={"30px"}>
-                <Stack direction="column" spacing={4} align={""}>
-                    {buttons}
-                </Stack>
-            </Box>
-            <Box
-                borderWidth="5px"
-                borderRadius="lg"
-                borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
-                bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
-                sx={{
-                    "&::-webkit-scrollbar": {
-                        width: "0px",
-                        borderRadius: "8px",
-                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                    },
-                    "&::-webkit-scrollbar-thumb": {
-                        backgroundColor: `rgba(0, 0, 0, 0.05)`,
-                    },
-                }}
-                paddingLeft={""}
-                maxH={"375px"}
-                overflowY={"scroll"}
-            >
-                {children}
-            </Box>
-        </Flex>
-    );
-};
 
 const WorkspaceView: NextPage = () => {
     const router = useRouter();
