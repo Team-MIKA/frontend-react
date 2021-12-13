@@ -57,7 +57,7 @@ const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
     );
 };
 
-const View: NextPage = () => {
+const WorkspaceView: NextPage = () => {
     const router = useRouter();
     const { id } = router.query;
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
@@ -164,4 +164,4 @@ const View: NextPage = () => {
         </>
     );
 };
-export default View;
+export default WorkspaceView;
