@@ -96,7 +96,7 @@ const WorkspaceView: NextPage = () => {
                                 }
                                 key={"subscriberWidget" + index}
                             >
-                                <obj.render item={item} setItem={setItem} options={["skrrt"]} />
+                                <obj.render item={item} setItem={setItem} options={obj.dto.options} />
                             </Panel>
                         );
                     })}
@@ -114,7 +114,7 @@ const WorkspaceView: NextPage = () => {
                                 }
                                 key={"subscriberWidget" + index}
                             >
-                                <obj.render item={item} options={["hej"]} />
+                                <obj.render item={item} options={obj.dto.options} />
                             </Panel>
                         );
                     })}
