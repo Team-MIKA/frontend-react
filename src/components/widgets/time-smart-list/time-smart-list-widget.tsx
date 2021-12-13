@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, TableCaption } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Flex } from "@chakra-ui/react";
 import { Column, useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
 import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
@@ -46,19 +46,16 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data }, useSortBy);
 
     return (
-        <Box
-            borderWidth="5px"
-            borderRadius="lg"
-            borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
-            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+        <Flex
             sx={{
                 "&::-webkit-scrollbar": {
-                    width: "0px",
+                    width: "5px",
                     borderRadius: "8px",
-                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    backgroundColor: `rgb(0,0,0, 0.1)`,
                 },
                 "&::-webkit-scrollbar-thumb": {
-                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(255,255,255,0.4)`,
                 },
             }}
             maxH={"375px"}
@@ -105,7 +102,7 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                     })}
                 </Tbody>
             </Table>
-        </Box>
+        </Flex>
     );
 };
 

@@ -26,9 +26,9 @@ const DeleteWidget: FC<DeleteWidgetProps> = ({ widgetId }) => {
             <IconButton
                 hidden={hide}
                 textColor={"red"}
-                position={"absolute"}
                 background={"transparent"}
                 icon={<DeleteIcon />}
+                size="sm"
                 aria-label={"Remove Widget"}
                 onClick={() => removeWidget()}
             />

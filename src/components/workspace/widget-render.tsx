@@ -15,16 +15,10 @@ import {
     Stack,
     useDisclosure,
 } from "@chakra-ui/react";
-import { Option, Widget } from "@lib/Widget";
-
-const WidgetRender: FC<{ widget: Widget }> = ({ widget }) => {
-    return (
-        <>
-            <OptionsPopOver options={widget.options} />
-            <widget.component {...widget.props} />
-        </>
-    );
-};
+import { useRecoilValue } from "recoil";
+import { log } from "@lib/logger";
+import { Option } from "@lib/Widget";
+import { HideOptionsState } from "@store/Workspace";
 
 interface OptionFormProps {
     firstFieldRef: MutableRefObject<any>;
@@ -74,10 +68,13 @@ const OptionsForm: FC<OptionFormProps> = ({ firstFieldRef, onCancel, options }) 
     );
 };
 
-const OptionsPopOver: FC<{ options: string[] }> = ({ options }) => {
+export const OptionsPopOver: FC<{ options: string[] }> = ({ options }) => {
+    log("Options for widget: ", options);
     const { onOpen, onClose, isOpen } = useDisclosure();
     const firstFieldRef = useRef(null);
+    const hide = useRecoilValue(HideOptionsState);
 
+    if (hide) return <></>;
     return (
         <Popover
             isOpen={isOpen}
@@ -88,7 +85,7 @@ const OptionsPopOver: FC<{ options: string[] }> = ({ options }) => {
             closeOnBlur={true}
         >
             <PopoverTrigger>
-                <IconButton size="sm" icon={<EditIcon />} aria-label={"widget-options"} />
+                <IconButton size="sm" icon={<EditIcon />} background={"transparent"} aria-label={"widget-options"} />
             </PopoverTrigger>
             <PopoverContent p={5}>
                 <PopoverArrow />
@@ -98,5 +95,3 @@ const OptionsPopOver: FC<{ options: string[] }> = ({ options }) => {
         </Popover>
     );
 };
-
-export default WidgetRender;
