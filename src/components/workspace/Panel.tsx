@@ -4,8 +4,8 @@ import { Box, Flex, Stack, useColorModeValue } from "@chakra-ui/react";
 export const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
     return (
         <Flex>
-            <Box width={"30px"}>
-                <Stack direction="column" spacing={4} align={""}>
+            <Box width={"36px"}>
+                <Stack direction="column" spacing={4} align={"center"}>
                     {buttons}
                 </Stack>
             </Box>
@@ -24,7 +24,6 @@ export const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
                         backgroundColor: `rgba(0, 0, 0, 0.05)`,
                     },
                 }}
-                paddingLeft={""}
                 maxH={"375px"}
                 overflowY={"scroll"}
             >
