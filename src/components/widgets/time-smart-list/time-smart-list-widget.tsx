@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Flex } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
 import { Column, useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
 import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
@@ -46,23 +46,23 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data }, useSortBy);
 
     return (
-        <Flex
-            sx={{
-                "&::-webkit-scrollbar": {
-                    width: "5px",
-                    borderRadius: "8px",
-                    backgroundColor: `rgb(0,0,0, 0.1)`,
-                },
-                "&::-webkit-scrollbar-thumb": {
-                    borderRadius: "8px",
-                    backgroundColor: `rgba(255,255,255,0.4)`,
-                },
-            }}
-            maxH={"375px"}
-            overflowY={"scroll"}
-        >
-            <Table {...getTableProps()}>
-                <TableCaption>TimeSmart Registrations</TableCaption>
+        <Table {...getTableProps()}>
+            <TableCaption>TimeSmart Registrations</TableCaption>
+            <Box
+                overflowY={"scroll"}
+                maxH={"375px"}
+                sx={{
+                    "&::-webkit-scrollbar": {
+                        width: "6px",
+                        borderRadius: "8px",
+                        backgroundColor: `rgb(0,0,0, 0.1)`,
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                        borderRadius: "8px",
+                        backgroundColor: `rgba(255,255,255,0.4)`,
+                    },
+                }}
+            >
                 <Thead>
                     {headerGroups.map((headerGroup) => {
                         const { key, ...restOfProps } = headerGroup.getHeaderGroupProps();
@@ -82,6 +82,7 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                         );
                     })}
                 </Thead>
+
                 <Tbody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
@@ -101,8 +102,8 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                         );
                     })}
                 </Tbody>
-            </Table>
-        </Flex>
+            </Box>
+        </Table>
     );
 };
 
