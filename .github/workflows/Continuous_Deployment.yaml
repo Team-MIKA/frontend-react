@@ -37,8 +37,8 @@ jobs:
 
             - name: Image digest
               run: echo ${{ steps.docker_build.outputs.digest }}
-              
+
             - name: Update stack
               uses: wei/curl@master
-              with: 
-                args: -X POST ${{ secrets.UPDATE_SERVICE_WEBHOOK }}
+              with:
+                  args: -X POST ${{ secrets.UPDATE_SERVICE_WEBHOOK }}
