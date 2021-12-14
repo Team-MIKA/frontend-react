@@ -46,23 +46,24 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data }, useSortBy);
 
     return (
-        <Table {...getTableProps()}>
-            <TableCaption>TimeSmart Registrations</TableCaption>
-            <Box
-                overflowY={"scroll"}
-                maxH={"375px"}
-                sx={{
-                    "&::-webkit-scrollbar": {
-                        width: "6px",
-                        borderRadius: "8px",
-                        backgroundColor: `rgb(0,0,0, 0.1)`,
-                    },
-                    "&::-webkit-scrollbar-thumb": {
-                        borderRadius: "8px",
-                        backgroundColor: `rgba(255,255,255,0.4)`,
-                    },
-                }}
-            >
+        <Box
+            overflowY={"scroll"}
+            maxH={"375px"}
+            sx={{
+                "&::-webkit-scrollbar": {
+                    width: "6px",
+                    borderRadius: "8px",
+                    backgroundColor: `rgb(0,0,0, 0.1)`,
+                },
+                "&::-webkit-scrollbar-thumb": {
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(255,255,255,0.4)`,
+                },
+            }}
+        >
+            <Table {...getTableProps()}>
+                <TableCaption>TimeSmart Registrations</TableCaption>
+
                 <Thead>
                     {headerGroups.map((headerGroup) => {
                         const { key, ...restOfProps } = headerGroup.getHeaderGroupProps();
@@ -102,8 +103,8 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                         );
                     })}
                 </Tbody>
-            </Box>
-        </Table>
+            </Table>
+        </Box>
     );
 };
 
