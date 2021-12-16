@@ -780,6 +780,11 @@
                 },
                 "additionalProperties": {}
             },
+            "Integration": {
+                "enum": [0, 1],
+                "type": "integer",
+                "format": "int32"
+            },
             "WidgetDTO": {
                 "type": "object",
                 "properties": {
@@ -790,6 +795,9 @@
                     "title": {
                         "type": "string",
                         "nullable": true
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/Integration"
                     }
                 },
                 "additionalProperties": false

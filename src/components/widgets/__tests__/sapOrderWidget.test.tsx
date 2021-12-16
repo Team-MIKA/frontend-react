@@ -1,9 +1,10 @@
+import { FC, useState } from "react";
 import { fireEvent, waitForElementToBeRemoved } from "@testing-library/dom";
 import nock from "nock";
-import { useRecoilValue } from "recoil";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
+import { SubscriberComponent } from "@lib/Widget";
 import api, { config } from "@store/axios";
-import { Order, publishId } from "@store/order";
+import { Order } from "@store/order";
 import { render, setupUrlMock } from "test-utils";
 
 describe("sap ting", () => {
@@ -28,18 +29,23 @@ describe("sap ting", () => {
         expect(orders.data).toEqual(mockOrders);
     });
 
-    const SubscriberWidget = () => {
-        const order = useRecoilValue(publishId);
-        return <p> Subscribing on: {order.id}</p>;
+    const SubscriberWidget: SubscriberComponent<Order> = ({ item }) => {
+        if (!item) return <p>Waiting</p>;
+        return <p> Subscribing on: {item.id}</p>;
+    };
+
+    const TestComponent: FC = () => {
+        const [defaultOrder, setDefaultOrder] = useState<Order>(null);
+        return (
+            <>
+                <SapOrderWidget item={defaultOrder} setItem={setDefaultOrder} options={[""]} />
+                <SubscriberWidget item={defaultOrder} options={[""]} />
+            </>
+        );
     };
 
     test("adds 1 + 2 to equal 3", async () => {
-        const { getByText } = render(
-            <>
-                <SapOrderWidget />
-                <SubscriberWidget />
-            </>
-        );
+        const { getByText } = render(<TestComponent />);
         await waitForElementToBeRemoved(() => getByText("Loading..."));
         const row_one = await getByText("Order 1");
         fireEvent.click(row_one);

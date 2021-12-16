@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { Button, SimpleGrid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { addRegistration, registrationsState } from "@components/widgets/time-smart-list/logged-registrations.store";
 import TimerModal from "@components/widgets/time-smart/timer-modal";
 import { log } from "@lib/logger";
-import { publishId } from "@store/order";
+import { Order } from "@store/order";
 
-function RegistrationButtons({ buttons }: { buttons: string[] }) {
+function RegistrationButtons({ buttons, order }: { buttons: string[]; order: Order }) {
     const [buttonText, setButtonText] = useState("");
     let buttonColors = useColorModeValue("pink", "teal");
     const { isOpen, onOpen, onClose } = useDisclosure();
     let startTime = new Date();
     const state = useRecoilState(registrationsState);
 
-    const order = useRecoilValue(publishId);
     log("order id", order);
 
     const opening = (buttonText: string) => {
@@ -34,7 +33,7 @@ function RegistrationButtons({ buttons }: { buttons: string[] }) {
         <SimpleGrid minChildWidth="120px" spacing="20px">
             {buttons.map((buttonText) => (
                 <Button
-                    disabled={order.id === ""}
+                    disabled={!order}
                     role={"reg-button"}
                     variant={"outline"}
                     bg={buttonColors}

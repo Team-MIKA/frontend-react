@@ -1,16 +1,22 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Spinner, useToast } from "@chakra-ui/react";
 import { Column } from "react-table";
-import { useRecoilState } from "recoil";
 import SelectableTable from "@components/widgets/sap/table";
 import { log } from "@lib/logger";
+import { PublisherComponent } from "@lib/Widget";
 import api from "@store/axios";
-import { Order, publishId } from "@store/order";
+import { Order } from "@store/order";
 
-const SapOrderWidget: FC = () => {
+const SapOrderWidget: PublisherComponent<Order> = ({ item, setItem }) => {
     const [orders, setOrders] = useState([] as Order[]);
-    const [itemState, setItemState] = useRecoilState(publishId);
+
     const toast = useToast();
+
+    useEffect(() => {
+        return () => {
+            setItem({ title: "Virker det?", id: "nej" });
+        };
+    }, [setItem]);
 
     useEffect(() => {
         api("/sap").then((o) => {
@@ -18,7 +24,7 @@ const SapOrderWidget: FC = () => {
             log("orders: ", orders);
             setOrders(orders);
         });
-    }, []);
+    }, [setOrders]);
 
     const columns = [
         { Header: "Id", accessor: "id" } as Column<Order>,
@@ -27,9 +33,9 @@ const SapOrderWidget: FC = () => {
 
     const onRowClick = (order: Order) => {
         log("Selecting ID: ", order);
-        if (order !== itemState) selectToast(`Order #${order.id} is selected`);
+        if (order !== item) selectToast(`Order #${order.id} is selected`);
         else selectToast(`Order #${order.id} is already selected`);
-        setItemState(order);
+        setItem(order);
     };
 
     const selectToast = (message: string) => {

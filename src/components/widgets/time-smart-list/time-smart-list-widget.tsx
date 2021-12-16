@@ -1,12 +1,14 @@
 import React from "react";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, useColorModeValue, TableCaption } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, Box } from "@chakra-ui/react";
 import { Column, useSortBy, useTable } from "react-table";
 import { useRecoilValue } from "recoil";
 import { tableRow } from "@components/widgets/time-smart-list/logged-registrations-interface";
 import { tableRowState } from "@components/widgets/time-smart-list/logged-registrations.store";
 import { log } from "@lib/logger";
+import { SubscriberComponent } from "@lib/Widget";
+import { Order } from "@store/order";
 
-function TimeSmartList() {
+const TimeSmartList: SubscriberComponent<Order> = () => {
     const data = useRecoilValue(tableRowState);
     log(data);
 
@@ -45,25 +47,23 @@ function TimeSmartList() {
 
     return (
         <Box
-            borderWidth="5px"
-            borderRadius="lg"
-            borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
-            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+            overflowY={"scroll"}
+            maxH={"375px"}
             sx={{
                 "&::-webkit-scrollbar": {
-                    width: "0px",
+                    width: "6px",
                     borderRadius: "8px",
-                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    backgroundColor: `rgb(0,0,0, 0.1)`,
                 },
                 "&::-webkit-scrollbar-thumb": {
-                    backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(255,255,255,0.4)`,
                 },
             }}
-            maxH={"375px"}
-            overflowY={"scroll"}
         >
             <Table {...getTableProps()}>
                 <TableCaption>TimeSmart Registrations</TableCaption>
+
                 <Thead>
                     {headerGroups.map((headerGroup) => {
                         const { key, ...restOfProps } = headerGroup.getHeaderGroupProps();
@@ -83,6 +83,7 @@ function TimeSmartList() {
                         );
                     })}
                 </Thead>
+
                 <Tbody {...getTableBodyProps()}>
                     {rows.map((row) => {
                         prepareRow(row);
@@ -105,6 +106,6 @@ function TimeSmartList() {
             </Table>
         </Box>
     );
-}
+};
 
 export default TimeSmartList;

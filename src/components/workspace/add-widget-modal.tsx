@@ -13,46 +13,45 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { log } from "@lib/logger";
-import { Widget, WidgetListState } from "@store/widget";
-import { WorkspaceState } from "@store/workspace";
-import { WidgetService, WorkspaceService } from "../../services/openapi";
+import { WorkspaceState } from "@store/Workspace";
+import { WidgetDTO, WidgetService, WorkspaceDTO, WorkspaceService } from "../../services/openapi";
 
 const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
-    const [widgets, setWidgets] = useRecoilState(WidgetListState);
-    const [selectedWidget, setSelectedWidget] = useState({} as Widget);
+    const [widgets, setWidgets] = useState<WidgetDTO[]>(null);
+    type Widget = WidgetDTO;
+    const [selectedWidget, setSelectedWidget] = useState<Widget>(null);
 
     useEffect(() => {
         WidgetService.getWidget().then((result) => {
             if (result) {
-                setWidgets(result.map((w) => w as Widget));
+                setWidgets(result);
             }
         });
     }, [setWidgets]);
 
     const close = () => {
-        setSelectedWidget({} as Widget);
-
         onClose();
     };
 
-    const handleClick = (widget: Widget) => {
-        setSelectedWidget(selectedWidget == widget ? ({} as Widget) : widget);
+    const handleClick = (widget: WidgetDTO) => {
+        setSelectedWidget(selectedWidget == widget ? null : widget);
     };
 
     const save = () => {
         WorkspaceService.postWorkspace1(workspace.id, { id: selectedWidget.id }).then((result) => {
             if (result) {
-                setWorkspace({
+                const newDto = {
                     ...workspace,
                     widgets: [...workspace.widgets, { ...selectedWidget, id: result }],
-                });
+                } as WorkspaceDTO;
+
+                setWorkspace(newDto);
                 log("workspace:", workspace);
             }
         });
 
-        setSelectedWidget({} as Widget);
-
+        setSelectedWidget(null);
         onClose();
     };
 
@@ -65,20 +64,21 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
                     <ModalCloseButton />
                     <ModalBody>
                         <Wrap>
-                            {widgets.map((widget, key) => (
-                                <WrapItem key={key} onClick={() => handleClick(widget)} cursor={"pointer"}>
-                                    <Button
-                                        padding={2}
-                                        border={"2px solid gray"}
-                                        borderRadius={"md"}
-                                        minW="80px"
-                                        minH="60px"
-                                        background={selectedWidget == widget ? "gray" : ""}
-                                    >
-                                        {widget.title}
-                                    </Button>
-                                </WrapItem>
-                            ))}
+                            {widgets &&
+                                widgets.map((widget, key) => (
+                                    <WrapItem key={key} onClick={() => handleClick(widget)} cursor={"pointer"}>
+                                        <Button
+                                            padding={2}
+                                            border={"2px solid gray"}
+                                            borderRadius={"md"}
+                                            minW="80px"
+                                            minH="60px"
+                                            background={selectedWidget == widget ? "gray" : ""}
+                                        >
+                                            {widget.title}
+                                        </Button>
+                                    </WrapItem>
+                                ))}
                         </Wrap>
                     </ModalBody>
 

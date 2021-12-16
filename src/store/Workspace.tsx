@@ -1,20 +1,14 @@
 import { atom } from "recoil";
-import { Widget } from "@store/widget";
-
-export interface Workspace {
-    id: string;
-    title: string;
-    widgets: Widget[];
-}
+import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 
 export const WorkspaceListState = atom({
     key: "workspaces",
-    default: [] as Workspace[],
+    default: null as WorkspaceDTO[],
 });
 
 export const WorkspaceState = atom({
     key: "workspace",
-    default: { id: "", title: "", widgets: [] as Widget[] } as Workspace,
+    default: { dto: { id: "", title: "" } } as WorkspaceDTO,
 });
 
 export const HideOptionsState = atom({

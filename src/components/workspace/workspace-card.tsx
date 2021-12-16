@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Stack, Heading, Text, useColorModeValue, IconButton } from "@chakra-ui/react";
+import { Stack, Heading, useColorModeValue, IconButton } from "@chakra-ui/react";
 import Link from "next/link";
-import { Workspace } from "@store/workspace";
+import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 
-const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
+const WorkspaceCard = ({ workspace }: { workspace: WorkspaceDTO }) => {
     const [isOpen, setIsOpen] = useState(false);
     const onClose = () => setIsOpen(false);
 
@@ -20,7 +20,7 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
                 onClick={() => setIsOpen(true)}
             />
 
-            <DeleteWorkspaceModal workspace={workspace} isOpen={isOpen} onClose={onClose} />
+            <DeleteWorkspaceModal isOpen={isOpen} onClose={onClose} workspace={workspace} />
 
             <Link href={"/workspace/" + workspace.id} passHref data-testid={"workspaceLink"}>
                 <Stack
@@ -42,7 +42,6 @@ const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
                         >
                             {workspace.title}
                         </Heading>
-                        <Text fontSize={"lg"} color={"gray.500"}></Text>
                     </Stack>
                 </Stack>
             </Link>
