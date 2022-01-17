@@ -3,17 +3,13 @@ import { Box, Flex, Stack, useColorModeValue } from "@chakra-ui/react";
 
 export const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
     return (
-        <Flex>
-            <Box width={"36px"}>
-                <Stack direction="column" spacing={4} align={"center"}>
-                    {buttons}
-                </Stack>
-            </Box>
+        <Flex
+            borderWidth="5px"
+            borderRadius="lg"
+            borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
+            bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
+        >
             <Box
-                borderWidth="5px"
-                borderRadius="lg"
-                borderColor={useColorModeValue("#ffffff40", "whiteAlpha.200")}
-                bg={useColorModeValue("whiteAlpha.500", "whiteAlpha.200")}
                 sx={{
                     "&::-webkit-scrollbar": {
                         width: "0px",
@@ -28,6 +24,11 @@ export const Panel: FC<{ buttons: ReactElement }> = ({ buttons, children }) => {
                 overflowY={"scroll"}
             >
                 {children}
+            </Box>
+            <Box width={"36px"}>
+                <Stack direction="column" spacing={4} align={"center"}>
+                    {buttons}
+                </Stack>
             </Box>
         </Flex>
     );
