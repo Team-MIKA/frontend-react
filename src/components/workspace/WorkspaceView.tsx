@@ -43,9 +43,9 @@ const WorkspaceView: NextPage = () => {
         if (!workspace.id) return;
 
         // Update workspace view, every time the workspace DTO change
-        const h = new Workspace(workspace);
-        setPublishers(h.publisher);
-        setSubscribers(h.subscribers);
+        const w = new Workspace(workspace);
+        setPublishers(w.publisher);
+        setSubscribers(w.subscribers);
     }, [workspace]);
 
     return (
