@@ -18,6 +18,7 @@ import instance from "@store/axios";
 import LiveClock from "../components/widgets/time-smart/live-clock";
 
 const Home: NextPage<{ origin: string }> = ({ origin }) => {
+    console.log(origin);
     instance.defaults.baseURL = origin + "/api";
     return (
         <Container maxW={"container.xl"}>
@@ -29,7 +30,7 @@ const Home: NextPage<{ origin: string }> = ({ origin }) => {
 Home.getInitialProps = async ({ req }) => {
     log(absoluteUrl(req));
     const { host } = absoluteUrl(req);
-    const origin = "http://" + host;
+    const origin = "https://" + host;
     return { origin };
 };
 
