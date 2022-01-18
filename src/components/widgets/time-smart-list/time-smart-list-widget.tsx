@@ -71,9 +71,11 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                             <Tr key={key} {...restOfProps}>
                                 {headerGroup.headers.map((column) => {
                                     const { key, ...restOfProps } = column.getHeaderProps(
+                                        // @ts-ignore
                                         column.getSortByToggleProps()
                                     );
                                     return (
+                                        // @ts-ignore
                                         <Th key={key} {...restOfProps} isNumeric={column.isNumeric}>
                                             {column.render("Header")}
                                         </Th>
@@ -93,6 +95,7 @@ const TimeSmartList: SubscriberComponent<Order> = () => {
                                     <Td
                                         key={cell}
                                         {...cell.getCellProps()}
+                                        // @ts-ignore
                                         isNumeric={cell.column.isNumeric}
                                         role={"cell"}
                                     >

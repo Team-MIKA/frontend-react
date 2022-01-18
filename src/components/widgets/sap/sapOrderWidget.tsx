@@ -13,12 +13,6 @@ const SapOrderWidget: PublisherComponent<Order> = ({ item, setItem }) => {
     const toast = useToast();
 
     useEffect(() => {
-        return () => {
-            setItem({ title: "Virker det?", id: "nej" });
-        };
-    }, [setItem]);
-
-    useEffect(() => {
         api("/sap").then((o) => {
             const orders: Order[] = o.data;
             log("orders: ", orders);
