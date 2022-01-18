@@ -29,8 +29,7 @@ const Home: NextPage<{ origin: string }> = ({ origin }) => {
 
 Home.getInitialProps = async ({ req }) => {
     log(absoluteUrl(req));
-    const { host } = absoluteUrl(req);
-    const origin = "https://" + host;
+    const { origin } = absoluteUrl(req);
     return { origin };
 };
 
