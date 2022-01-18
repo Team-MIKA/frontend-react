@@ -32,7 +32,7 @@ const WorkspacePage: NextPage = () => {
                 <AddWorkspaceModal onClose={onClose} isOpen={isOpen} setWorkspaces={setWorkspaces} />
             </Box>
             <Box>
-                <WorkspaceList workspaces={workspaces} />
+                <WorkspaceList />
             </Box>
         </>
     );

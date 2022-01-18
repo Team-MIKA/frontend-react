@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { IconButton } from "@chakra-ui/button";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { WorkspaceService } from "@generated/services/WorkspaceService";
 import { HideOptionsState, WorkspaceState } from "@store/Workspace";
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { Stack, Heading, useColorModeValue, IconButton } from "@chakra-ui/react";
-import Link from "next/link";
 import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
+import Link from "next/link";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 
 const WorkspaceCard = ({ workspace }: { workspace: WorkspaceDTO }) => {

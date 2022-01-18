@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { WidgetDTO } from "@generated/models/WidgetDTO";
-
-export type Option = string;
+import { Option } from "@generated/models/Option";
 
 export type Widget<T> = PublisherWidget<T> | SubscriberWidget<T>;
 

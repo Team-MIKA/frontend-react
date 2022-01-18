@@ -16,8 +16,8 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
+import { Option } from "@generated/models/Option";
 import { log } from "@lib/logger";
-import { Option } from "@lib/Widget";
 import { HideOptionsState } from "@store/Workspace";
 
 interface OptionFormProps {
@@ -50,9 +50,9 @@ const OptionsForm: FC<OptionFormProps> = ({ firstFieldRef, onCancel, options }) 
         <Stack spacing={4}>
             {options.map((o, key) => (
                 <OptionsInput
-                    label={o}
-                    id={o + "-options"}
-                    key={o + key + "key"}
+                    label={o.key}
+                    id={o.key + "-options"}
+                    key={o.key + key + "key"}
                     ref={key == 0 ? firstFieldRef : null}
                 />
             ))}
@@ -68,7 +68,7 @@ const OptionsForm: FC<OptionFormProps> = ({ firstFieldRef, onCancel, options }) 
     );
 };
 
-export const OptionsPopOver: FC<{ options: string[] }> = ({ options }) => {
+export const OptionsPopOver: FC<{ options: Option[] }> = ({ options }) => {
     log("Options for widget: ", options);
     const { onOpen, onClose, isOpen } = useDisclosure();
     const firstFieldRef = useRef(null);

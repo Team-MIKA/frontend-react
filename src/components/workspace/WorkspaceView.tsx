@@ -42,6 +42,7 @@ const WorkspaceView: NextPage = () => {
     useEffect(() => {
         if (!workspace.id) return;
 
+        console.log("workspace m. Mads", workspace);
         // Update workspace view, every time the workspace DTO change
         const w = new Workspace(workspace);
         setPublishers(w.publisher);
@@ -104,6 +105,7 @@ const WorkspaceView: NextPage = () => {
                 {subscribers &&
                     subscribers.map((subscriber, index) => {
                         const obj = subscriber;
+                        console.log("subscribers", obj);
                         return (
                             <Panel
                                 buttons={

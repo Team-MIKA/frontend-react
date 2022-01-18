@@ -1,9 +1,9 @@
+import { WidgetDTO } from "@generated/models/WidgetDTO";
+import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
 import TimeSmartList from "@components/widgets/time-smart-list/time-smart-list-widget";
 import TimeSmartCard from "@components/widgets/time-smart/time-smart-card";
 import { Integration } from "@generated/models/Integration";
-import { WidgetDTO } from "@generated/models/WidgetDTO";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import { PublisherWidget, SubscriberWidget, Widget } from "@lib/Widget";
 
 export interface IWorkspace {

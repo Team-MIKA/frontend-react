@@ -1,8 +1,8 @@
+import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Router from "next/router";
 import { RecoilRoot } from "recoil";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import { WorkspaceListState } from "@store/Workspace";
 import DeleteWorkspaceModal from "./delete-workspace-modal";
 import WorkspaceCard from "./workspace-card";
@@ -35,7 +35,7 @@ describe("WorkspaceCard", () => {
 
     test("Have delete workspace button", () => {
         const button = screen.getByTestId("removeWorkspace");
-        expect(button).toBeInTheDocument;
+        expect(button).toBeInTheDocument();
     });
 
     test("When clicking delete btn open remove workspace modal", () => {
@@ -44,12 +44,12 @@ describe("WorkspaceCard", () => {
 
         const modalTitle = screen.getByTestId("deleteWorkspaceModal");
 
-        expect(modalTitle).toBeInTheDocument;
+        expect(modalTitle).toBeInTheDocument();
     });
 });
 
 describe("DeleteWorkspaceModal", () => {
-    const workspace = { title: "test", id: "123" } as WorkspaceDTO;
+    const workspace = { title: "workspace test", id: "123" } as WorkspaceDTO;
     const onClose = jest.fn();
 
     beforeEach(() => {
@@ -62,12 +62,12 @@ describe("DeleteWorkspaceModal", () => {
 
     test("Have cancel button", () => {
         const cancelBtn = screen.getByTestId("cancel");
-        expect(cancelBtn).toBeInTheDocument;
+        expect(cancelBtn).toBeInTheDocument();
     });
 
     test("Have delete button", () => {
         const deleteBtn = screen.getByTestId("delete");
-        expect(deleteBtn).toBeInTheDocument;
+        expect(deleteBtn).toBeInTheDocument();
     });
 
     test("Display workspace title", () => {
