@@ -1,14 +1,14 @@
 import { atom } from "recoil";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
+import { WorkspaceDto } from "@generated/models/WorkspaceDto";
 
 export const WorkspaceListState = atom({
     key: "workspaces",
-    default: null as WorkspaceDTO[],
+    default: null as WorkspaceDto[],
 });
 
 export const WorkspaceState = atom({
     key: "workspace",
-    default: { dto: { id: "", title: "" } } as WorkspaceDTO,
+    default: { Dto: { id: "", title: "" } } as WorkspaceDto,
 });
 
 export const HideOptionsState = atom({

@@ -10,9 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { useSetRecoilState } from "recoil";
 import { WorkspaceListState } from "@store/Workspace";
-import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
+import { WorkspaceDto, WorkspaceService } from "../../services/openapi";
 
-const DeleteWorkspaceModal: FC<{ workspace: WorkspaceDTO; onClose: any; isOpen: boolean }> = ({
+const DeleteWorkspaceModal: FC<{ workspace: WorkspaceDto; onClose: any; isOpen: boolean }> = ({
     workspace,
     onClose,
     isOpen,

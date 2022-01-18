@@ -11,20 +11,20 @@ import {
     Input,
     Text,
 } from "@chakra-ui/react";
-import { WorkspaceDTO, WorkspaceService } from "../../services/openapi";
+import { WorkspaceDto, WorkspaceService } from "../../services/openapi";
 interface AddWorkspaceModalProps {
     onClose: any;
     isOpen: boolean;
-    setWorkspaces: (setter: (prevState: WorkspaceDTO[]) => WorkspaceDTO[]) => void;
+    setWorkspaces: (setter: (prevState: WorkspaceDto[]) => WorkspaceDto[]) => void;
 }
 const AddWorkspaceModal: FC<AddWorkspaceModalProps> = ({ onClose, isOpen, setWorkspaces }) => {
     const [title, setTitle] = useState("");
 
     const save = () => {
-        const workSpace: WorkspaceDTO = { title: title };
+        const workSpace: WorkspaceDto = { title: title };
         WorkspaceService.postWorkspace(workSpace).then((result) => {
             if (result) {
-                setWorkspaces((prevState: WorkspaceDTO[]) => [...prevState, { ...workSpace, id: result }]);
+                setWorkspaces((prevState: WorkspaceDto[]) => [...prevState, { ...workSpace, id: result }]);
             }
         });
 

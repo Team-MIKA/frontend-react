@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { IconButton } from "@chakra-ui/button";
 import { DeleteIcon } from "@chakra-ui/icons";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { WorkspaceDto } from "@generated/models/WorkspaceDto";
 import { WorkspaceService } from "@generated/services/WorkspaceService";
 import { HideOptionsState, WorkspaceState } from "@store/Workspace";
 
@@ -16,7 +16,7 @@ const DeleteWidget: FC<DeleteWidgetProps> = ({ widgetId }) => {
         WorkspaceService.deleteWorkspace1(widgetId).then((result) => {
             if (result) {
                 setWorkspace((w) => {
-                    return { ...w, widgets: w.widgets.filter((x) => x.id !== widgetId) } as WorkspaceDTO;
+                    return { ...w, widgets: w.widgets.filter((x) => x.id !== widgetId) } as WorkspaceDto;
                 });
             }
         });

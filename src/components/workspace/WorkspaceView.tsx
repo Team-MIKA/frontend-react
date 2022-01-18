@@ -43,7 +43,7 @@ const WorkspaceView: NextPage = () => {
         if (!workspace.id) return;
 
         console.log("workspace m. Mads", workspace);
-        // Update workspace view, every time the workspace DTO change
+        // Update workspace view, every time the workspace Dto change
         const w = new Workspace(workspace);
         setPublishers(w.publisher);
         setSubscribers(w.subscribers);
@@ -91,13 +91,13 @@ const WorkspaceView: NextPage = () => {
                             <Panel
                                 buttons={
                                     <>
-                                        <OptionsPopOver options={obj.dto.options} />
-                                        <DeleteWidget widgetId={obj.dto.id} />
+                                        <OptionsPopOver options={obj.Dto.options} />
+                                        <DeleteWidget widgetId={obj.Dto.id} />
                                     </>
                                 }
                                 key={"subscriberWidget" + index}
                             >
-                                <obj.render item={item} setItem={setItem} options={obj.dto.options} />
+                                <obj.render item={item} setItem={setItem} options={obj.Dto.options} />
                             </Panel>
                         );
                     })}
@@ -110,13 +110,13 @@ const WorkspaceView: NextPage = () => {
                             <Panel
                                 buttons={
                                     <>
-                                        <OptionsPopOver options={obj.dto.options} />
-                                        <DeleteWidget widgetId={obj.dto.id} />
+                                        <OptionsPopOver options={obj.Dto.options} />
+                                        <DeleteWidget widgetId={obj.Dto.id} />
                                     </>
                                 }
                                 key={"subscriberWidget" + index}
                             >
-                                <obj.render item={item} options={obj.dto.options} />
+                                <obj.render item={item} options={obj.Dto.options} />
                             </Panel>
                         );
                     })}

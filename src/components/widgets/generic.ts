@@ -1,27 +1,27 @@
-import { WidgetDTO } from "@generated/models/WidgetDTO";
-import { WorkspaceDTO } from "@generated/models/WorkspaceDTO";
 import SapOrderWidget from "@components/widgets/sap/sapOrderWidget";
 import TimeSmartList from "@components/widgets/time-smart-list/time-smart-list-widget";
 import TimeSmartCard from "@components/widgets/time-smart/time-smart-card";
 import { Integration } from "@generated/models/Integration";
+import { WidgetDto } from "@generated/models/WidgetDto";
+import { WorkspaceDto } from "@generated/models/WorkspaceDto";
 import { PublisherWidget, SubscriberWidget, Widget } from "@lib/Widget";
 
 export interface IWorkspace {
-    dto: WorkspaceDTO;
+    Dto: WorkspaceDto;
     widgets: Widget<any>[];
     publisher: PublisherWidget<any>[];
     subscribers: SubscriberWidget<any>[];
 }
 
 export class Workspace implements IWorkspace {
-    public dto: WorkspaceDTO;
+    public Dto: WorkspaceDto;
     private factory = new WidgetFactory();
     public publisher: PublisherWidget<any>[];
     public subscribers: SubscriberWidget<any>[];
     public widgets: Widget<any>[];
 
-    constructor(workspace: WorkspaceDTO) {
-        this.dto = workspace;
+    constructor(workspace: WorkspaceDto) {
+        this.Dto = workspace;
         this.publisher = this.factory.publisherWidgets(workspace.widgets);
         this.subscribers = this.factory.subscriberWidgets(workspace.widgets);
         this.widgets = [...this.publisher, ...this.subscribers];
@@ -29,7 +29,7 @@ export class Workspace implements IWorkspace {
 }
 
 export class WidgetFactory {
-    publisherWidgets(widgets: Array<WidgetDTO>): PublisherWidget<any>[] {
+    publisherWidgets(widgets: Array<WidgetDto>): PublisherWidget<any>[] {
         const Publishers = [Integration.SAP];
         console.log(widgets);
         const publisherWidget = widgets.filter((w) => Publishers.some((p) => p == w.type));
@@ -38,14 +38,14 @@ export class WidgetFactory {
         return publisherWidget.map((p) => WidgetFactory.component(p));
     }
 
-    subscriberWidgets(widgets: Array<WidgetDTO>): SubscriberWidget<any>[] {
+    subscriberWidgets(widgets: Array<WidgetDto>): SubscriberWidget<any>[] {
         if (widgets === undefined) return [];
         const subscribers = widgets.filter((w) => w.type != Integration.SAP);
 
         return subscribers.map((w) => WidgetFactory.component(w));
     }
 
-    public static component(w: WidgetDTO): Widget<any> {
+    public static component(w: WidgetDto): Widget<any> {
         let component;
         switch (w.type) {
             case Integration.SAP:
@@ -62,7 +62,7 @@ export class WidgetFactory {
         }
 
         return {
-            dto: w,
+            Dto: w,
             render: component,
         };
     }
