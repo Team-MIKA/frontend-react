@@ -1,16 +1,5 @@
 import { FC, ReactNode } from "react";
-import {
-    Box,
-    Container,
-    Flex,
-    Grid,
-    GridItem,
-    Heading,
-    Stat,
-    StatLabel,
-    StatNumber,
-    useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Heading, Stat, StatLabel, StatNumber, useColorModeValue } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { absoluteUrl } from "@lib/absoluteUrl";
 import { log } from "@lib/logger";
@@ -20,11 +9,7 @@ import LiveClock from "../components/widgets/time-smart/live-clock";
 const Home: NextPage<{ origin: string }> = ({ origin }) => {
     console.log(origin);
     instance.defaults.baseURL = origin + "/api";
-    return (
-        <Container maxW={"container.xl"}>
-            <BasicStatistics />
-        </Container>
-    );
+    return <p> Hej Lone og Thomas </p>;
 };
 
 Home.getInitialProps = async ({ req }) => {
