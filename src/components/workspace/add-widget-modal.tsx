@@ -14,12 +14,12 @@ import {
 import { useRecoilState } from "recoil";
 import { log } from "@lib/logger";
 import { WorkspaceState } from "@store/Workspace";
-import { WidgetDTO, WidgetService, WorkspaceDTO, WorkspaceService } from "../../services/openapi";
+import { WidgetDto, WidgetService, WorkspaceDto, WorkspaceService } from "../../services/openapi";
 
 const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: boolean }) => {
     const [workspace, setWorkspace] = useRecoilState(WorkspaceState);
-    const [widgets, setWidgets] = useState<WidgetDTO[]>(null);
-    type Widget = WidgetDTO;
+    const [widgets, setWidgets] = useState<WidgetDto[]>(null);
+    type Widget = WidgetDto;
     const [selectedWidget, setSelectedWidget] = useState<Widget>(null);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
         onClose();
     };
 
-    const handleClick = (widget: WidgetDTO) => {
+    const handleClick = (widget: WidgetDto) => {
         setSelectedWidget(selectedWidget == widget ? null : widget);
     };
 
@@ -44,7 +44,7 @@ const AddWidgetModal = ({ onClose, isOpen }: { onClose: () => void; isOpen: bool
                 const newDto = {
                     ...workspace,
                     widgets: [...workspace.widgets, { ...selectedWidget, id: result }],
-                } as WorkspaceDTO;
+                } as WorkspaceDto;
 
                 setWorkspace(newDto);
                 log("workspace:", workspace);

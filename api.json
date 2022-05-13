@@ -5,6 +5,62 @@
         "version": "v1"
     },
     "paths": {
+        "/Health": {
+            "get": {
+                "tags": ["Health"],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SettingDto"
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SettingDto"
+                                    }
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SettingDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/Settings": {
             "get": {
                 "tags": ["Settings"],
@@ -16,7 +72,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/SettingDTO"
+                                        "$ref": "#/components/schemas/SettingDto"
                                     }
                                 }
                             },
@@ -24,7 +80,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/SettingDTO"
+                                        "$ref": "#/components/schemas/SettingDto"
                                     }
                                 }
                             },
@@ -32,7 +88,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/SettingDTO"
+                                        "$ref": "#/components/schemas/SettingDto"
                                     }
                                 }
                             }
@@ -66,17 +122,17 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SettingDTO"
+                                "$ref": "#/components/schemas/SettingDto"
                             }
                         },
                         "text/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SettingDTO"
+                                "$ref": "#/components/schemas/SettingDto"
                             }
                         },
                         "application/*+json": {
                             "schema": {
-                                "$ref": "#/components/schemas/SettingDTO"
+                                "$ref": "#/components/schemas/SettingDto"
                             }
                         }
                     }
@@ -145,17 +201,17 @@
                         "content": {
                             "text/plain": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/SettingDTO"
+                                    "$ref": "#/components/schemas/SettingDto"
                                 }
                             },
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/SettingDTO"
+                                    "$ref": "#/components/schemas/SettingDto"
                                 }
                             },
                             "text/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/SettingDTO"
+                                    "$ref": "#/components/schemas/SettingDto"
                                 }
                             }
                         }
@@ -190,17 +246,17 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         },
                         "text/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         },
                         "application/*+json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         }
                     }
@@ -260,7 +316,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WidgetDTO"
+                                        "$ref": "#/components/schemas/WidgetDto"
                                     }
                                 }
                             },
@@ -268,7 +324,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WidgetDTO"
+                                        "$ref": "#/components/schemas/WidgetDto"
                                     }
                                 }
                             },
@@ -276,7 +332,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WidgetDTO"
+                                        "$ref": "#/components/schemas/WidgetDto"
                                     }
                                 }
                             }
@@ -374,7 +430,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WorkspaceDTO"
+                                        "$ref": "#/components/schemas/WorkspaceDto"
                                     }
                                 }
                             },
@@ -382,7 +438,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WorkspaceDTO"
+                                        "$ref": "#/components/schemas/WorkspaceDto"
                                     }
                                 }
                             },
@@ -390,7 +446,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/WorkspaceDTO"
+                                        "$ref": "#/components/schemas/WorkspaceDto"
                                     }
                                 }
                             }
@@ -439,17 +495,17 @@
                         "content": {
                             "text/plain": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/WorkspaceDTO"
+                                    "$ref": "#/components/schemas/WorkspaceDto"
                                 }
                             },
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/WorkspaceDTO"
+                                    "$ref": "#/components/schemas/WorkspaceDto"
                                 }
                             },
                             "text/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/WorkspaceDTO"
+                                    "$ref": "#/components/schemas/WorkspaceDto"
                                 }
                             }
                         }
@@ -484,17 +540,17 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WorkspaceDTO"
+                                "$ref": "#/components/schemas/WorkspaceDto"
                             }
                         },
                         "text/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WorkspaceDTO"
+                                "$ref": "#/components/schemas/WorkspaceDto"
                             }
                         },
                         "application/*+json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WorkspaceDTO"
+                                "$ref": "#/components/schemas/WorkspaceDto"
                             }
                         }
                     }
@@ -619,17 +675,17 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         },
                         "text/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         },
                         "application/*+json": {
                             "schema": {
-                                "$ref": "#/components/schemas/WidgetDTO"
+                                "$ref": "#/components/schemas/WidgetDto"
                             }
                         }
                     }
@@ -739,7 +795,7 @@
     },
     "components": {
         "schemas": {
-            "SettingDTO": {
+            "SettingDto": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -781,11 +837,40 @@
                 "additionalProperties": {}
             },
             "Integration": {
-                "enum": [0, 1],
-                "type": "integer",
-                "format": "int32"
+                "enum": ["Sap", "TimeSmart", "TimeSmartRegistrations"],
+                "type": "string"
             },
-            "WidgetDTO": {
+            "Option": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "created": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "modified": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "widgetId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "WidgetDto": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -798,11 +883,22 @@
                     },
                     "type": {
                         "$ref": "#/components/schemas/Integration"
+                    },
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Option"
+                        },
+                        "nullable": true
                     }
                 },
                 "additionalProperties": false
             },
-            "WorkspaceDTO": {
+            "WorkspaceDto": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -816,7 +912,7 @@
                     "widgets": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/WidgetDTO"
+                            "$ref": "#/components/schemas/WidgetDto"
                         },
                         "nullable": true
                     }

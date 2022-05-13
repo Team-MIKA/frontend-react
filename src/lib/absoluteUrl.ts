@@ -2,12 +2,12 @@
 import { IncomingMessage } from "http";
 
 export const absoluteUrl = (req: IncomingMessage | undefined, localhostAddress = "localhost:3000") => {
-    var _a;
-    var host =
+    let _a;
+    let host =
         // @ts-ignore
         (((_a = req) === null || _a === void 0 ? void 0 : _a.headers) ? req.headers.host : window.location.host) ||
         localhostAddress;
-    var protocol = /^localhost(:\d+)?$/.test(host) ? "http:" : "https:";
+    let protocol = /^localhost(:\d+)?$/.test(host) ? "http:" : "https:";
     if (req && req.headers["x-forwarded-host"] && typeof req.headers["x-forwarded-host"] === "string") {
         host = req.headers["x-forwarded-host"];
     }
