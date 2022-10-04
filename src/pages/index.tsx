@@ -18,7 +18,6 @@ import instance from "@store/axios";
 import LiveClock from "../components/widgets/time-smart/live-clock";
 
 const Home: NextPage<{ origin: string }> = ({ origin }) => {
-    console.log(origin);
     instance.defaults.baseURL = origin + "/api";
     return (
         <Container maxW={"container.xl"}>
