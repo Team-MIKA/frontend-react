@@ -7,6 +7,7 @@ import { TextNavItem } from "@components/layouts/navbar/navbaritem";
 import { render } from "../../../test-utils";
 
 jest.mock("next/dist/client/router", () => require("next-router-mock"));
+jest.spyOn(console, "error").mockImplementation(() => {});
 
 describe("Links in navbar should", () => {
     beforeEach(() => {

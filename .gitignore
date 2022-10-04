@@ -107,3 +107,5 @@ fabric.properties
 
 # Open API generated client services
 /src/services/openapi/
+
+.vscode

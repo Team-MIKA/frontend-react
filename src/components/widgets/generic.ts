@@ -31,7 +31,6 @@ export class Workspace implements IWorkspace {
 export class WidgetFactory {
     publisherWidgets(widgets: Array<WidgetDto>): PublisherWidget<any>[] {
         const Publishers = [Integration.SAP];
-        console.log(widgets);
         const publisherWidget = widgets.filter((w) => Publishers.some((p) => p == w.type));
         if (publisherWidget === undefined) return null; //throw Error("There's no publisher for this workspace");
 
